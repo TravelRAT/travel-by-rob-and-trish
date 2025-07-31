@@ -29,7 +29,9 @@ function Destinations() {
       region: 'cruise',
       description: 'Magical voyages with Disney characters, Broadway-style shows, and enchanted family adventures at sea.',
       gradient: 'from-purple-500 to-pink-500',
-      features: ['Disney Characters', 'Broadway Shows', 'Kids Clubs', 'Private Island']
+      features: ['Disney Characters', 'Broadway Shows', 'Kids Clubs', 'Private Island'],
+      link: 'https://www.disneytravelcenter.com/MIN-000000000098357/sites++disney-cruise-line++disney-cruise-line/',
+      external: true
     },
     {
       id: 4,

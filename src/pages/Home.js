@@ -21,10 +21,11 @@ function Home() {
     },
     {
       id: 3,
-      name: 'Cruising',
-      description: 'Set sail on unforgettable adventures across crystal blue waters.',
+      name: 'Disney Cruising',
+      description: 'Set sail on magical Disney adventures across crystal blue waters.',
       gradient: 'from-cyan-500 to-blue-500',
-      link: '/destinations'
+      link: 'https://www.disneytravelcenter.com/MIN-000000000098357/sites++disney-cruise-line++disney-cruise-line/',
+      external: true
     },
   ];
 
