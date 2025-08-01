@@ -12,6 +12,7 @@ function Destinations() {
       description: 'Experience the magic where dreams come true! From enchanting castle shows to thrilling rides and character meetings.',
       gradient: 'from-purple-500 to-pink-500',
       features: ['4 Theme Parks', 'Character Dining', 'Disney Resort Stay', 'Park Hopper Option'],
+      image: '/images/Castle.jpg',
       link: 'https://www.disneytravelcenter.com/ms7e694227/',
       external: true
     },
@@ -21,7 +22,8 @@ function Destinations() {
       region: 'theme-parks',
       description: 'Experience Epic Universe and the Wizarding World! Four incredible theme parks with thrilling attractions.',
       gradient: 'from-blue-500 to-indigo-500',
-      features: ['4 Theme Parks', 'Epic Universe', 'Wizarding World', 'Express Pass Option']
+      features: ['4 Theme Parks', 'Epic Universe', 'Wizarding World', 'Express Pass Option'],
+      image: '/images/Universal.jpg'
     },
     {
       id: 3,
@@ -30,6 +32,7 @@ function Destinations() {
       description: 'Magical voyages with Disney characters, Broadway-style shows, and enchanted family adventures at sea.',
       gradient: 'from-purple-500 to-pink-500',
       features: ['Disney Characters', 'Broadway Shows', 'Kids Clubs', 'Private Island'],
+      image: '/images/disney cruise.jpg',
       link: 'https://www.disneytravelcenter.com/MIN-000000000098357/sites++disney-cruise-line++disney-cruise-line/',
       external: true
     },
@@ -39,7 +42,8 @@ function Destinations() {
       region: 'cruise',
       description: 'Fun-filled adventures with world-class entertainment, dining, and exciting ports of call.',
       gradient: 'from-red-500 to-orange-500',
-      features: ['Multiple Destinations', 'Onboard Entertainment', 'Dining Options', 'Family Activities']
+      features: ['Multiple Destinations', 'Onboard Entertainment', 'Dining Options', 'Family Activities'],
+      image: '/images/carnival.jpg'
     },
     {
       id: 5,
@@ -47,7 +51,8 @@ function Destinations() {
       region: 'cruise',
       description: 'Adults-only luxury with innovative dining, cutting-edge entertainment, and stunning ocean views.',
       gradient: 'from-pink-500 to-red-500',
-      features: ['Adults Only', 'Premium Dining', 'Innovative Entertainment', 'Luxury Suites']
+      features: ['Adults Only', 'Premium Dining', 'Innovative Entertainment', 'Luxury Suites'],
+      image: '/images/virgin.jpg'
     },
     {
       id: 6,
@@ -55,7 +60,8 @@ function Destinations() {
       region: 'beach',
       description: 'Crystal clear waters, ancient Mayan ruins, and luxurious all-inclusive resorts await in paradise.',
       gradient: 'from-yellow-400 to-orange-500',
-      features: ['All-Inclusive Resort', 'Beach Access', 'Cultural Tours', 'Water Activities']
+      features: ['All-Inclusive Resort', 'Beach Access', 'Cultural Tours', 'Water Activities'],
+      image: '/images/RivMaya.avif'
     },
     {
       id: 7,
@@ -64,6 +70,7 @@ function Destinations() {
       description: 'Adults-only luxury all-inclusive resorts in the Caribbean\'s most beautiful destinations.',
       gradient: 'from-teal-500 to-blue-600',
       features: ['Adults Only', 'All-Inclusive', 'Caribbean Locations', 'Butler Service'],
+      image: '/images/RivMaya.avif',
       link: '/sandals-beaches'
     },
     {
@@ -73,6 +80,7 @@ function Destinations() {
       description: 'Family-friendly all-inclusive resorts with supervised kids programs and endless activities.',
       gradient: 'from-orange-500 to-pink-500',
       features: ['Family Friendly', 'Kids Programs', 'Water Parks', 'All-Inclusive'],
+      image: '/images/Beach.jpg',
       link: '/sandals-beaches'
     },
     {
@@ -81,7 +89,8 @@ function Destinations() {
       region: 'beach',
       description: 'Adults-only elegance with unlimited luxury and sophisticated amenities in stunning locations.',
       gradient: 'from-purple-500 to-indigo-600',
-      features: ['Adults Only', 'Unlimited Luxury', 'Premium Dining', 'Spa Services']
+      features: ['Adults Only', 'Unlimited Luxury', 'Premium Dining', 'Spa Services'],
+      image: '/images/Hammock.jpg'
     },
     {
       id: 10,
@@ -89,7 +98,8 @@ function Destinations() {
       region: 'beach',
       description: 'Vibrant adults-only resorts with energetic atmosphere, entertainment, and modern luxury.',
       gradient: 'from-red-500 to-pink-600',
-      features: ['Adults Only', 'Vibrant Atmosphere', 'Entertainment', 'Modern Luxury']
+      features: ['Adults Only', 'Vibrant Atmosphere', 'Entertainment', 'Modern Luxury'],
+      image: '/images/Tulum.jpg'
     },
     {
       id: 11,
@@ -97,7 +107,8 @@ function Destinations() {
       region: 'beach',
       description: 'Premium all-inclusive resorts combining comfort, gastronomy, and sustainability worldwide.',
       gradient: 'from-green-500 to-teal-600',
-      features: ['All-Inclusive', 'Premium Comfort', 'Sustainable Tourism', 'Global Locations']
+      features: ['All-Inclusive', 'Premium Comfort', 'Sustainable Tourism', 'Global Locations'],
+      image: '/images/Beach.jpg'
     },
     {
       id: 12,
@@ -105,7 +116,8 @@ function Destinations() {
       region: 'beach',
       description: 'All-inclusive beach resorts offering fun, quality, and value in tropical paradise settings.',
       gradient: 'from-blue-500 to-cyan-600',
-      features: ['All-Inclusive', 'Beach Locations', 'Family & Adults', 'Entertainment Programs']
+      features: ['All-Inclusive', 'Beach Locations', 'Family & Adults', 'Entertainment Programs'],
+      image: '/images/RivMaya.avif'
     },
     {
       id: 13,
@@ -113,7 +125,8 @@ function Destinations() {
       region: 'beach',
       description: 'Rock-inspired luxury resorts with music-themed experiences and world-class amenities.',
       gradient: 'from-gray-700 to-red-600',
-      features: ['Music Themed', 'Luxury Amenities', 'Rock Star Service', 'Live Entertainment']
+      features: ['Music Themed', 'Luxury Amenities', 'Rock Star Service', 'Live Entertainment'],
+      image: '/images/Hammock.jpg'
     },
   ];
 
@@ -189,8 +202,11 @@ function Destinations() {
               className="group bg-amber-50 border-2 border-blue-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
             >
               <div className="relative h-64">
-                <div className={`w-full h-full ${destination.id === 1 || destination.id === 2 || destination.id === 3 || destination.id === 4 || destination.id === 5 || destination.id === 6 ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${destination.gradient}`} group-hover:scale-105 transition-transform duration-300`} style={destination.id === 1 ? { backgroundImage: 'url(/images/Castle.jpg)' } : destination.id === 2 ? { backgroundImage: 'url(/images/Universal.jpg)' } : destination.id === 3 ? { backgroundImage: 'url(/images/disney%20cruise.jpg)' } : destination.id === 4 ? { backgroundImage: 'url(/images/carnival.jpg)' } : destination.id === 5 ? { backgroundImage: 'url(/images/virgin.jpg)' } : destination.id === 6 ? { backgroundImage: 'url(/images/RivMaya.avif)' } : {}}>
-                  <div className={`absolute inset-0 ${destination.id === 1 || destination.id === 2 || destination.id === 3 || destination.id === 4 || destination.id === 5 || destination.id === 6 ? 'bg-black bg-opacity-40' : ''} flex items-end justify-center pb-8`}>
+                <div 
+                  className={`w-full h-full ${destination.image ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${destination.gradient}`} group-hover:scale-105 transition-transform duration-300`}
+                  style={destination.image ? { backgroundImage: `url(${destination.image})` } : {}}
+                >
+                  <div className={`absolute inset-0 ${destination.image ? 'bg-black bg-opacity-40' : ''} flex items-end justify-center pb-8`}>
                     <h3 className="text-2xl font-bold text-white text-center px-4 text-shadow-lg">
                       {destination.name}
                     </h3>
