@@ -21,11 +21,10 @@ function Home() {
     },
     {
       id: 3,
-      name: 'Disney Cruising',
-      description: 'Set sail on magical Disney adventures across crystal blue waters.',
-      gradient: 'from-cyan-500 to-blue-500',
-      link: 'https://www.disneytravelcenter.com/MIN-000000000098357/sites++disney-cruise-line++disney-cruise-line/',
-      external: true
+      name: 'Sandals & Beaches Resorts',
+      description: 'Luxury all-inclusive Caribbean resorts for adults and families.',
+      gradient: 'from-teal-500 to-blue-500',
+      link: '/sandals-beaches'
     },
   ];
 
