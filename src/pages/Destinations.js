@@ -202,7 +202,7 @@ function Destinations() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group bg-amber-50 border-2 border-blue-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
             >
-              <div className="relative h-64">
+              <div className="relative h-52">
                 <div 
                   className={`w-full h-full ${destination.image ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${destination.gradient}`} group-hover:scale-105 transition-transform duration-300`}
                   style={destination.image ? { backgroundImage: `url(${destination.image})` } : {}}
