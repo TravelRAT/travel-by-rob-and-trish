@@ -73,20 +73,33 @@ function Destinations() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          className="text-center mb-12"
-        >
-          <h1 className="text-5xl font-bold text-gray-900 mb-4">
-            Discover Your Perfect Destination
-          </h1>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            From magical theme parks to serene beaches and luxurious cruises, 
-            let us help you find your next unforgettable adventure.
-          </p>
-        </motion.div>
+        {/* Hero Section */}
+        <div className="relative h-[400px] overflow-hidden mb-16">
+          <div className="absolute inset-0">
+            <img 
+              src="/images/Beach.jpg" 
+              alt="Beautiful destinations background" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-white text-center max-w-4xl"
+            >
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-shadow-lg">
+                Discover Your Perfect Destination
+              </h1>
+              <p className="text-xl md:text-2xl text-shadow">
+                From magical theme parks to serene beaches and luxurious cruises, 
+                let us help you find your next unforgettable adventure.
+              </p>
+            </motion.div>
+          </div>
+        </div>
         
         {/* Region Filter */}
         <div className="flex justify-center mb-12">
