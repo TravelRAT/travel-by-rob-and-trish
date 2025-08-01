@@ -128,7 +128,7 @@ function Destinations() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-amber-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
+              className="group bg-amber-50 border-2 border-blue-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
             >
               <div className="relative h-64">
                 <div className={`w-full h-full ${destination.id === 1 || destination.id === 2 || destination.id === 3 || destination.id === 4 || destination.id === 5 || destination.id === 6 ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${destination.gradient}`} group-hover:scale-105 transition-transform duration-300`} style={destination.id === 1 ? { backgroundImage: 'url(/images/Castle.jpg)' } : destination.id === 2 ? { backgroundImage: 'url(/images/Universal.jpg)' } : destination.id === 3 ? { backgroundImage: 'url(/images/disney%20cruise.jpg)' } : destination.id === 4 ? { backgroundImage: 'url(/images/carnival.jpg)' } : destination.id === 5 ? { backgroundImage: 'url(/images/virgin.jpg)' } : destination.id === 6 ? { backgroundImage: 'url(/images/RivMaya.avif)' } : {}}>
