@@ -310,7 +310,7 @@ function SandalsBeaches() {
                 </div>
               </div>
               
-              <div className="p-6 flex flex-col h-full">
+              <div className="p-6 flex flex-col h-full bg-yellow-50">
                 <div className="flex-grow">
                   <p className="text-gray-600 mb-4">{resort.description}</p>
                   <div className="space-y-3">

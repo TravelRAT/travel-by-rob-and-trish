@@ -127,7 +127,7 @@ function Destinations() {
                 </div>
               </div>
               
-              <div className="p-6 flex flex-col h-full">
+              <div className="p-6 flex flex-col h-full bg-amber-50">
                 <div className="flex-grow">
                   <p className="text-gray-600 mb-4">{destination.description}</p>
                   <div className="space-y-3">
