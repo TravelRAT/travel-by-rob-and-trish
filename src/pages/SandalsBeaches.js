@@ -303,7 +303,7 @@ function SandalsBeaches() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
+              className="group bg-amber-50 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
             >
               <div className="relative h-64">
                 <div 
@@ -323,7 +323,7 @@ function SandalsBeaches() {
                 </div>
               </div>
               
-              <div className="p-6 flex flex-col h-full bg-yellow-50">
+              <div className="p-6 flex flex-col h-full bg-amber-50">
                 <div className="flex-grow">
                   <p className="text-gray-600 mb-4">{resort.description}</p>
                   <div className="space-y-3">
