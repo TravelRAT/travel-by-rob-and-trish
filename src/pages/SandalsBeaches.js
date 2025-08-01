@@ -86,7 +86,7 @@ function SandalsBeaches() {
       description: 'Nestled near the famous Dunn\'s River Falls with lush tropical gardens and pristine beachfront.',
       gradient: 'from-emerald-400 to-teal-500',
       features: ['All-Inclusive', 'Adults Only', 'Near Dunn\'s River Falls', 'Tropical Gardens'],
-      image: '/images/Universal.jpg',
+      image: '/images/dr.webp',
       link: 'https://www.sandals.com/dunns-river/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -98,7 +98,7 @@ function SandalsBeaches() {
       description: 'Experience British colonial elegance with offshore cay access and world-class spa treatments.',
       gradient: 'from-cyan-400 to-blue-500',
       features: ['All-Inclusive', 'Adults Only', 'Private Offshore Cay', 'Red Lane Spa'],
-      image: '/images/carnival.jpg',
+      image: '/images/srb.avif',
       link: 'https://www.sandals.com/royal-bahamian/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -110,7 +110,7 @@ function SandalsBeaches() {
       description: 'Discover the beauty of Dickenson Bay with Mediterranean-inspired architecture and crystal waters.',
       gradient: 'from-amber-400 to-orange-500',
       features: ['All-Inclusive', 'Adults Only', 'Dickenson Bay', 'Mediterranean Style'],
-      image: '/images/virgin.jpg',
+      image: '/images/sga.avif',
       link: 'https://www.sandals.com/grande-antigua/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -122,7 +122,7 @@ function SandalsBeaches() {
       description: 'Golf enthusiasts\' paradise with championship course and stunning Piton mountain views.',
       gradient: 'from-lime-400 to-green-500',
       features: ['All-Inclusive', 'Adults Only', 'Golf Course', 'Piton Views'],
-      image: '/images/disney cruise.jpg',
+      image: '/images/srlt.avif',
       link: 'https://www.sandals.com/regency-la-toc/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -134,7 +134,7 @@ function SandalsBeaches() {
       description: 'Sophisticated beachfront resort with over-the-water bungalows and panoramic Caribbean views.',
       gradient: 'from-violet-400 to-purple-500',
       features: ['All-Inclusive', 'Adults Only', 'Over-Water Bungalows', 'Beachfront Location'],
-      image: '/images/Beach.jpg',
+      image: '/images/sgl.avif',
       link: 'https://www.sandals.com/grande-st-lucian/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -146,7 +146,7 @@ function SandalsBeaches() {
       description: 'Intimate beachfront sanctuary with lush gardens and authentic Caribbean charm.',
       gradient: 'from-rose-400 to-pink-500',
       features: ['All-Inclusive', 'Adults Only', 'Intimate Setting', 'Lush Gardens'],
-      image: '/images/RivMaya.avif',
+      image: '/images/shv.avif',
       link: 'https://www.sandals.com/halcyon-beach/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -158,7 +158,7 @@ function SandalsBeaches() {
       description: 'Discover the spice island\'s natural beauty with pristine beaches and lush rainforest adventures.',
       gradient: 'from-emerald-400 to-green-600',
       features: ['All-Inclusive', 'Adults Only', 'Spice Island', 'Rainforest Views'],
-      image: '/images/Tulum.jpg',
+      image: '/images/sg.avif',
       link: 'https://www.sandals.com/sandals-grenada/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -170,7 +170,7 @@ function SandalsBeaches() {
       description: 'Experience authentic Bajan culture with rooftop pools and oceanfront luxury on Maxwell Beach.',
       gradient: 'from-yellow-400 to-orange-500',
       features: ['All-Inclusive', 'Adults Only', 'Rooftop Pools', 'Maxwell Beach'],
-      image: '/images/Hammock.jpg',
+      image: '/images/sb.avif',
       link: 'https://www.sandals.com/sandals-barbados/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -182,7 +182,7 @@ function SandalsBeaches() {
       description: 'Ultra-luxury beachfront resort with bowling, gourmet dining, and sophisticated island elegance.',
       gradient: 'from-purple-400 to-indigo-500',
       features: ['All-Inclusive', 'Adults Only', 'Luxury Suites', 'Bowling Alley'],
-      image: '/images/Castle.jpg',
+      image: '/images/srbarb.avif',
       link: 'https://www.sandals.com/royal-barbados/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -194,7 +194,7 @@ function SandalsBeaches() {
       description: 'European charm meets Caribbean luxury with colorful architecture and pristine white sand beaches.',
       gradient: 'from-blue-400 to-cyan-500',
       features: ['All-Inclusive', 'Adults Only', 'European Charm', 'White Sand Beach'],
-      image: '/images/Universal.jpg',
+      image: '/images/src.avif',
       link: 'https://www.sandals.com/royal-curacao/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -206,7 +206,7 @@ function SandalsBeaches() {
       description: 'Untouched Caribbean paradise with volcanic black sand beaches and lush tropical landscapes.',
       gradient: 'from-green-400 to-teal-600',
       features: ['All-Inclusive', 'Adults Only', 'Volcanic Beaches', 'Untouched Paradise'],
-      image: '/images/carnival.jpg',
+      image: '/images/ssv.avif',
       link: 'https://www.sandals.com/sandals-saint-vincent/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -218,7 +218,7 @@ function SandalsBeaches() {
       description: 'Family paradise on Seven Mile Beach with endless activities for all ages and supervised kids programs.',
       gradient: 'from-orange-400 to-pink-500',
       features: ['Family Friendly', 'All-Inclusive', 'Seven Mile Beach', 'Kids Programs'],
-      image: '/images/Beach.jpg',
+      image: '/images/bn.jpg',
       link: 'https://www.beaches.com/resorts/negril/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
