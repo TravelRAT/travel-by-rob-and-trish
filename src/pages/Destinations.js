@@ -57,6 +57,64 @@ function Destinations() {
       gradient: 'from-yellow-400 to-orange-500',
       features: ['All-Inclusive Resort', 'Beach Access', 'Cultural Tours', 'Water Activities']
     },
+    {
+      id: 7,
+      name: 'Sandals Resorts',
+      region: 'beach',
+      description: 'Adults-only luxury all-inclusive resorts in the Caribbean\'s most beautiful destinations.',
+      gradient: 'from-teal-500 to-blue-600',
+      features: ['Adults Only', 'All-Inclusive', 'Caribbean Locations', 'Butler Service'],
+      link: '/sandals-beaches'
+    },
+    {
+      id: 8,
+      name: 'Beaches Resorts',
+      region: 'beach',
+      description: 'Family-friendly all-inclusive resorts with supervised kids programs and endless activities.',
+      gradient: 'from-orange-500 to-pink-500',
+      features: ['Family Friendly', 'Kids Programs', 'Water Parks', 'All-Inclusive'],
+      link: '/sandals-beaches'
+    },
+    {
+      id: 9,
+      name: 'Secrets Resorts',
+      region: 'beach',
+      description: 'Adults-only elegance with unlimited luxury and sophisticated amenities in stunning locations.',
+      gradient: 'from-purple-500 to-indigo-600',
+      features: ['Adults Only', 'Unlimited Luxury', 'Premium Dining', 'Spa Services']
+    },
+    {
+      id: 10,
+      name: 'Breathless Resorts',
+      region: 'beach',
+      description: 'Vibrant adults-only resorts with energetic atmosphere, entertainment, and modern luxury.',
+      gradient: 'from-red-500 to-pink-600',
+      features: ['Adults Only', 'Vibrant Atmosphere', 'Entertainment', 'Modern Luxury']
+    },
+    {
+      id: 11,
+      name: 'Iberostar Resorts',
+      region: 'beach',
+      description: 'Premium all-inclusive resorts combining comfort, gastronomy, and sustainability worldwide.',
+      gradient: 'from-green-500 to-teal-600',
+      features: ['All-Inclusive', 'Premium Comfort', 'Sustainable Tourism', 'Global Locations']
+    },
+    {
+      id: 12,
+      name: 'Riu Hotels & Resorts',
+      region: 'beach',
+      description: 'All-inclusive beach resorts offering fun, quality, and value in tropical paradise settings.',
+      gradient: 'from-blue-500 to-cyan-600',
+      features: ['All-Inclusive', 'Beach Locations', 'Family & Adults', 'Entertainment Programs']
+    },
+    {
+      id: 13,
+      name: 'Hard Rock Hotels',
+      region: 'beach',
+      description: 'Rock-inspired luxury resorts with music-themed experiences and world-class amenities.',
+      gradient: 'from-gray-700 to-red-600',
+      features: ['Music Themed', 'Luxury Amenities', 'Rock Star Service', 'Live Entertainment']
+    },
   ];
 
   const regions = [
