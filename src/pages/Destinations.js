@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 function Destinations() {
@@ -229,20 +230,12 @@ function Destinations() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  {destination.external ? (
-                    <a
-                      href={destination.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
-                    >
-                      Learn More
-                    </a>
-                  ) : (
-                    <button className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg">
-                      Learn More
-                    </button>
-                  )}
+                  <Link
+                    to="/need-more-info"
+                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+                  >
+                    Learn More
+                  </Link>
                 </div>
               </div>
             </motion.div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
 function Packages() {
@@ -129,9 +130,12 @@ function Packages() {
                   </ul>
                 </div>
 
-                <button className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors">
+                <Link
+                  to="/need-more-info"
+                  className="w-full bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors inline-block text-center"
+                >
                   Learn More
-                </button>
+                </Link>
               </div>
             </motion.div>
           ))}

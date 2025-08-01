@@ -101,23 +101,12 @@ function Home() {
                     {/* Description and button in bottom 1/3 */}
                     <div className="absolute bottom-0 left-0 right-0 h-1/3 flex flex-col items-center justify-center px-6">
                       <p className="text-white text-shadow mb-4 text-center text-sm whitespace-pre-line">{destination.description}</p>
-                      {destination.external ? (
-                        <a
-                          href={destination.link}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold transform group-hover:scale-105 transition-transform duration-200 shadow-lg"
-                        >
-                          Learn More
-                        </a>
-                      ) : (
-                        <Link
-                          to={destination.link}
-                          className="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold transform group-hover:scale-105 transition-transform duration-200 shadow-lg"
-                        >
-                          Learn More
-                        </Link>
-                      )}
+                      <Link
+                        to="/need-more-info"
+                        className="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold transform group-hover:scale-105 transition-transform duration-200 shadow-lg"
+                      >
+                        Learn More
+                      </Link>
                     </div>
                   </div>
                 </div>
