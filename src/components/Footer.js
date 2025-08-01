@@ -35,6 +35,7 @@ function Footer() {
               <li><Link to="/destinations" className="text-gray-300 hover:text-white">Disney World</Link></li>
               <li><Link to="/destinations" className="text-gray-300 hover:text-white">Universal Studios</Link></li>
               <li><Link to="/destinations" className="text-gray-300 hover:text-white">Caribbean Cruises</Link></li>
+              <li><Link to="/sandals-beaches" className="text-gray-300 hover:text-white">Sandals & Beaches</Link></li>
             </ul>
           </div>
 
