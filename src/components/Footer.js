@@ -43,8 +43,8 @@ function Footer() {
             <h4 className="text-lg font-semibold">Contact Info</h4>
             <ul className="space-y-2 text-gray-300">
               <li>Indianapolis, IN</li>
-              <li>Trish: (317) 850-3750</li>
-              <li>Rob: (317) 401-3669</li>
+              <li>Trish: (317) 401-3669</li>
+              <li>Rob: (317) 850-3750</li>
               <li>Email: r.whitehair@magicalvacationplanner.com</li>
             </ul>
           </div>
