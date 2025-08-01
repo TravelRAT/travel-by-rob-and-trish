@@ -55,18 +55,12 @@ function Home() {
               Let Rob and Trish guide you to the perfect destination, from magical theme parks 
               to tropical paradises and luxurious cruises.
             </p>
-            <div className="space-x-4">
+            <div className="text-center">
               <Link
                 to="/need-more-info"
                 className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all duration-200 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
               >
                 Start Planning
-              </Link>
-              <Link
-                to="/destinations"
-                className="inline-block bg-transparent border-2 border-white text-white px-8 py-4 rounded-lg text-lg font-semibold hover:bg-white hover:text-blue-600 transition-all duration-200 transform hover:-translate-y-1"
-              >
-                Explore Destinations
               </Link>
             </div>
           </motion.div>
@@ -130,6 +124,31 @@ function Home() {
               </motion.div>
             ))}
           </div>
+        </div>
+      </section>
+
+      {/* Explore Destinations Button */}
+      <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+          >
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">
+              Ready to Explore More Options?
+            </h2>
+            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+              Discover all our amazing destinations including theme parks, cruises, and luxury resorts.
+            </p>
+            <Link
+              to="/destinations"
+              className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              Explore All Destinations
+            </Link>
+          </motion.div>
         </div>
       </section>
 
