@@ -9,7 +9,7 @@ function Navbar() {
     { name: 'Home', path: '/' },
     { name: 'Destinations', path: '/destinations' },
     { name: 'Sandals & Beaches', path: '/sandals-beaches' },
-    { name: 'Packages', path: '/packages' },
+    { name: 'Special Deals', path: '/packages' },
     { name: 'Need More Info', path: '/need-more-info' },
     { name: 'Contact', path: '/contact' },
   ];
