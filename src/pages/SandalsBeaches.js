@@ -14,7 +14,7 @@ function SandalsBeaches() {
       description: 'Experience luxury on the pristine shores of Montego Bay with world-class amenities and romantic settings.',
       gradient: 'from-blue-400 to-teal-500',
       features: ['All-Inclusive', 'Adults Only', 'Private Beach', 'Multiple Restaurants'],
-      image: '/images/Beach.jpg'
+      image: '/images/Beach.jpg',
       link: 'https://www.sandals.com/montego-bay/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -26,7 +26,7 @@ function SandalsBeaches() {
       description: 'Discover Caribbean elegance with private island access and offshore dining experiences.',
       gradient: 'from-purple-400 to-blue-500',
       features: ['All-Inclusive', 'Adults Only', 'Private Island', 'Over-Water Dining'],
-      image: '/images/Beach.jpg'
+      image: '/images/Beach.jpg',
       link: 'https://www.sandals.com/royal-caribbean/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -38,7 +38,7 @@ function SandalsBeaches() {
       description: 'Relax on the famous Seven Mile Beach with stunning sunsets and laid-back luxury.',
       gradient: 'from-orange-400 to-red-500',
       features: ['All-Inclusive', 'Adults Only', 'Seven Mile Beach', 'Clifftop Bars'],
-      image: '/images/Beach.jpg'
+      image: '/images/Beach.jpg',
       link: 'https://www.sandals.com/negril/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
