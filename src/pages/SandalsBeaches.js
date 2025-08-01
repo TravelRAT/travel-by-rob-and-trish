@@ -62,7 +62,7 @@ function SandalsBeaches() {
       description: 'Adventure awaits with beachfront luxury and access to Jamaica\'s natural wonders.',
       gradient: 'from-teal-400 to-green-500',
       features: ['All-Inclusive', 'Adults Only', 'Beach & Jungle', 'Adventure Tours'],
-      image: '/images/Hammock.jpg',
+      image: '/images/ochi.avif',
       link: 'https://www.sandals.com/ochi/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
@@ -74,7 +74,7 @@ function SandalsBeaches() {
       description: 'Experience intimate luxury in this adults-only all-suite resort with personalized butler service.',
       gradient: 'from-indigo-400 to-purple-500',
       features: ['All-Inclusive', 'Adults Only', 'All-Suite', 'Butler Service'],
-      image: '/images/Castle.jpg',
+      image: '/images/srp.avif',
       link: 'https://www.sandals.com/royal-plantation/photos/?referral=134984&agentid=8724046969338202',
       external: true
     },
