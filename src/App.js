@@ -11,6 +11,7 @@ import RIU from './pages/RIU';
 import Breathless from './pages/Breathless';
 import DisneyCruise from './pages/DisneyCruise';
 import Packages from './pages/Packages';
+import ExclusiveDeals from './pages/ExclusiveDeals';
 import Contact from './pages/Contact';
 import NeedMoreInfo from './pages/NeedMoreInfo';
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/breathless" element={<Breathless />} />
           <Route path="/disney-cruise" element={<DisneyCruise />} />
           <Route path="/packages" element={<Packages />} />
+          <Route path="/exclusive-deals" element={<ExclusiveDeals />} />
           <Route path="/need-more-info" element={<NeedMoreInfo />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
