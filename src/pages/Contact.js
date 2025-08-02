@@ -88,8 +88,8 @@ function Contact() {
                 </div>
                 <div className="ml-4">
                   <h3 className="text-lg font-medium">Phone</h3>
-                  <p className="text-gray-600">Trish: (317) 850-3750</p>
-                  <p className="text-gray-600">Rob: (317) 401-3669</p>
+                  <p className="text-gray-600">Trish: <a href="tel:+13178503750" className="text-blue-600 hover:text-blue-800 underline">(317) 850-3750</a></p>
+                  <p className="text-gray-600">Rob: <a href="tel:+13174013669" className="text-blue-600 hover:text-blue-800 underline">(317) 401-3669</a></p>
                 </div>
               </div>
 

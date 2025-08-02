@@ -18,6 +18,17 @@ function Destinations() {
       external: true
     },
     {
+      id: 15,
+      name: 'Disneyland',
+      region: 'theme-parks',
+      description: 'Experience the magic where dreams come true! From enchanting castle shows to thrilling rides and character meetings.',
+      gradient: 'from-purple-500 to-pink-500',
+      features: ['2 Theme Parks', 'Character Dining', 'Disney Resort Stay', 'Park Hopper Option'],
+      image: '/images/Castle.jpg',
+      link: 'https://www.disneytravelcenter.com/ms7e694227/',
+      external: true
+    },
+    {
       id: 2,
       name: 'Universal Orlando',
       region: 'theme-parks',
@@ -55,15 +66,7 @@ function Destinations() {
       features: ['Adults Only', 'Premium Dining', 'Innovative Entertainment', 'Luxury Suites'],
       image: '/images/virgin.jpg'
     },
-    {
-      id: 6,
-      name: 'Riviera Maya, Mexico',
-      region: 'beach',
-      description: 'Crystal clear waters, ancient Mayan ruins, and luxurious all-inclusive resorts await in paradise.',
-      gradient: 'from-yellow-400 to-orange-500',
-      features: ['All-Inclusive Resort', 'Beach Access', 'Cultural Tours', 'Water Activities'],
-      image: '/images/RivMaya.avif'
-    },
+
     {
       id: 7,
       name: 'Sandals Resorts',
@@ -229,33 +232,113 @@ function Destinations() {
                     ))}
                   </div>
                 </div>
-                <div className="mt-6">
-                  {(destination.id === 7 || destination.id === 8) ? (
-                    // Special two-button layout for Sandals & Beaches Resorts
-                    <div className="space-y-3">
-                      <Link
-                        to="/sandals-beaches"
-                        className="w-full bg-gradient-to-r from-teal-600 to-teal-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-teal-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
-                      >
-                        See More Resorts
-                      </Link>
-                      <Link
-                        to="/need-more-info"
-                        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
-                      >
-                        Request More Info
-                      </Link>
-                    </div>
-                  ) : (
-                    // Standard single button for all other destinations
-                    <Link
-                      to="/need-more-info"
-                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
-                    >
-                      Request More Info
-                    </Link>
-                  )}
-                </div>
+                        <div className="mt-6">
+          {(destination.id === 7 || destination.id === 8) ? (
+            // Special two-button layout for Sandals & Beaches Resorts
+            <div className="space-y-3">
+              <Link
+                to="/sandals-beaches"
+                className="w-full bg-gradient-to-r from-teal-600 to-teal-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-teal-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                See More Resorts
+              </Link>
+              <Link
+                to="/need-more-info"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Request More Info
+              </Link>
+            </div>
+          ) : destination.id === 13 ? (
+            // Special two-button layout for Hard Rock Hotels
+            <div className="space-y-3">
+              <Link
+                to="/hard-rock"
+                className="w-full bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                See All Hard Rock Resorts
+              </Link>
+              <Link
+                to="/need-more-info"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Request More Info
+              </Link>
+            </div>
+          ) : destination.id === 9 ? (
+            // Special two-button layout for Secrets Resorts
+            <div className="space-y-3">
+              <Link
+                to="/secrets"
+                className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                See All Secrets Resorts
+              </Link>
+              <Link
+                to="/need-more-info"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Request More Info
+              </Link>
+            </div>
+          ) : destination.id === 3 ? (
+            // Special two-button layout for Disney Cruises
+            <div className="space-y-3">
+              <Link
+                to="/disney-cruise"
+                className="w-full bg-gradient-to-r from-yellow-600 to-yellow-700 text-black px-6 py-3 rounded-lg font-semibold hover:from-yellow-700 hover:to-yellow-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                See All Disney Ships
+              </Link>
+              <Link
+                to="/need-more-info"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Request More Info
+              </Link>
+            </div>
+          ) : destination.id === 10 ? (
+            // Special two-button layout for Breathless Resorts
+            <div className="space-y-3">
+              <Link
+                to="/breathless"
+                className="w-full bg-gradient-to-r from-orange-600 to-orange-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-orange-700 hover:to-orange-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                See All Breathless Resorts
+              </Link>
+              <Link
+                to="/need-more-info"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Request More Info
+              </Link>
+            </div>
+          ) : destination.id === 12 ? (
+            // Special two-button layout for Riu Hotels & Resorts
+            <div className="space-y-3">
+              <Link
+                to="/riu"
+                className="w-full bg-gradient-to-r from-cyan-600 to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-cyan-700 hover:to-cyan-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                See All RIU Resorts
+              </Link>
+              <Link
+                to="/need-more-info"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Request More Info
+              </Link>
+            </div>
+          ) : (
+            // Standard single button for all other destinations
+            <Link
+              to="/need-more-info"
+              className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+            >
+              Request More Info
+            </Link>
+          )}
+        </div>
               </div>
             </motion.div>
           ))}

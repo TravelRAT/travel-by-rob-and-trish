@@ -5,6 +5,11 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Destinations from './pages/Destinations';
 import SandalsBeaches from './pages/SandalsBeaches';
+import HardRock from './pages/HardRock';
+import Secrets from './pages/Secrets';
+import RIU from './pages/RIU';
+import Breathless from './pages/Breathless';
+import DisneyCruise from './pages/DisneyCruise';
 import Packages from './pages/Packages';
 import Contact from './pages/Contact';
 import NeedMoreInfo from './pages/NeedMoreInfo';
@@ -18,6 +23,11 @@ function App() {
           <Route path="/" element={<Home />} />
           <Route path="/destinations" element={<Destinations />} />
           <Route path="/sandals-beaches" element={<SandalsBeaches />} />
+          <Route path="/hard-rock" element={<HardRock />} />
+          <Route path="/secrets" element={<Secrets />} />
+          <Route path="/riu" element={<RIU />} />
+          <Route path="/breathless" element={<Breathless />} />
+          <Route path="/disney-cruise" element={<DisneyCruise />} />
           <Route path="/packages" element={<Packages />} />
           <Route path="/need-more-info" element={<NeedMoreInfo />} />
           <Route path="/contact" element={<Contact />} />

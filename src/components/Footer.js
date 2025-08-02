@@ -52,12 +52,14 @@ function Footer() {
           </div>
 
           <div className="space-y-4">
-            <h4 className="text-lg font-semibold">Popular Destinations</h4>
+            <h4 className="text-lg font-semibold">Resorts</h4>
             <ul className="space-y-2">
-              <li><Link to="/destinations" className="text-gray-300 hover:text-white">Disney World</Link></li>
-              <li><Link to="/destinations" className="text-gray-300 hover:text-white">Universal Studios</Link></li>
-              <li><Link to="/destinations" className="text-gray-300 hover:text-white">Caribbean Cruises</Link></li>
-              <li><Link to="/sandals-beaches" className="text-gray-300 hover:text-white">Sandals & Beaches</Link></li>
+              <li><Link to="/sandals-beaches" className="text-gray-300 hover:text-white">Sandals</Link></li>
+              <li><Link to="/sandals-beaches" className="text-gray-300 hover:text-white">Beaches</Link></li>
+              <li><Link to="/secrets" className="text-gray-300 hover:text-white">Secrets</Link></li>
+              <li><Link to="/breathless" className="text-gray-300 hover:text-white">Breathless</Link></li>
+              <li><Link to="/riu" className="text-gray-300 hover:text-white">RIU</Link></li>
+              <li><Link to="/hard-rock" className="text-gray-300 hover:text-white">Hard Rock</Link></li>
             </ul>
           </div>
 
@@ -65,10 +67,10 @@ function Footer() {
             <h4 className="text-lg font-semibold">Contact Info</h4>
             <ul className="space-y-2 text-gray-300">
               <li>Indianapolis, IN</li>
-              <li>Rob: (317) 850-3750</li>
-              <li>Trish: (317) 246-8850</li>
-              <li>Office: (317) 401-3669</li>
-              <li>Email: r.whitehair@magicalvacationplanner.com</li>
+              <li>Rob: <a href="tel:+13178503750" className="text-blue-400 hover:text-blue-300 underline">(317) 850-3750</a></li>
+              <li>Trish: <a href="tel:+13172468850" className="text-blue-400 hover:text-blue-300 underline">(317) 246-8850</a></li>
+              <li>Office: <a href="tel:+13174013669" className="text-blue-400 hover:text-blue-300 underline">(317) 401-3669</a></li>
+              <li>Email: <a href="mailto:r.whitehair@magicalvacationplanner.com" className="text-blue-400 hover:text-blue-300 underline">r.whitehair@magicalvacationplanner.com</a></li>
             </ul>
           </div>
         </div>
