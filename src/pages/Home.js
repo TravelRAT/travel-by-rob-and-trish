@@ -21,10 +21,11 @@ function Home() {
     },
     {
       id: 3,
-      name: 'Sandals & Beaches Resorts',
-      description: 'Luxury all-inclusive Caribbean resorts for adults and families.',
-      gradient: 'from-teal-500 to-blue-500',
-      link: '/sandals-beaches'
+      name: 'Disney Cruises',
+      description: 'Magical voyages with Disney characters and Broadway-style shows.',
+      gradient: 'from-purple-500 to-pink-500',
+      link: 'https://www.disneytravelcenter.com/MIN-000000000098357/sites++disney-cruise-line++disney-cruise-line/',
+      external: true
     },
   ];
 
@@ -91,7 +92,7 @@ function Home() {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="group relative rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
               >
-                <div className={`h-80 ${destination.id === 1 || destination.id === 2 || destination.id === 3 ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${destination.gradient}`} relative`} style={destination.id === 1 ? { backgroundImage: 'url(/images/Castle.jpg)' } : destination.id === 2 ? { backgroundImage: 'url(/images/Universal.jpg)' } : destination.id === 3 ? { backgroundImage: 'url(/images/Beach.jpg)' } : {}}>
+                <div className={`h-80 ${destination.id === 1 || destination.id === 2 || destination.id === 3 ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${destination.gradient}`} relative`} style={destination.id === 1 ? { backgroundImage: 'url(/images/Castle.jpg)' } : destination.id === 2 ? { backgroundImage: 'url(/images/Universal.jpg)' } : destination.id === 3 ? { backgroundImage: 'url(/images/disney%20cruise.jpg)' } : {}}>
                   <div className={`absolute inset-0 ${destination.id === 1 || destination.id === 2 || destination.id === 3 ? 'bg-black bg-opacity-40' : ''}`}>
                     {/* Title in top 1/4 */}
                     <div className="absolute top-0 left-0 right-0 h-1/4 flex items-center justify-center px-6">
@@ -105,7 +106,7 @@ function Home() {
                         to="/need-more-info"
                         className="inline-block bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold transform group-hover:scale-105 transition-transform duration-200 shadow-lg"
                       >
-                        Learn More
+                        Request More Info
                       </Link>
                     </div>
                   </div>

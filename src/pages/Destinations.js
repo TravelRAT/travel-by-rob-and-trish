@@ -33,7 +33,7 @@ function Destinations() {
       description: 'Magical voyages with Disney characters, Broadway-style shows, and enchanted family adventures at sea.',
       gradient: 'from-purple-500 to-pink-500',
       features: ['Disney Characters', 'Broadway Shows', 'Kids Clubs', 'Private Island'],
-      image: '/images/disney cruise.jpg',
+      image: '/images/disney%20cruise.jpg',
       link: 'https://www.disneytravelcenter.com/MIN-000000000098357/sites++disney-cruise-line++disney-cruise-line/',
       external: true
     },
@@ -71,7 +71,7 @@ function Destinations() {
       description: 'Adults-only luxury all-inclusive resorts in the Caribbean\'s most beautiful destinations.',
       gradient: 'from-teal-500 to-blue-600',
       features: ['Adults Only', 'All-Inclusive', 'Caribbean Locations', 'Butler Service'],
-      image: '/images/RivMaya.avif',
+      image: '/images/ssv.avif',
       link: '/sandals-beaches'
     },
     {
@@ -81,7 +81,7 @@ function Destinations() {
       description: 'Family-friendly all-inclusive resorts with supervised kids programs and endless activities.',
       gradient: 'from-orange-500 to-pink-500',
       features: ['Family Friendly', 'Kids Programs', 'Water Parks', 'All-Inclusive'],
-      image: '/images/Beach.jpg',
+      image: '/images/btc.avif',
       link: '/sandals-beaches'
     },
     {
@@ -100,7 +100,7 @@ function Destinations() {
       description: 'Vibrant adults-only resorts with energetic atmosphere, entertainment, and modern luxury.',
       gradient: 'from-red-500 to-pink-600',
       features: ['Adults Only', 'Vibrant Atmosphere', 'Entertainment', 'Modern Luxury'],
-      image: '/images/Tulum.jpg'
+      image: '/images/breath.webp'
     },
     {
       id: 11,
@@ -109,7 +109,7 @@ function Destinations() {
       description: 'Premium all-inclusive resorts combining comfort, gastronomy, and sustainability worldwide.',
       gradient: 'from-green-500 to-teal-600',
       features: ['All-Inclusive', 'Premium Comfort', 'Sustainable Tourism', 'Global Locations'],
-      image: '/images/Beach.jpg'
+      image: '/images/ibs.jpg'
     },
     {
       id: 12,
@@ -118,7 +118,7 @@ function Destinations() {
       description: 'All-inclusive beach resorts offering fun, quality, and value in tropical paradise settings.',
       gradient: 'from-blue-500 to-cyan-600',
       features: ['All-Inclusive', 'Beach Locations', 'Family & Adults', 'Entertainment Programs'],
-      image: '/images/RivMaya.avif'
+      image: '/images/rui.jpg'
     },
     {
       id: 13,
@@ -127,7 +127,7 @@ function Destinations() {
       description: 'Rock-inspired luxury resorts with music-themed experiences and world-class amenities.',
       gradient: 'from-gray-700 to-red-600',
       features: ['Music Themed', 'Luxury Amenities', 'Rock Star Service', 'Live Entertainment'],
-      image: '/images/Hammock.jpg'
+      image: '/images/HR.jpg'
     },
   ];
 
@@ -202,7 +202,7 @@ function Destinations() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group bg-amber-50 border-2 border-blue-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
             >
-              <div className="relative h-52">
+              <div className="relative h-40">
                 <div 
                   className={`w-full h-full ${destination.image ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${destination.gradient}`} group-hover:scale-105 transition-transform duration-300`}
                   style={destination.image ? { backgroundImage: `url(${destination.image})` } : {}}
@@ -230,12 +230,31 @@ function Destinations() {
                   </div>
                 </div>
                 <div className="mt-6">
-                  <Link
-                    to="/need-more-info"
-                    className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
-                  >
-                    Learn More
-                  </Link>
+                  {(destination.id === 7 || destination.id === 8) ? (
+                    // Special two-button layout for Sandals & Beaches Resorts
+                    <div className="space-y-3">
+                      <Link
+                        to="/sandals-beaches"
+                        className="w-full bg-gradient-to-r from-teal-600 to-teal-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-teal-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+                      >
+                        See More Resorts
+                      </Link>
+                      <Link
+                        to="/need-more-info"
+                        className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+                      >
+                        Request More Info
+                      </Link>
+                    </div>
+                  ) : (
+                    // Standard single button for all other destinations
+                    <Link
+                      to="/need-more-info"
+                      className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+                    >
+                      Request More Info
+                    </Link>
+                  )}
                 </div>
               </div>
             </motion.div>

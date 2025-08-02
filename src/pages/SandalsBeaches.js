@@ -380,7 +380,7 @@ function SandalsBeaches() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group bg-blue-50 border-2 border-blue-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
             >
-              <div className="relative h-52">
+              <div className="relative h-40">
                 <div 
                   className={`w-full h-full ${resort.image ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${resort.gradient}`} group-hover:scale-105 transition-transform duration-300`}
                   style={resort.image ? { backgroundImage: `url(${resort.image})` } : {}}
