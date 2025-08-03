@@ -132,6 +132,24 @@ function Destinations() {
       features: ['Music Themed', 'Luxury Amenities', 'Rock Star Service', 'Live Entertainment'],
       image: '/images/HR.jpg'
     },
+    {
+      id: 16,
+      name: 'Viking River Cruises',
+      region: 'cruise',
+      description: 'Explore the world\'s great rivers in comfort and style. From the castles of the Rhine to ancient temples of the Mekong.',
+      gradient: 'from-blue-500 to-teal-500',
+      features: ['Historic Waterways', 'Cultural Immersion', 'All-Inclusive', 'Small Ship Experience'],
+      image: '/images/virgin.jpg'
+    },
+    {
+      id: 17,
+      name: 'Adventures of Disney',
+      region: 'theme-parks',
+      description: 'Experience Disney magic around the world - from Walt Disney World to international parks and guided adventures.',
+      gradient: 'from-purple-500 to-pink-500',
+      features: ['Global Disney Parks', 'Character Experiences', 'Disney Cruises', 'Guided Adventures'],
+      image: '/images/Castle.jpg'
+    },
   ];
 
   const regions = [
@@ -323,6 +341,38 @@ function Destinations() {
                 className="w-full bg-gradient-to-r from-cyan-600 to-cyan-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-cyan-700 hover:to-cyan-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
               >
                 See All RIU Resorts
+              </Link>
+              <Link
+                to="/need-more-info"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Request More Info
+              </Link>
+            </div>
+          ) : destination.id === 16 ? (
+            // Special two-button layout for Viking River Cruises
+            <div className="space-y-3">
+              <Link
+                to="/viking-river-cruises"
+                className="w-full bg-gradient-to-r from-teal-600 to-teal-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-teal-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Explore River Cruises
+              </Link>
+              <Link
+                to="/need-more-info"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Request More Info
+              </Link>
+            </div>
+          ) : destination.id === 17 ? (
+            // Special two-button layout for Adventures of Disney
+            <div className="space-y-3">
+              <Link
+                to="/adventures-of-disney"
+                className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Discover Disney Adventures
               </Link>
               <Link
                 to="/need-more-info"
