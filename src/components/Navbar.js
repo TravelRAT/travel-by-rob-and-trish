@@ -8,6 +8,7 @@ function Navbar() {
   const navItems = [
     { name: 'Home', path: '/' },
     { name: 'Destinations', path: '/destinations' },
+    { name: 'Free Guides', path: '/ebooks' },
     { name: 'Special Deals', path: '/packages' },
     { name: 'Exclusive Deals', path: '/exclusive-deals' },
     { name: 'Need More Info', path: '/need-more-info' },
