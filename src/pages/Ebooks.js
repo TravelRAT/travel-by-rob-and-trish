@@ -349,34 +349,36 @@ function Ebooks() {
     : ebooks.filter(ebook => ebook.filterCategory === selectedCategory);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero Section */}
-        <div className="relative h-[400px] overflow-hidden mb-16">
-          <div className="absolute inset-0">
-            <img 
-              src="/images/travel-pattern.svg" 
-              alt="Travel guides background" 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-          </div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-white text-center max-w-4xl"
-            >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-shadow-lg">
-                Rob & Trish's Travel Guides
-              </h1>
-              <p className="text-xl md:text-2xl text-shadow">
-                Free Ebook Collection - Our Favorite Travel Tips & Guides
-              </p>
-            </motion.div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50">
+      {/* Hero Section - Full Width */}
+      <div className="relative h-[400px] overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="/images/travel-pattern.svg" 
+            alt="Travel guides background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>
+        <div className="relative w-full h-full flex items-center justify-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-white text-center max-w-4xl"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-shadow-lg">
+              Rob & Trish's Travel Guides
+            </h1>
+            <p className="text-xl md:text-2xl text-shadow">
+              Free Ebook Collection - Our Favorite Travel Tips & Guides
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         
         {/* Category Filter */}
         <div className="flex justify-center mb-12">
