@@ -281,8 +281,29 @@ function VikingRiverCruises() {
             </motion.div>
           ))}
         </div>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-16 text-center bg-white rounded-2xl p-8 shadow-lg border-2 border-blue-100"
+        >
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Ready to Set Sail?
+          </h2>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Let Rob and Trish help you plan the perfect river cruise adventure. 
+            Experience culture, history, and luxury along the world's great rivers.
+          </p>
+          <Link
+            to="/need-more-info"
+            className="inline-block bg-gradient-to-r from-blue-600 to-teal-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-teal-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            Start Planning Your Journey
+          </Link>
+        </motion.div>
       </div>
-    </div>
 
       {/* Modal */}
       {showModal && selectedCruise && (

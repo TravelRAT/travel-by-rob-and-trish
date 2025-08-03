@@ -82,119 +82,119 @@ function AdventuresOfDisney() {
   const disneyDestinations = [
     {
       id: 1,
-      name: 'Walt Disney World Resort',
-      location: 'Orlando, Florida',
-      region: 'USA',
-      filterRegion: 'usa',
-      description: 'The most magical place on earth featuring four theme parks, luxury resorts, and endless Disney magic.',
+      name: 'European River Cruise',
+      location: 'Rhine & Danube Rivers',
+      region: 'Europe',
+      filterRegion: 'europe',
+      description: 'Sail through the heart of Europe with Disney-guided tours of castles, vineyards, and historic cities.',
       gradient: 'from-blue-500 to-purple-600',
-      features: ['4 Theme Parks', 'Disney Resorts', 'Character Dining', 'Genie+ FastPass'],
+      features: ['Disney Adventure Guides', 'Cultural Immersion', 'Family-Friendly', 'All-Inclusive'],
       image: '/images/Castle.jpg',
-      highlight: 'Most Magical Place',
-      parks: 'Magic Kingdom, EPCOT, Hollywood Studios, Animal Kingdom',
-      bestTime: 'Year-round'
+      highlight: 'River Adventure',
+      details: 'Rhine & Danube Rivers, Medieval Castles, Local Culture',
+      bestTime: 'Apr-Oct'
     },
     {
       id: 2,
-      name: 'Disneyland Resort',
-      location: 'Anaheim, California',
-      region: 'USA',
-      filterRegion: 'usa',
-      description: 'Where the magic began! Experience Walt Disney\'s original theme park plus Disney California Adventure.',
-      gradient: 'from-pink-500 to-rose-600',
-      features: ['Original Disneyland', 'California Adventure', 'Disney Hotels', 'MaxPass'],
-      image: '/images/Castle.jpg',
-      highlight: 'Where Magic Began',
-      parks: 'Disneyland Park, Disney California Adventure',
-      bestTime: 'Sep-Nov, Jan-May'
+      name: 'African Safari',
+      location: 'South Africa',
+      region: 'Africa',
+      filterRegion: 'africa',
+      description: 'Experience the Big Five and African culture with Disney\'s expert adventure guides and storytelling.',
+      gradient: 'from-orange-500 to-red-600',
+      features: ['Wildlife Safari', 'Cultural Experiences', 'Disney Guides', 'Luxury Accommodations'],
+      image: '/images/travel-pattern.svg',
+      highlight: 'Safari Adventure',
+      details: 'Big Five Game Drives, Cultural Villages, Cape Town',
+      bestTime: 'May-Sep'
     },
     {
       id: 3,
-      name: 'Disneyland Paris',
-      location: 'Marne-la-Vallée, France',
-      region: 'Europe',
-      filterRegion: 'europe',
-      description: 'European Disney magic with unique attractions, stunning castle, and French flair in the heart of Europe.',
-      gradient: 'from-purple-500 to-indigo-600',
-      features: ['European Castle', 'Walt Disney Studios', 'French Culture', 'Easy Paris Access'],
-      image: '/images/Castle.jpg',
-      highlight: 'European Magic',
-      parks: 'Disneyland Park, Walt Disney Studios Park',
-      bestTime: 'Apr-Jun, Sep-Oct'
+      name: 'Costa Rica & Panama',
+      location: 'Central America',
+      region: 'Americas',
+      filterRegion: 'americas',
+      description: 'Discover rainforests, wildlife, and the Panama Canal with Disney\'s adventure guides.',
+      gradient: 'from-green-500 to-teal-600',
+      features: ['Rainforest Exploration', 'Wildlife Encounters', 'Panama Canal', 'Adventure Guides'],
+      image: '/images/travel-pattern.svg',
+      highlight: 'Rainforest Adventure',
+      details: 'Manuel Antonio, Panama Canal, Wildlife Reserves',
+      bestTime: 'Dec-Apr'
     },
     {
       id: 4,
-      name: 'Tokyo Disney Resort',
-      location: 'Tokyo, Japan',
+      name: 'Japan',
+      location: 'Tokyo, Kyoto & Hiroshima',
       region: 'Asia',
       filterRegion: 'asia',
-      description: 'Experience Disney with Japanese hospitality and unique attractions found nowhere else in the world.',
-      gradient: 'from-red-500 to-pink-500',
-      features: ['Japanese Hospitality', 'Unique Attractions', 'DisneySea', 'Cultural Fusion'],
+      description: 'Experience ancient traditions and modern culture with Disney storytelling and local insights.',
+      gradient: 'from-pink-500 to-red-500',
+      features: ['Cultural Immersion', 'Traditional Experiences', 'Modern Japan', 'Expert Guides'],
       image: '/images/Castle.jpg',
-      highlight: 'Japanese Disney',
-      parks: 'Tokyo Disneyland, Tokyo DisneySea',
-      bestTime: 'Apr-May, Sep-Nov'
-    },
-    {
-      id: 5,
-      name: 'Hong Kong Disneyland',
-      location: 'Hong Kong',
-      region: 'Asia',
-      filterRegion: 'asia',
-      description: 'Compact Disney magic with stunning harbor views, unique attractions, and easy exploration in one day.',
-      gradient: 'from-teal-500 to-cyan-600',
-      features: ['Harbor Views', 'Mystic Manor', 'Compact Size', 'Cultural Blend'],
-      image: '/images/Castle.jpg',
-      highlight: 'Harbor Magic',
-      parks: 'Hong Kong Disneyland Park',
-      bestTime: 'Oct-Dec, Mar-May'
-    },
-    {
-      id: 6,
-      name: 'Shanghai Disneyland',
-      location: 'Shanghai, China',
-      region: 'Asia',
-      filterRegion: 'asia',
-      description: 'The newest Disney resort featuring the tallest Disney castle and innovative attractions with Chinese culture.',
-      gradient: 'from-yellow-500 to-orange-500',
-      features: ['Tallest Castle', 'TRON Attraction', 'Chinese Culture', 'Modern Technology'],
-      image: '/images/Castle.jpg',
-      highlight: 'Newest Disney',
-      parks: 'Shanghai Disneyland Park',
+      highlight: 'Cultural Journey',
+      details: 'Tokyo Disney, Kyoto Temples, Hiroshima History',
       bestTime: 'Mar-May, Sep-Nov'
     },
     {
+      id: 5,
+      name: 'China',
+      location: 'Beijing, Xi\'an & Shanghai',
+      region: 'Asia',
+      filterRegion: 'asia',
+      description: 'Explore the Great Wall, Terracotta Warriors, and modern Shanghai with Disney adventure guides.',
+      gradient: 'from-yellow-500 to-orange-500',
+      features: ['Great Wall of China', 'Terracotta Warriors', 'Cultural Sites', 'Local Cuisine'],
+      image: '/images/travel-pattern.svg',
+      highlight: 'Ancient Wonders',
+      details: 'Great Wall, Forbidden City, Shanghai Disney',
+      bestTime: 'Apr-Jun, Sep-Nov'
+    },
+    {
+      id: 6,
+      name: 'Australia & New Zealand',
+      location: 'Sydney, Melbourne & Auckland',
+      region: 'Oceania',
+      filterRegion: 'oceania',
+      description: 'Discover the Land Down Under with Disney guides - from the Outback to the Great Barrier Reef.',
+      gradient: 'from-blue-600 to-green-500',
+      features: ['Great Barrier Reef', 'Sydney Opera House', 'Maori Culture', 'Wildlife Encounters'],
+      image: '/images/travel-pattern.svg',
+      highlight: 'Down Under',
+      details: 'Sydney Harbor, Uluru, Milford Sound',
+      bestTime: 'Sep-Mar'
+    },
+    {
       id: 7,
-      name: 'Disney Cruise Line',
-      location: 'Various Destinations',
-      region: 'Cruise',
-      filterRegion: 'cruise',
-      description: 'Magical voyages with Disney characters, Broadway shows, and private island adventures at sea.',
-      gradient: 'from-blue-600 to-teal-500',
-      features: ['Character Experiences', 'Broadway Shows', 'Private Island', 'Rotational Dining'],
-      image: '/images/disney%20cruise.jpg',
-      highlight: 'Magic at Sea',
-      parks: 'Multiple Ships & Destinations',
+      name: 'Private Jet Adventures',
+      location: 'Multiple Worldwide Destinations',
+      region: 'Luxury',
+      filterRegion: 'luxury',
+      description: 'Ultimate luxury travel with Disney\'s private jet to multiple destinations in one incredible journey.',
+      gradient: 'from-purple-600 to-gold-500',
+      features: ['Private Disney Jet', 'Multiple Countries', 'VIP Experiences', 'Luxury Accommodations'],
+      image: '/images/travel-pattern.svg',
+      highlight: 'Ultimate Luxury',
+      details: 'Around the World, VIP Access, Luxury Service',
       bestTime: 'Year-round'
     },
     {
       id: 8,
-      name: 'Adventures by Disney',
-      location: 'Worldwide Destinations',
-      region: 'Adventure',
-      filterRegion: 'adventure',
-      description: 'Guided group vacations to amazing destinations around the world with Disney storytelling and service.',
-      gradient: 'from-green-500 to-emerald-600',
-      features: ['Expert Guides', 'Cultural Immersion', 'Family Adventures', 'Disney Service'],
+      name: 'American West',
+      location: 'Arizona, Utah & Colorado',
+      region: 'Americas',
+      filterRegion: 'americas',
+      description: 'Explore the Grand Canyon, national parks, and the American frontier with Disney adventure guides.',
+      gradient: 'from-red-500 to-orange-600',
+      features: ['Grand Canyon', 'National Parks', 'Western Culture', 'Adventure Activities'],
       image: '/images/travel-pattern.svg',
-      highlight: 'Global Adventures',
-      parks: 'Africa, Asia, Europe, Americas',
-      bestTime: 'Varies by Destination'
+      highlight: 'Wild West',
+      details: 'Grand Canyon, Arches, Mesa Verde',
+      bestTime: 'Mar-May, Sep-Nov'
     }
   ];
 
-  const regions = ['all', 'usa', 'europe', 'asia', 'cruise', 'adventure'];
+  const regions = ['all', 'europe', 'asia', 'americas', 'africa', 'oceania', 'luxury'];
 
   const filteredDestinations = selectedRegion === 'all' 
     ? disneyDestinations 
@@ -221,10 +221,10 @@ function AdventuresOfDisney() {
               className="text-white text-center max-w-4xl"
             >
               <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-shadow-lg">
-                Adventures of Disney
+                Adventures by Disney
               </h1>
               <p className="text-xl md:text-2xl text-shadow">
-                Discover Magic Around the World
+                Guided Group Vacations to Amazing Destinations
               </p>
             </motion.div>
           </div>
@@ -244,11 +244,12 @@ function AdventuresOfDisney() {
                 }`}
               >
                 {region === 'all' ? 'All Adventures' : 
-                 region === 'usa' ? 'USA Parks' :
-                 region === 'europe' ? 'European Parks' :
-                 region === 'asia' ? 'Asian Parks' :
-                 region === 'cruise' ? 'Disney Cruises' :
-                 region === 'adventure' ? 'Global Adventures' : region.charAt(0).toUpperCase() + region.slice(1)}
+                 region === 'europe' ? 'Europe' :
+                 region === 'asia' ? 'Asia' :
+                 region === 'americas' ? 'Americas' :
+                 region === 'africa' ? 'Africa' :
+                 region === 'oceania' ? 'Oceania' :
+                 region === 'luxury' ? 'Luxury' : region.charAt(0).toUpperCase() + region.slice(1)}
               </button>
             ))}
           </div>
@@ -314,8 +315,29 @@ function AdventuresOfDisney() {
             </motion.div>
           ))}
         </div>
+
+        {/* Call to Action */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="mt-16 text-center bg-white rounded-2xl p-8 shadow-lg border-2 border-blue-100"
+        >
+          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+            Ready for Your Disney Adventure?
+          </h2>
+          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+            Let Rob and Trish help you plan the perfect Disney guided adventure. 
+            Experience the magic with expert Disney guides and seamless planning.
+          </p>
+          <Link
+            to="/need-more-info"
+            className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:from-purple-700 hover:to-pink-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
+          >
+            Start Planning Your Magic
+          </Link>
+        </motion.div>
       </div>
-    </div>
 
       {/* Modal */}
       {showModal && selectedDestination && (
@@ -354,8 +376,8 @@ function AdventuresOfDisney() {
                     <p className="text-gray-600">{selectedDestination.bestTime}</p>
                   </div>
                   <div className="col-span-2">
-                    <h4 className="font-semibold text-gray-800">Parks/Experiences</h4>
-                    <p className="text-gray-600 text-sm">{selectedDestination.parks}</p>
+                    <h4 className="font-semibold text-gray-800">Adventure Details</h4>
+                    <p className="text-gray-600 text-sm">{selectedDestination.details}</p>
                   </div>
                 </div>
                 

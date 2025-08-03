@@ -143,11 +143,11 @@ function Destinations() {
     },
     {
       id: 17,
-      name: 'Adventures of Disney',
-      region: 'theme-parks',
-      description: 'Experience Disney magic around the world - from Walt Disney World to international parks and guided adventures.',
+      name: 'Adventures by Disney',
+      region: 'adventure',
+      description: 'Experience guided group vacations to amazing destinations around the world with Disney storytelling and service.',
       gradient: 'from-purple-500 to-pink-500',
-      features: ['Global Disney Parks', 'Character Experiences', 'Disney Cruises', 'Guided Adventures'],
+      features: ['Expert Disney Guides', 'Cultural Immersion', 'Family Adventures', 'VIP Experiences'],
       image: '/images/Castle.jpg'
     },
   ];
@@ -157,6 +157,7 @@ function Destinations() {
     { id: 'theme-parks', name: 'Theme Parks' },
     { id: 'beach', name: 'Beach Resorts' },
     { id: 'cruise', name: 'Cruises' },
+    { id: 'adventure', name: 'Adventures' },
   ];
 
   const filteredDestinations = selectedRegion === 'all'
@@ -366,13 +367,13 @@ function Destinations() {
               </Link>
             </div>
           ) : destination.id === 17 ? (
-            // Special two-button layout for Adventures of Disney
+            // Special two-button layout for Adventures by Disney
             <div className="space-y-3">
               <Link
                 to="/adventures-of-disney"
                 className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
               >
-                Discover Disney Adventures
+                Explore Guided Adventures
               </Link>
               <Link
                 to="/need-more-info"
