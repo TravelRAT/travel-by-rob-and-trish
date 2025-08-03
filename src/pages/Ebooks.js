@@ -277,13 +277,13 @@ function Ebooks() {
                       <h3 className="text-2xl font-bold text-white text-shadow-lg mb-1">
                         {ebook.title}
                       </h3>
-                      <p className="text-white text-sm opacity-90">
+                      <p className="text-white text-sm opacity-90 mb-2">
                         by {ebook.author}
                       </p>
+                      <div className="bg-white bg-opacity-90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800 inline-block">
+                        {ebook.highlight}
+                      </div>
                     </div>
-                  </div>
-                  <div className="absolute top-4 left-4 bg-white bg-opacity-90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                    {ebook.highlight}
                   </div>
                 </div>
               </div>
