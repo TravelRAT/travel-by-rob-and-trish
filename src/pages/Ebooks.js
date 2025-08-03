@@ -261,6 +261,20 @@ function Ebooks() {
       highlight: 'First Timer',
       pages: '31 Pages',
       format: 'PDF'
+    },
+    {
+      id: 14,
+      title: 'Why Choose an All-Inclusive Resort',
+      category: 'Beach',
+      filterCategory: 'beach',
+      author: 'Rob & Trish',
+      description: 'Discover the benefits of all-inclusive vacations! Learn about value, convenience, and peace of mind that comes with all-inclusive resorts.',
+      gradient: 'from-emerald-500 to-blue-600',
+      features: ['Value Analysis', 'Convenience Benefits', 'Family Advantages', 'Budget Planning'],
+      image: '/images/Beach.jpg',
+      highlight: 'Value Guide',
+      pages: '24 Pages',
+      format: 'PDF'
     }
   ];
 
