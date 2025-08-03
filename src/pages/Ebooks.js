@@ -282,7 +282,7 @@ function Ebooks() {
                       </p>
                     </div>
                   </div>
-                  <div className="absolute top-4 right-4 bg-white bg-opacity-90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
+                  <div className="absolute top-4 left-4 bg-white bg-opacity-90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
                     {ebook.highlight}
                   </div>
                 </div>
