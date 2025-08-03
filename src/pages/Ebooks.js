@@ -191,6 +191,62 @@ function Ebooks() {
       highlight: 'Insider Access',
       pages: '33 Pages',
       format: 'PDF'
+    },
+    {
+      id: 9,
+      title: '4-Day Disney World Family Planner',
+      category: 'Disney',
+      filterCategory: 'disney',
+      author: 'Rob & Trish',
+      description: 'Perfect for a long weekend Disney trip! Maximize your 4 days with detailed daily schedules, FastPass+ strategies, and must-do attractions.',
+      gradient: 'from-purple-500 to-blue-600',
+      features: ['Daily Schedules', 'FastPass+ Strategy', 'Must-Do Lists', 'Dining Plans'],
+      image: '/images/Castle.jpg',
+      highlight: 'Long Weekend',
+      pages: '28 Pages',
+      format: 'PDF'
+    },
+    {
+      id: 10,
+      title: '5-Day Disney World Family Planner',
+      category: 'Disney',
+      filterCategory: 'disney',
+      author: 'Rob & Trish',
+      description: 'The perfect balance of parks and relaxation! Strategic 5-day plan covering all four parks with built-in flexibility and rest time.',
+      gradient: 'from-blue-500 to-purple-600',
+      features: ['All 4 Parks Covered', 'Built-in Rest Days', 'Character Dining', 'Park Hopping Tips'],
+      image: '/images/Castle.jpg',
+      highlight: 'Balanced Trip',
+      pages: '35 Pages',
+      format: 'PDF'
+    },
+    {
+      id: 11,
+      title: '6-Day Disney World Family Planner',
+      category: 'Disney',
+      filterCategory: 'disney',
+      author: 'Rob & Trish',
+      description: 'Experience Disney without the rush! Six-day detailed itinerary with time for resort activities, water parks, and repeat favorites.',
+      gradient: 'from-pink-500 to-purple-600',
+      features: ['Resort Activities', 'Water Park Days', 'Flexible Schedule', 'Repeat Favorites'],
+      image: '/images/Castle.jpg',
+      highlight: 'No Rush',
+      pages: '42 Pages',
+      format: 'PDF'
+    },
+    {
+      id: 12,
+      title: '7-Day Disney World Family Planner',
+      category: 'Disney',
+      filterCategory: 'disney',
+      author: 'Rob & Trish',
+      description: 'The ultimate Disney World experience! Complete 7-day plan with all parks, water parks, Disney Springs, and resort time.',
+      gradient: 'from-indigo-500 to-pink-600',
+      features: ['Complete Experience', 'All Water Parks', 'Disney Springs', 'Resort Pool Time'],
+      image: '/images/Castle.jpg',
+      highlight: 'Ultimate Trip',
+      pages: '48 Pages',
+      format: 'PDF'
     }
   ];
 
