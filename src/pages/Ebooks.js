@@ -267,12 +267,12 @@ function Ebooks() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group bg-blue-50 border-2 border-blue-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
             >
-              <div className="relative h-40">
+              <div className="relative h-48">
                 <div 
                   className={`w-full h-full ${ebook.image ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${ebook.gradient}`} group-hover:scale-105 transition-transform duration-300`}
                   style={ebook.image ? { backgroundImage: `url(${ebook.image})` } : {}}
                 >
-                  <div className={`absolute inset-0 ${ebook.image ? 'bg-black bg-opacity-40' : ''} flex items-end justify-center pb-8`}>
+                  <div className={`absolute inset-0 ${ebook.image ? 'bg-black bg-opacity-40' : ''} flex items-end justify-center pb-6`}>
                     <div className="text-center px-4">
                       <h3 className="text-2xl font-bold text-white text-shadow-lg mb-1">
                         {ebook.title}
