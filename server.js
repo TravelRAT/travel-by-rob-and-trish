@@ -26,32 +26,60 @@ const transporter = nodemailer.createTransport({
 app.post('/api/send-inquiry', async (req, res) => {
   const { to, subject, formData } = req.body;
 
+  // Check if this is an ebook download request
+  const isEbookRequest = formData.ebook;
+
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: to,
     subject: subject,
-    html: `
+    html: isEbookRequest ? `
+      <h2>Ebook Download Request</h2>
+      
+      <h3>Requested Ebook:</h3>
+      <p><strong>Title:</strong> ${formData.ebook}</p>
+      <p><strong>Category:</strong> ${formData.category}</p>
+      
+      <h3>Contact Information:</h3>
+      <p><strong>Name:</strong> ${formData.fullName}</p>
+      <p><strong>Email:</strong> ${formData.email}</p>
+      <p><strong>Phone:</strong> ${formData.phone || 'Not provided'}</p>
+      
+      ${formData.message ? `
+        <h3>Message:</h3>
+        <p>${formData.message}</p>
+      ` : ''}
+      
+      <hr style="margin: 20px 0;">
+      <p><em>Please send the requested ebook to the client's email address.</em></p>
+    ` : `
       <h2>New Client Inquiry</h2>
       
       <h3>Contact Information:</h3>
       <p><strong>Name:</strong> ${formData.fullName}</p>
-      <p><strong>Address:</strong> ${formData.address}</p>
-      <p><strong>City:</strong> ${formData.city}</p>
-      <p><strong>State:</strong> ${formData.state}</p>
-      <p><strong>ZIP Code:</strong> ${formData.zipCode}</p>
-      <p><strong>Phone:</strong> ${formData.phone}</p>
+      <p><strong>Address:</strong> ${formData.address || 'Not provided'}</p>
+      <p><strong>City:</strong> ${formData.city || 'Not provided'}</p>
+      <p><strong>State:</strong> ${formData.state || 'Not provided'}</p>
+      <p><strong>ZIP Code:</strong> ${formData.zipCode || 'Not provided'}</p>
+      <p><strong>Phone:</strong> ${formData.phone || 'Not provided'}</p>
       <p><strong>Email:</strong> ${formData.email}</p>
       
       <h3>Vacation Details:</h3>
-      <p><strong>Type of Vacation:</strong> ${formData.vacationType}</p>
-      <p><strong>Budget Range:</strong> ${formData.budget}</p>
-      <p><strong>Number of Adults:</strong> ${formData.numberOfAdults}</p>
+      <p><strong>Type of Vacation:</strong> ${formData.vacationType || 'Not specified'}</p>
+      <p><strong>Budget Range:</strong> ${formData.budget || 'Not specified'}</p>
+      <p><strong>Number of Adults:</strong> ${formData.numberOfAdults || 'Not specified'}</p>
       <p><strong>Number of Children Under 17:</strong> ${formData.numberOfChildren || '0'}</p>
-      <p><strong>Departure Airport:</strong> ${formData.departureAirport}</p>
+      <p><strong>Departure Airport:</strong> ${formData.departureAirport || 'Not specified'}</p>
+      ${formData.travelDates ? `<p><strong>Travel Dates:</strong> ${formData.travelDates}</p>` : ''}
       
       ${formData.additionalInfo ? `
         <h3>Additional Information:</h3>
         <p>${formData.additionalInfo}</p>
+      ` : ''}
+      
+      ${formData.message ? `
+        <h3>Message:</h3>
+        <p>${formData.message}</p>
       ` : ''}
     `
   };
