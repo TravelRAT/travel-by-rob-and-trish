@@ -201,49 +201,46 @@ function AdventuresOfDisney() {
     : disneyDestinations.filter(destination => destination.filterRegion === selectedRegion);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900">
-      {/* Hero Section */}
-      <div className="relative py-20 overflow-hidden">
-        <div className="absolute inset-0 bg-black opacity-20"></div>
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-          >
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-6">
-              Adventures of Disney
-            </h1>
-            <p className="text-xl md:text-2xl text-purple-100 mb-8 max-w-3xl mx-auto">
-              Discover Magic Around the World
-            </p>
-            <p className="text-lg text-purple-200 max-w-4xl mx-auto">
-              From the original Disneyland in California to the newest adventures in Shanghai, 
-              experience Disney magic across the globe. Whether you're seeking theme park thrills, 
-              cruise adventures, or guided cultural experiences, let us help you create memories that will last a lifetime.
-            </p>
-          </motion.div>
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-teal-50 py-12">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Hero Section */}
+        <div className="relative h-[400px] overflow-hidden mb-16">
+          <div className="absolute inset-0">
+            <img 
+              src="/images/Castle.jpg" 
+              alt="Disney Castle background" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+          </div>
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-white text-center max-w-4xl"
+            >
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-shadow-lg">
+                Adventures of Disney
+              </h1>
+              <p className="text-xl md:text-2xl text-shadow">
+                Discover Magic Around the World
+              </p>
+            </motion.div>
+          </div>
         </div>
-      </div>
-
-      {/* Filter Section */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mb-12">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-          className="bg-white bg-opacity-10 backdrop-blur-sm rounded-xl p-6"
-        >
-          <h3 className="text-white text-lg font-semibold mb-4">Filter by Type:</h3>
-          <div className="flex flex-wrap gap-3">
-            {regions.map(region => (
+        
+        {/* Type Filter */}
+        <div className="flex justify-center mb-12">
+          <div className="inline-flex rounded-xl border-2 border-teal-100 bg-white p-1 shadow-lg">
+            {regions.map((region) => (
               <button
                 key={region}
                 onClick={() => setSelectedRegion(region)}
-                className={`px-4 py-2 rounded-full text-sm font-medium transition-all ${
+                className={`px-6 py-3 rounded-lg text-sm font-medium transition-all duration-200 ${
                   selectedRegion === region
-                    ? 'bg-white text-purple-900 shadow-lg'
-                    : 'bg-white bg-opacity-20 text-white hover:bg-opacity-30'
+                    ? 'bg-teal-600 text-white shadow-md transform scale-105'
+                    : 'text-gray-600 hover:text-teal-600 hover:bg-teal-50'
                 }`}
               >
                 {region === 'all' ? 'All Adventures' : 
@@ -255,71 +252,70 @@ function AdventuresOfDisney() {
               </button>
             ))}
           </div>
-        </motion.div>
-      </div>
+        </div>
 
-      {/* Destinations Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-20">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        {/* Destinations Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
           {filteredDestinations.map((destination, index) => (
             <motion.div
               key={destination.id}
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
-              className={`bg-gradient-to-br ${destination.gradient} rounded-xl shadow-2xl overflow-hidden transform hover:scale-105 transition-all duration-300 cursor-pointer`}
-              onClick={() => openModal(destination)}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
+              className="group bg-blue-50 border-2 border-blue-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
             >
-              <div className="relative h-48 overflow-hidden">
-                <img 
-                  src={destination.image} 
-                  alt={destination.name}
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute top-4 right-4 bg-white bg-opacity-90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800">
-                  {destination.highlight}
+              <div className="relative h-40">
+                <div 
+                  className={`w-full h-full ${destination.image ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${destination.gradient}`} group-hover:scale-105 transition-transform duration-300`}
+                  style={destination.image ? { backgroundImage: `url(${destination.image})` } : {}}
+                >
+                  <div className={`absolute inset-0 ${destination.image ? 'bg-black bg-opacity-40' : ''} flex items-end justify-center pb-8`}>
+                    <div className="text-center px-4">
+                      <h3 className="text-2xl font-bold text-white text-shadow-lg mb-1">
+                        {destination.name}
+                      </h3>
+                      <p className="text-white text-sm opacity-90">
+                        {destination.location}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
               
-              <div className="p-6 text-white">
-                <h3 className="text-xl font-bold mb-2">{destination.name}</h3>
-                <p className="text-sm opacity-90 mb-3">{destination.location}</p>
-                <p className="text-sm mb-4 line-clamp-3">{destination.description}</p>
-                
-                <div className="flex flex-wrap gap-2 mb-4">
-                  {destination.features.slice(0, 2).map((feature, idx) => (
-                    <span key={idx} className="bg-white bg-opacity-20 px-2 py-1 rounded text-xs">
-                      {feature}
-                    </span>
-                  ))}
+              <div className="p-6 flex flex-col h-full bg-blue-50">
+                <div className="flex-grow">
+                  <p className="text-gray-600 mb-4">{destination.description}</p>
+                  <div className="space-y-3">
+                    {destination.features.map((feature, idx) => (
+                      <div key={idx} className="flex items-center text-gray-700">
+                        <svg className="w-5 h-5 text-teal-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {feature}
+                      </div>
+                    ))}
+                  </div>
                 </div>
-                
-                <button className="w-full bg-white bg-opacity-20 hover:bg-opacity-30 py-2 px-4 rounded-lg font-semibold transition-all">
-                  Learn More & Book
-                </button>
+                <div className="mt-6 space-y-3">
+                  <Link
+                    to="/need-more-info"
+                    className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-indigo-700 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+                  >
+                    Request Info
+                  </Link>
+                  <button
+                    onClick={() => openModal(destination)}
+                    className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-blue-700 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg"
+                  >
+                    Learn More
+                  </button>
+                </div>
               </div>
             </motion.div>
           ))}
         </div>
       </div>
-
-      {/* Contact CTA */}
-      <div className="bg-white bg-opacity-10 backdrop-blur-sm py-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">
-            Ready for Your Disney Adventure?
-          </h2>
-          <p className="text-xl text-purple-100 mb-8">
-            Let Rob and Trish help you plan the perfect Disney experience for your family
-          </p>
-          <Link
-            to="/need-more-info"
-            className="inline-block bg-white text-purple-900 px-8 py-3 rounded-lg text-lg font-semibold hover:bg-purple-50 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-          >
-            Start Planning Your Magic
-          </Link>
-        </div>
-      </div>
+    </div>
 
       {/* Modal */}
       {showModal && selectedDestination && (
