@@ -20,6 +20,7 @@ function NeedMoreInfo() {
     numberOfAdults: '',
     numberOfChildren: '',
     departureAirport: '',
+    travelDates: '',
     additionalInfo: ''
   });
 
@@ -73,6 +74,7 @@ function NeedMoreInfo() {
           numberOfAdults: '',
           numberOfChildren: '',
           departureAirport: '',
+          travelDates: '',
           additionalInfo: ''
         });
       } else {
@@ -318,6 +320,22 @@ function NeedMoreInfo() {
                     onChange={handleChange}
                     required
                     placeholder="e.g. Los Angeles International (LAX)"
+                    className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                  />
+                </div>
+
+                <div>
+                  <label htmlFor="travelDates" className="block text-sm font-medium text-gray-700">
+                    Travel Dates *
+                  </label>
+                  <input
+                    type="text"
+                    id="travelDates"
+                    name="travelDates"
+                    value={formData.travelDates}
+                    onChange={handleChange}
+                    required
+                    placeholder="e.g. March 15-22, 2024 or Flexible dates in Spring 2024"
                     className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
                   />
                 </div>
