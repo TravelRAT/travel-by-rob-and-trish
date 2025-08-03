@@ -354,9 +354,9 @@ function Ebooks() {
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-xl max-w-2xl w-full max-h-90vh overflow-y-auto"
+            className="bg-white rounded-xl max-w-lg w-full max-h-80vh overflow-y-auto"
           >
-            <div className="p-6">
+            <div className="p-4">
               <div className="flex justify-between items-start mb-4">
                 <h2 className="text-2xl font-bold text-gray-800">{selectedEbook.title}</h2>
                 <button
@@ -367,11 +367,11 @@ function Ebooks() {
                 </button>
               </div>
               
-              <div className="mb-6">
+                              <div className="mb-4">
                 <img 
                   src={selectedEbook.image} 
                   alt={selectedEbook.title}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
+                  className="w-full h-32 object-cover rounded-lg mb-3"
                 />
                 <p className="text-gray-600 mb-4">{selectedEbook.description}</p>
                 
@@ -407,8 +407,8 @@ function Ebooks() {
               </div>
 
               <form onSubmit={handleSubmit}>
-                <h3 className="text-lg font-semibold mb-4">Get Your Free Copy</h3>
-                <div className="space-y-4">
+                <h3 className="text-lg font-semibold mb-3">Get Your Free Copy</h3>
+                <div className="space-y-3">
                   <input
                     type="text"
                     name="fullName"
@@ -444,7 +444,7 @@ function Ebooks() {
                     className="w-full p-3 border border-gray-300 rounded-lg"
                   />
                 </div>
-                <div className="flex gap-4 mt-6">
+                <div className="flex gap-3 mt-4">
                   <button
                     type="button"
                     onClick={closeModal}
