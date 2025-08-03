@@ -275,6 +275,62 @@ function Ebooks() {
       highlight: 'Value Guide',
       pages: '24 Pages',
       format: 'PDF'
+    },
+    {
+      id: 15,
+      title: 'Why Cruise with Carnival',
+      category: 'Cruise',
+      filterCategory: 'cruise',
+      author: 'Rob & Trish',
+      description: 'Discover why Carnival is perfect for fun-loving families! Learn about their value pricing, entertainment, and casual atmosphere.',
+      gradient: 'from-red-500 to-blue-600',
+      features: ['Fun Ship Experience', 'Family Value', 'Casual Atmosphere', 'Entertainment Options'],
+      image: '/images/carnival.jpg',
+      highlight: 'Fun Ship',
+      pages: '22 Pages',
+      format: 'PDF'
+    },
+    {
+      id: 16,
+      title: 'Why Cruise with Royal Caribbean',
+      category: 'Cruise',
+      filterCategory: 'cruise',
+      author: 'Rob & Trish',
+      description: 'Explore why Royal Caribbean leads in innovation! From rock climbing to FlowRider surfing, discover their adventure-packed ships.',
+      gradient: 'from-blue-600 to-slate-800',
+      features: ['Innovative Ships', 'Adventure Activities', 'Premium Dining', 'Entertainment Variety'],
+      image: '/images/disney%20cruise.jpg',
+      highlight: 'Innovation Leader',
+      pages: '28 Pages',
+      format: 'PDF'
+    },
+    {
+      id: 17,
+      title: 'Why Cruise with Virgin Voyages',
+      category: 'Cruise',
+      filterCategory: 'cruise',
+      author: 'Rob & Trish',
+      description: 'Experience the rebellious luxury of Virgin Voyages! Adults-only ships with cutting-edge design and unique experiences.',
+      gradient: 'from-pink-500 to-red-600',
+      features: ['Adults-Only', 'Rebellious Luxury', 'Cutting-Edge Design', 'Unique Experiences'],
+      image: '/images/virgin.jpg',
+      highlight: 'Adults Only',
+      pages: '25 Pages',
+      format: 'PDF'
+    },
+    {
+      id: 18,
+      title: 'Why Cruise with Norwegian (NCL)',
+      category: 'Cruise',
+      filterCategory: 'cruise',
+      author: 'Rob & Trish',
+      description: 'Discover Norwegian\'s freestyle cruising philosophy! No formal nights, flexible dining, and freedom to cruise your way.',
+      gradient: 'from-yellow-500 to-blue-600',
+      features: ['Freestyle Cruising', 'Flexible Dining', 'No Formal Nights', 'Freedom & Choice'],
+      image: '/images/disney%20cruise.jpg',
+      highlight: 'Freestyle',
+      pages: '26 Pages',
+      format: 'PDF'
     }
   ];
 
