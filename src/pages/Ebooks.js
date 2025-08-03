@@ -247,6 +247,20 @@ function Ebooks() {
       highlight: 'Ultimate Trip',
       pages: '48 Pages',
       format: 'PDF'
+    },
+    {
+      id: 13,
+      title: 'Universal Studios First Timer\'s Guide',
+      category: 'Theme Parks',
+      filterCategory: 'theme-parks',
+      author: 'Rob & Trish',
+      description: 'Your essential guide to Universal Orlando! Learn the basics of both parks, ticket options, and must-do experiences for first-time visitors.',
+      gradient: 'from-red-500 to-yellow-600',
+      features: ['Park Basics', 'Ticket Options', 'Must-Do Attractions', 'Getting Started Tips'],
+      image: '/images/Universal.jpg',
+      highlight: 'First Timer',
+      pages: '31 Pages',
+      format: 'PDF'
     }
   ];
 
