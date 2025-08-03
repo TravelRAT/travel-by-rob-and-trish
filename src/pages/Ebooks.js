@@ -414,7 +414,7 @@ function Ebooks() {
                 >
                   <div className={`absolute inset-0 ${ebook.image ? 'bg-black bg-opacity-40' : ''} flex items-end justify-center pb-6`}>
                     <div className="text-center px-4">
-                      <h3 className="text-2xl font-bold text-white text-shadow-lg mb-1">
+                      <h3 className="text-xl font-bold text-white text-shadow-lg mb-1">
                         {ebook.title}
                       </h3>
                       <p className="text-white text-sm opacity-90 mb-2">
