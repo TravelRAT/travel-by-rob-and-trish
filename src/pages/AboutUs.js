@@ -70,11 +70,88 @@ function AboutUs() {
           </div>
         </motion.div>
 
+        {/* Photo Gallery Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mb-16"
+        >
+          <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12">
+            <div className="text-center mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Travel Adventures</h2>
+              <p className="text-xl text-gray-600">A glimpse into our family travels and experiences</p>
+            </div>
+            
+            <div className="grid grid-cols-2 md:grid-cols-3 gap-4 md:gap-6">
+              <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <img 
+                  src="/images/web1.jpg" 
+                  alt="Rob and Trish travel adventure" 
+                  className="w-full h-48 md:h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <img 
+                  src="/images/web2.jpg" 
+                  alt="Rob and Trish travel experience" 
+                  className="w-full h-48 md:h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <img 
+                  src="/images/minney.jpg" 
+                  alt="Disney experience with Minnie Mouse" 
+                  className="w-full h-48 md:h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <img 
+                  src="/images/IMG_1141.JPEG" 
+                  alt="Family travel memories" 
+                  className="w-full h-48 md:h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <img 
+                  src="/images/IMG_1011.JPEG" 
+                  alt="Travel adventure moments" 
+                  className="w-full h-48 md:h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+              
+              <div className="relative overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+                <img 
+                  src="/images/IMG_0576.JPEG" 
+                  alt="Vacation experiences" 
+                  className="w-full h-48 md:h-64 object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300"></div>
+              </div>
+            </div>
+            
+            <div className="text-center mt-8">
+              <p className="text-lg text-gray-600">
+                These are just a few snapshots from our travels! We love sharing our real experiences to help you plan your perfect getaway.
+              </p>
+            </div>
+          </div>
+        </motion.div>
+
         {/* Why Choose Us Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
           className="mb-16"
         >
           <div className="bg-gradient-to-r from-teal-500 to-blue-600 rounded-2xl shadow-xl p-8 md:p-12 text-white">
@@ -107,7 +184,7 @@ function AboutUs() {
                   </li>
                   <li className="flex items-start">
                     <span className="text-yellow-300 mr-3 text-xl">•</span>
-                    Help from start to finish — and <strong>it's all at no extra cost to you!</strong>
+                    Help from start to finish — <strong>all at no extra cost to you!</strong>
                   </li>
                 </ul>
               </div>
@@ -135,7 +212,7 @@ function AboutUs() {
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.6 }}
+          transition={{ duration: 0.8, delay: 0.7 }}
         >
           <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 text-center">
             <div className="flex items-center justify-center mb-8">
