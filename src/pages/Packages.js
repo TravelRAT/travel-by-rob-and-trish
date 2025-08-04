@@ -43,35 +43,37 @@ function Packages() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50 py-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Hero Section */}
-        <div className="relative h-[400px] overflow-hidden mb-16">
-          <div className="absolute inset-0">
-            <img 
-              src="/images/Hammock.jpg" 
-              alt="Special travel deals background" 
-              className="w-full h-full object-cover"
-            />
-            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-          </div>
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-center">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 }}
-              className="text-white text-center max-w-4xl"
-            >
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-shadow-lg">
-                Special Deals
-              </h1>
-              <p className="text-xl md:text-2xl text-shadow">
-                Discover our exclusive travel packages and limited-time offers 
-                designed to give you the best vacation experience at unbeatable prices.
-              </p>
-            </motion.div>
-          </div>
+    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-blue-50">
+      {/* Hero Section - Full Width */}
+      <div className="relative h-[400px] overflow-hidden">
+        <div className="absolute inset-0">
+          <img 
+            src="/images/Hammock.jpg" 
+            alt="Special travel deals background" 
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>
+        <div className="relative w-full h-full flex items-center justify-center px-4">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+            className="text-white text-center max-w-4xl"
+          >
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-shadow-lg">
+              Special Deals
+            </h1>
+            <p className="text-xl md:text-2xl text-shadow">
+              Discover our exclusive travel packages and limited-time offers 
+              designed to give you the best vacation experience at unbeatable prices.
+            </p>
+          </motion.div>
+        </div>
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {packages.map((pkg, index) => (
