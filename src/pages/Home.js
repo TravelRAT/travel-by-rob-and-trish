@@ -42,29 +42,51 @@ function Home() {
           <div className="absolute inset-0 bg-black bg-opacity-40"></div>
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="text-white max-w-3xl"
-          >
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-shadow-lg">
-              Your Dream Vacation <br />
-              Starts Here
-            </h1>
-            <p className="text-xl md:text-2xl mb-8 text-shadow">
-              Let Rob and Trish guide you to the perfect destination, from magical theme parks 
-              to tropical paradises and luxurious cruises.
-            </p>
-            <div className="text-center">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-8 w-full">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+              className="text-white md:max-w-2xl"
+            >
+              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight text-shadow-lg">
+                Your Dream Vacation <br />
+                Starts Here
+              </h1>
+              <p className="text-xl md:text-2xl mb-8 text-shadow">
+                Let Rob and Trish guide you to the perfect destination, from magical theme parks 
+                to tropical paradises and luxurious cruises.
+              </p>
+              <div className="text-center md:text-left">
+                <Link
+                  to="/need-more-info"
+                  className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all duration-200 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                >
+                  Start Planning
+                </Link>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
+              className="bg-white/90 backdrop-blur-sm rounded-2xl p-6 md:p-8 shadow-xl md:max-w-sm w-full"
+            >
+              <h2 className="text-2xl font-bold text-gray-900 mb-4">
+                Get Exclusive Weekly Deals!
+              </h2>
+              <p className="text-gray-700 mb-6">
+                Join our email list for subscriber-only discounts and be the first to know about special promotions!
+              </p>
               <Link
-                to="/need-more-info"
-                className="inline-block bg-white text-blue-600 px-8 py-4 rounded-lg text-lg font-semibold hover:bg-blue-50 transition-all duration-200 transform hover:-translate-y-1 shadow-lg hover:shadow-xl"
+                to="/exclusive-deals"
+                className="block w-full bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transform hover:-translate-y-1 transition-all duration-200 text-center shadow-lg hover:shadow-xl"
               >
-                Start Planning
+                Sign Up Now
               </Link>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
       </div>
 
@@ -117,36 +139,6 @@ function Home() {
         </div>
       </section>
 
-      {/* Weekly Email Exclusive Deals */}
-      <section className="py-16 bg-gradient-to-br from-purple-100 to-blue-100">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="bg-white rounded-2xl shadow-xl p-8 md:p-12 relative overflow-hidden"
-          >
-            <div className="absolute top-0 right-0 w-40 h-40 bg-blue-100 rounded-full transform translate-x-16 -translate-y-16 opacity-50"></div>
-            <div className="relative z-10">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-                Get Exclusive Travel Deals Every Week!
-              </h2>
-              <p className="text-xl text-gray-600 mb-6">
-                Join our email list to receive weekly exclusive deals and offers that are only available to our subscribers. Don't miss out on special discounts and limited-time promotions!
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
-                <Link
-                  to="/exclusive-deals"
-                  className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl w-full sm:w-auto text-center"
-                >
-                  Sign Up for Exclusive Deals
-                </Link>
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
 
       {/* Explore Destinations Button */}
       <section className="py-16 bg-gradient-to-br from-blue-50 to-indigo-50">
