@@ -11,6 +11,7 @@ function Navbar() {
     { name: 'Free Guides', path: '/ebooks' },
     { name: 'Special Deals', path: '/packages' },
     { name: 'Exclusive Deals', path: '/exclusive-deals' },
+    { name: 'About Us', path: '/about' },
     { name: 'Need More Info', path: '/need-more-info' },
     { name: 'Contact', path: '/contact' },
   ];

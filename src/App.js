@@ -13,6 +13,7 @@ import DisneyCruise from './pages/DisneyCruise';
 import VikingRiverCruises from './pages/VikingRiverCruises';
 import AdventuresOfDisney from './pages/AdventuresOfDisney';
 import Ebooks from './pages/Ebooks';
+import AboutUs from './pages/AboutUs';
 import Packages from './pages/Packages';
 import ExclusiveDeals from './pages/ExclusiveDeals';
 import Contact from './pages/Contact';
@@ -38,6 +39,7 @@ function App() {
           <Route path="/packages" element={<Packages />} />
           <Route path="/exclusive-deals" element={<ExclusiveDeals />} />
           <Route path="/need-more-info" element={<NeedMoreInfo />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
         </Routes>
       </main>
