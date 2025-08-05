@@ -18,6 +18,7 @@ import Packages from './pages/Packages';
 import ExclusiveDeals from './pages/ExclusiveDeals';
 import Contact from './pages/Contact';
 import NeedMoreInfo from './pages/NeedMoreInfo';
+import Reviews from './pages/Reviews';
 
 function App() {
   return (
@@ -41,6 +42,7 @@ function App() {
           <Route path="/need-more-info" element={<NeedMoreInfo />} />
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/reviews" element={<Reviews />} />
         </Routes>
       </main>
       <Footer />
