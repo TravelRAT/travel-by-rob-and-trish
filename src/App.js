@@ -12,6 +12,7 @@ import Breathless from './pages/Breathless';
 import DisneyCruise from './pages/DisneyCruise';
 import VikingRiverCruises from './pages/VikingRiverCruises';
 import AdventuresOfDisney from './pages/AdventuresOfDisney';
+import RoyalCaribbean from './pages/RoyalCaribbean';
 import Ebooks from './pages/Ebooks';
 import AboutUs from './pages/AboutUs';
 import Packages from './pages/Packages';
@@ -36,6 +37,7 @@ function App() {
           <Route path="/disney-cruise" element={<DisneyCruise />} />
           <Route path="/viking-river-cruises" element={<VikingRiverCruises />} />
           <Route path="/adventures-of-disney" element={<AdventuresOfDisney />} />
+          <Route path="/royal-caribbean" element={<RoyalCaribbean />} />
           <Route path="/ebooks" element={<Ebooks />} />
           <Route path="/packages" element={<Packages />} />
           <Route path="/exclusive-deals" element={<ExclusiveDeals />} />

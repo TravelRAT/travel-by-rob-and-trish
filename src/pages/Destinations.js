@@ -150,6 +150,16 @@ function Destinations() {
       features: ['Expert Disney Guides', 'Cultural Immersion', 'Family Adventures', 'VIP Experiences'],
       image: '/images/Castle.jpg'
     },
+    {
+      id: 18,
+      name: 'Royal Caribbean',
+      region: 'cruise',
+      description: 'Experience the world\'s most innovative cruise ships with revolutionary features, world-class entertainment, and unforgettable adventures.',
+      gradient: 'from-blue-500 to-indigo-500',
+      features: ['Innovative Ships', 'World-Class Entertainment', 'Family Adventures', 'Private Islands'],
+      image: '/images/disney cruise.jpg',
+      link: '/royal-caribbean'
+    },
   ];
 
   const regions = [
@@ -374,6 +384,22 @@ function Destinations() {
                 className="w-full bg-gradient-to-r from-purple-600 to-purple-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-purple-700 hover:to-purple-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
               >
                 Explore Guided Adventures
+              </Link>
+              <Link
+                to="/need-more-info"
+                className="w-full bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                Request More Info
+              </Link>
+            </div>
+          ) : destination.id === 18 ? (
+            // Special two-button layout for Royal Caribbean
+            <div className="space-y-3">
+              <Link
+                to="/royal-caribbean"
+                className="w-full bg-gradient-to-r from-indigo-600 to-indigo-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-indigo-700 hover:to-indigo-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
+              >
+                See All Royal Ships
               </Link>
               <Link
                 to="/need-more-info"
