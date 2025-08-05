@@ -241,7 +241,7 @@ function Secrets() {
         </div>
 
         {/* Resorts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
           {filteredResorts.map((resort, index) => (
             <motion.div
               key={resort.id}

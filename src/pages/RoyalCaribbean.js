@@ -186,7 +186,7 @@ function RoyalCaribbean() {
         </div>
 
         {/* Ships Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 items-stretch">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
           {filteredShips.map((ship, index) => (
             <motion.div
               key={ship.id}
