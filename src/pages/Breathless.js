@@ -249,13 +249,7 @@ function Breathless() {
                     ))}
                   </div>
                 </div>
-                <div className="mt-6 space-y-3">
-                  <Link
-                    to="/need-more-info"
-                    className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-indigo-700 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
-                  >
-                    Photos
-                  </Link>
+                <div className="mt-6">
                   <button
                     onClick={() => openModal(resort)}
                     className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-blue-700 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg"
