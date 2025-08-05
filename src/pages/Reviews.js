@@ -137,7 +137,7 @@ function Reviews() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="bg-white rounded-2xl shadow-xl overflow-hidden"
+              className="bg-white rounded-2xl shadow-xl overflow-hidden border-2 border-blue-500"
             >
               <div className="md:flex">
                 <div className="md:flex-shrink-0 md:w-1/3">
