@@ -20,6 +20,7 @@ import ExclusiveDeals from './pages/ExclusiveDeals';
 import Contact from './pages/Contact';
 import NeedMoreInfo from './pages/NeedMoreInfo';
 import Reviews from './pages/Reviews';
+import Giveaway from './pages/Giveaway';
 
 function App() {
   return (
@@ -45,6 +46,7 @@ function App() {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/reviews" element={<Reviews />} />
+          <Route path="/giveaway" element={<Giveaway />} />
         </Routes>
       </main>
       <Footer />

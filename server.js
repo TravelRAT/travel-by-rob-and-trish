@@ -93,6 +93,32 @@ app.post('/api/send-inquiry', async (req, res) => {
   }
 });
 
+// API route for giveaway entry
+app.post('/api/giveaway-entry', async (req, res) => {
+  const { firstName, lastName, zip, email } = req.body;
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
+    subject: 'New Giveaway Entry',
+    html: `
+      <h2>Giveaway Entry</h2>
+      <p><strong>First Name:</strong> ${firstName}</p>
+      <p><strong>Last Name:</strong> ${lastName}</p>
+      <p><strong>Zip Code:</strong> ${zip}</p>
+      <p><strong>Email:</strong> ${email}</p>
+      <hr style="margin: 20px 0;">
+      <p>Giveaway: $100 off next booked vacation. Draw: Aug 31, 6pm. Book by 12/31/2025, travel by 12/31/2026.</p>
+    `
+  };
+  try {
+    await transporter.sendMail(mailOptions);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error sending giveaway entry email:', error);
+    res.status(500).json({ error: 'Failed to send entry' });
+  }
+});
+
 // API routes can be added here
 app.get('/api/destinations', (req, res) => {
   // Sample data - in a real app, this would come from a database

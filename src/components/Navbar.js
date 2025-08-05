@@ -21,6 +21,15 @@ function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex items-center">
+            {/* Giveaway Button */}
+            <Link
+              to="/giveaway"
+              className="mr-4 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-lg font-semibold shadow hover:from-blue-700 hover:to-indigo-700 transition-all duration-200"
+              style={{ minWidth: 120, textAlign: 'center' }}
+            >
+              Giveaway
+            </Link>
+            {/* Logo */}
             <Link to="/" className="flex-shrink-0 flex items-center">
               <img 
                 src="/images/web-logo.png" 
