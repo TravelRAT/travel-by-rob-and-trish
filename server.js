@@ -99,7 +99,7 @@ app.post('/api/giveaway-entry', async (req, res) => {
   const mailOptions = {
     from: process.env.EMAIL_USER,
     to: process.env.EMAIL_USER,
-    subject: 'New Giveaway Entry',
+    subject: 'New Giveaway Entry - $100 off next Full Vacation booked',
     html: `
       <h2>Giveaway Entry</h2>
       <p><strong>First Name:</strong> ${firstName}</p>
@@ -107,7 +107,7 @@ app.post('/api/giveaway-entry', async (req, res) => {
       <p><strong>Zip Code:</strong> ${zip}</p>
       <p><strong>Email:</strong> ${email}</p>
       <hr style="margin: 20px 0;">
-      <p>Giveaway: $100 off next booked vacation. Draw: Aug 31, 6pm. Book by 12/31/2025, travel by 12/31/2026.</p>
+      <p>Giveaway: $100 off next Full Vacation booked. Draw: Aug 31, 6pm. Book by 12/31/2025, travel by 12/31/2026.</p>
     `
   };
   try {

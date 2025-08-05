@@ -42,13 +42,13 @@ function Giveaway() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-indigo-50 flex flex-col items-center justify-center py-12 px-4">
       <div className="bg-white rounded-2xl shadow-xl p-8 max-w-lg w-full">
-        <h1 className="text-3xl font-bold text-center mb-4 text-blue-700">$100 Vacation Giveaway!</h1>
+        <h1 className="text-3xl font-bold text-center mb-4 text-blue-700">$100 Full Vacation Giveaway!</h1>
         <p className="text-center text-gray-700 mb-6">
-          Enter for a chance to win <span className="font-semibold">$100 off your next booked vacation</span> with Travel by Rob and Trish!<br/>
+          Enter for a chance to win <span className="font-semibold">$100 off your next Full Vacation booked</span> with Travel by Rob and Trish!<br/>
           <span className="block mt-2 text-sm text-gray-500">Drawing: August 31st, 6pm. Valid only with Travel by Rob and Trish. Must book by 12/31/2025 and travel by 12/31/2026. One entry per person. Winner will be notified by email.</span>
         </p>
         {success ? (
-          <div className="text-green-600 text-center font-semibold text-lg">Thank you for entering! Good luck!</div>
+          <div className="text-green-600 text-center font-semibold text-lg">Thank you for entering! Good luck! If you win, you'll receive $100 off your next Full Vacation booked with us.</div>
         ) : (
           <form onSubmit={handleSubmit} className="space-y-4">
             <div>
