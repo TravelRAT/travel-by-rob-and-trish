@@ -17,6 +17,89 @@ function Reviews() {
         "Beautiful ship, amazing scenery, lasting memories made",
         "Perfect for group of 3 adults, 3 teens"
       ]
+    },
+    {
+      id: 2,
+      name: "Brandon Eric",
+      date: "July 9, 2023",
+      trip: "Last-Minute Costa Rica Adventure",
+      image: "/images/Beach.jpg",
+      content: "We decided on a last-minute escape to Costa Rica and Rob and Trish pulled it off with zero stress. Within two days, we had flights, lodging, excursions, and travel insurance. Super professional, super fast.",
+      details: [
+        "Quick turnaround booking",
+        "Complete package with flights and lodging",
+        "Excursions included",
+        "Travel insurance arranged"
+      ]
+    },
+    {
+      id: 3,
+      name: "Nathan Tyler",
+      date: "July 9, 2023",
+      trip: "Boutique Mexico Beach Getaway",
+      image: "/images/Tulum.jpg",
+      content: "This was our first trip to Mexico and we were nervous about planning everything, but Trish made it so easy. She found us a boutique hotel steps from the beach and even got us a yoga class. Everything felt curated just for us.",
+      details: [
+        "Boutique beachfront hotel",
+        "Personalized activities",
+        "First-time Mexico travelers",
+        "Custom experience"
+      ]
+    },
+    {
+      id: 4,
+      name: "Ryan Jacob",
+      date: "July 9, 2023",
+      trip: "7-Day Caribbean Cruise",
+      image: "/images/disney cruise.jpg",
+      content: "We just got back from a 7-day Caribbean cruise, and Rob and Trish nailed it. They helped us choose a kid-friendly cruise line and even got us connecting cabins. When our flight was delayed, they handled everything. We already booked our next cruise with them!",
+      details: [
+        "Family-friendly cruise selection",
+        "Connecting cabins arranged",
+        "Flight delay assistance",
+        "7-day Caribbean itinerary"
+      ]
+    },
+    {
+      id: 5,
+      name: "Jason Jeffrey",
+      date: "July 9, 2023",
+      trip: "Disney Family Adventure",
+      image: "/images/Castle.jpg",
+      content: "Planning a Disney trip with three kids is stressful—unless you have Rob and Trish. They handled everything from Genie+ reservations to stroller rentals. Our kids had the time of their lives.",
+      details: [
+        "Disney vacation planning",
+        "Genie+ reservations",
+        "Stroller rentals arranged",
+        "Family of five accommodation"
+      ]
+    },
+    {
+      id: 6,
+      name: "Aurora Ivy",
+      date: "July 9, 2023",
+      trip: "First-Time Cruise Experience",
+      image: "/images/carnival.jpg",
+      content: "Trish was by far the most helpful person in planning our cruise. Her knowledge and experience was so important to us as this was our first cruise!",
+      details: [
+        "First-time cruisers",
+        "Expert guidance",
+        "Comprehensive planning"
+      ]
+    },
+    {
+      id: 7,
+      name: "Trish Butcher",
+      date: "June 24, 2023",
+      trip: "Accessible Cruise Vacation",
+      image: "/images/disney cruise.jpg",
+      content: "We can't thank you enough for going above and beyond for my husband and me. Traveling can be stressful when accessibility is a concern, but you made the entire process so smooth and stress-free. From the hotel to the transfers and even our cruise cabin—everything was fully ADA-compliant and comfortable. Your attention to detail and care meant the world to us. Thank you again for making our trip truly enjoyable and accessible! 💙",
+      details: [
+        "ADA-compliant accommodations",
+        "Accessible transfers arranged",
+        "Special needs consideration",
+        "Stress-free planning"
+      ]
     }
   ];
 
@@ -40,7 +123,7 @@ function Reviews() {
             className="text-center text-white"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Client Reviews</h1>
-            <p className="text-xl">Real experiences from our wonderful clients</p>
+            <p className="text-xl">Real experiences from our wonderful clients - {reviews.length} happy travelers and counting!</p>
           </motion.div>
         </div>
       </div>
