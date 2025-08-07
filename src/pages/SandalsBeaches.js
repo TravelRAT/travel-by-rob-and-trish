@@ -6,13 +6,22 @@ function SandalsBeaches() {
   const [selectedBrand, setSelectedBrand] = useState('all');
   const [selectedResort, setSelectedResort] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showQuoteForm, setShowQuoteForm] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
-    email: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: '',
     phone: '',
-    message: ''
+    email: '',
+    budget: '',
+    numberOfAdults: '',
+    numberOfChildren: '',
+    departureAirport: '',
+    travelDates: '',
+    additionalInfo: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,8 +33,6 @@ function SandalsBeaches() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
     try {
       const response = await fetch('/api/send-inquiry', {
         method: 'POST',
@@ -34,32 +41,20 @@ function SandalsBeaches() {
         },
         body: JSON.stringify({
           to: 'r.whitehair@magicalvacationplanner.com',
-          subject: `Inquiry about ${selectedResort.name}`,
-          formData: {
-            ...formData,
-            resort: selectedResort.name,
-            location: selectedResort.location
-          }
+          subject: `Quote Request - ${selectedResort.name}`,
+          formData
         }),
       });
 
       if (response.ok) {
-        alert(`Thank you for your inquiry about ${selectedResort.name}! We will contact you soon.`);
-        setFormData({
-          fullName: '',
-          email: '',
-          phone: '',
-          message: ''
-        });
-        setShowModal(false);
-        setSelectedResort(null);
+        alert('Thank you for your quote request! We will contact you soon.');
+        closeQuoteForm();
       } else {
         throw new Error('Failed to send inquiry');
       }
     } catch (error) {
-      alert('Sorry, there was an error sending your inquiry. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+      alert('There was an error sending your quote request. Please try again or contact us directly.');
+      console.error('Error:', error);
     }
   };
 
@@ -71,11 +66,30 @@ function SandalsBeaches() {
   const closeModal = () => {
     setShowModal(false);
     setSelectedResort(null);
+  };
+
+  const openQuoteForm = () => {
+    setShowQuoteForm(true);
+    setShowModal(false);
+  };
+
+  const closeQuoteForm = () => {
+    setShowQuoteForm(false);
+    setSelectedResort(null);
     setFormData({
       fullName: '',
-      email: '',
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
       phone: '',
-      message: ''
+      email: '',
+      budget: '',
+      numberOfAdults: '',
+      numberOfChildren: '',
+      departureAirport: '',
+      travelDates: '',
+      additionalInfo: ''
     });
   };
 
@@ -370,74 +384,63 @@ function SandalsBeaches() {
           </div>
         </div>
 
-        {/* Resorts Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
-          {filteredResorts.map((resort, index) => (
-            <motion.div
-              key={resort.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-blue-50 border-2 border-blue-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
-            >
-              <div className="relative h-40">
-                <div 
-                  className={`w-full h-full ${resort.image ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${resort.gradient}`} group-hover:scale-105 transition-transform duration-300`}
-                  style={resort.image ? { backgroundImage: `url(${resort.image})` } : {}}
-                >
-                  <div className={`absolute inset-0 ${resort.image ? 'bg-black bg-opacity-40' : ''} flex items-end justify-center pb-8`}>
-                    <div className="text-center px-4">
-                      <h3 className="text-2xl font-bold text-white text-shadow-lg mb-1">
-                        {resort.name}
+        {/* Interactive Resort Bubbles */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="bg-white rounded-2xl p-8 mb-12 shadow-lg border-2 border-teal-100"
+        >
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Explore Our Sandals & Beaches Resorts
+          </h2>
+          <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+            Click on any resort bubble to discover detailed information about each luxurious destination
+          </p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {filteredResorts.map((resort, index) => (
+              <motion.div
+                key={resort.id}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => openModal(resort)}
+                className="group cursor-pointer"
+              >
+                <div className="relative w-full aspect-square rounded-full overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                  <div 
+                    className={`w-full h-full bg-gradient-to-br ${resort.gradient} group-hover:brightness-110 transition-all duration-300`}
+                    style={resort.image ? { backgroundImage: `url(${resort.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+                  >
+                    <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4">
+                      <h3 className="text-sm md:text-base font-bold mb-2 leading-tight">
+                        {resort.name.split(' ').slice(0, 3).join(' ')}
                       </h3>
-                      <p className="text-white text-sm opacity-90">
+                      <p className="text-xs opacity-90">
                         {resort.location}
                       </p>
+                      <div className="mt-2">
+                        <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded-full">
+                          Click for Details
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              <div className="p-6 flex flex-col h-full bg-blue-50">
-                <div className="flex-grow">
-                  <p className="text-gray-600 mb-4">{resort.description}</p>
-                  <div className="space-y-3">
-                    {resort.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-gray-700">
-                        <svg className="w-5 h-5 text-teal-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
+                <div className="mt-3 text-center">
+                  <h4 className="text-sm font-semibold text-gray-800 truncate">
+                    {resort.name}
+                  </h4>
+                  <p className="text-xs text-gray-600">
+                    {resort.location}
+                  </p>
                 </div>
-                <div className="mt-6 space-y-3">
-                  {resort.external ? (
-                    <a
-                      href={resort.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-indigo-700 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
-                    >
-                      Photos
-                    </a>
-                  ) : (
-                    <button className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-indigo-700 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg">
-                      Photos
-                    </button>
-                  )}
-                  <button
-                    onClick={() => openModal(resort)}
-                    className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-blue-700 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg"
-                  >
-                    More Info
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Call to Action */}
         <motion.div
@@ -459,116 +462,204 @@ function SandalsBeaches() {
         </motion.div>
       </div>
 
-      {/* Modal Form */}
+      {/* Modal for Resort Details */}
       {showModal && selectedResort && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <motion.div
-            initial={{ opacity: 0, scale: 0.95 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.95 }}
-            className="bg-white rounded-2xl shadow-2xl max-w-md w-full max-h-[90vh] overflow-y-auto"
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
           >
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-6">
-                <div>
-                  <h3 className="text-2xl font-bold text-gray-900 mb-2">
-                    Get More Info
-                  </h3>
-                  <p className="text-lg text-blue-600 font-semibold">
-                    {selectedResort.name}
-                  </p>
-                  <p className="text-gray-600">
-                    {selectedResort.location}
-                  </p>
-                </div>
-                <button
-                  onClick={closeModal}
-                  className="text-gray-400 hover:text-gray-600 text-2xl font-bold"
+            <div className="relative">
+              <button
+                onClick={closeModal}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl z-10"
+              >
+                ×
+              </button>
+              
+              <div className="relative h-64">
+                <div 
+                  className={`w-full h-full bg-gradient-to-br ${selectedResort.gradient} bg-cover bg-center`}
+                  style={selectedResort.image ? { backgroundImage: `url(${selectedResort.image})` } : {}}
                 >
-                  ×
-                </button>
+                  <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                  <div className="absolute inset-0 flex items-end p-6">
+                    <div className="text-white">
+                      <h2 className="text-3xl font-bold mb-2">{selectedResort.name}</h2>
+                      <p className="text-xl opacity-90">📍 {selectedResort.location}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-
-              <form onSubmit={handleSubmit} className="space-y-4">
-                <div>
-                  <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-2">
-                    Full Name *
-                  </label>
-                  <input
-                    type="text"
-                    id="fullName"
-                    name="fullName"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
-                    placeholder="Your full name"
-                  />
+              
+              <div className="p-6">
+                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                  {selectedResort.description}
+                </p>
+                
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {selectedResort.features.map((feature, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-gradient-to-r from-teal-100 to-blue-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium"
+                    >
+                      {feature}
+                    </span>
+                  ))}
                 </div>
-
-                <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
-                    Email Address *
-                  </label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
-                    placeholder="your.email@example.com"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-2">
-                    Phone Number
-                  </label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200"
-                    placeholder="(555) 123-4567"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="4"
-                    value={formData.message}
-                    onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent outline-none transition-all duration-200 resize-none"
-                    placeholder="Tell us about your travel plans, preferred dates, or any questions you have about this resort..."
-                  ></textarea>
-                </div>
-
-                <div className="flex space-x-3 pt-4">
+                
+                <div className="mt-8 flex gap-4">
                   <button
-                    type="button"
                     onClick={closeModal}
-                    className="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-50 transition-colors duration-200"
+                    className="flex-1 bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
                   >
-                    Cancel
+                    Close
                   </button>
+                  <button 
+                    onClick={openQuoteForm}
+                    className="flex-1 bg-gradient-to-r from-teal-600 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-200"
+                  >
+                    Get Quote
+                  </button>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Quote Form Modal */}
+      {showQuoteForm && selectedResort && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+          >
+            <div className="relative">
+              <button
+                onClick={closeQuoteForm}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl z-10"
+              >
+                ×
+              </button>
+              <div className="p-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                  Get a Quote for {selectedResort.name}
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      required
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700">Estimated Budget</label>
+                    <input
+                      type="number"
+                      id="budget"
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="numberOfAdults" className="block text-sm font-medium text-gray-700">Number of Adults</label>
+                    <input
+                      type="number"
+                      id="numberOfAdults"
+                      name="numberOfAdults"
+                      value={formData.numberOfAdults}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="numberOfChildren" className="block text-sm font-medium text-gray-700">Number of Children</label>
+                    <input
+                      type="number"
+                      id="numberOfChildren"
+                      name="numberOfChildren"
+                      value={formData.numberOfChildren}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="travelDates" className="block text-sm font-medium text-gray-700">Travel Dates</label>
+                    <input
+                      type="text"
+                      id="travelDates"
+                      name="travelDates"
+                      value={formData.travelDates}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="departureAirport" className="block text-sm font-medium text-gray-700">Departure Airport</label>
+                    <input
+                      type="text"
+                      id="departureAirport"
+                      name="departureAirport"
+                      value={formData.departureAirport}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-700">Additional Information</label>
+                    <textarea
+                      id="additionalInfo"
+                      name="additionalInfo"
+                      value={formData.additionalInfo}
+                      onChange={handleChange}
+                      rows="4"
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-indigo-700 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-200"
+                    className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Inquiry'}
+                    Submit Quote Request
                   </button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </motion.div>
         </div>

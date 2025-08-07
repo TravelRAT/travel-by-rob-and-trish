@@ -6,13 +6,22 @@ function VikingRiverCruises() {
   const [selectedRegion, setSelectedRegion] = useState('all');
   const [selectedCruise, setSelectedCruise] = useState(null);
   const [showModal, setShowModal] = useState(false);
+  const [showQuoteForm, setShowQuoteForm] = useState(false);
   const [formData, setFormData] = useState({
     fullName: '',
-    email: '',
+    address: '',
+    city: '',
+    state: '',
+    zipCode: '',
     phone: '',
-    message: ''
+    email: '',
+    budget: '',
+    numberOfAdults: '',
+    numberOfChildren: '',
+    departureAirport: '',
+    travelDates: '',
+    additionalInfo: ''
   });
-  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -24,8 +33,6 @@ function VikingRiverCruises() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsSubmitting(true);
-    
     try {
       const response = await fetch('/api/send-inquiry', {
         method: 'POST',
@@ -34,32 +41,20 @@ function VikingRiverCruises() {
         },
         body: JSON.stringify({
           to: 'r.whitehair@magicalvacationplanner.com',
-          subject: `Viking River Cruise Inquiry - ${selectedCruise.name}`,
-          formData: {
-            ...formData,
-            cruise: selectedCruise.name,
-            region: selectedCruise.region
-          }
+          subject: `Quote Request - ${selectedCruise.name}`,
+          formData
         }),
       });
 
       if (response.ok) {
-        alert(`Thank you for your inquiry about ${selectedCruise.name}! We will contact you soon.`);
-        setFormData({
-          fullName: '',
-          email: '',
-          phone: '',
-          message: ''
-        });
-        setShowModal(false);
-        setSelectedCruise(null);
+        alert('Thank you for your quote request! We will contact you soon.');
+        closeQuoteForm();
       } else {
         throw new Error('Failed to send inquiry');
       }
     } catch (error) {
-      alert('Sorry, there was an error sending your inquiry. Please try again.');
-    } finally {
-      setIsSubmitting(false);
+      alert('There was an error sending your quote request. Please try again or contact us directly.');
+      console.error('Error:', error);
     }
   };
 
@@ -71,11 +66,30 @@ function VikingRiverCruises() {
   const closeModal = () => {
     setShowModal(false);
     setSelectedCruise(null);
+  };
+
+  const openQuoteForm = () => {
+    setShowQuoteForm(true);
+    setShowModal(false);
+  };
+
+  const closeQuoteForm = () => {
+    setShowQuoteForm(false);
+    setSelectedCruise(null);
     setFormData({
       fullName: '',
-      email: '',
+      address: '',
+      city: '',
+      state: '',
+      zipCode: '',
       phone: '',
-      message: ''
+      email: '',
+      budget: '',
+      numberOfAdults: '',
+      numberOfChildren: '',
+      departureAirport: '',
+      travelDates: '',
+      additionalInfo: ''
     });
   };
 
@@ -201,6 +215,54 @@ function VikingRiverCruises() {
             </motion.div>
           </div>
         </div>
+
+        {/* About Viking River Cruises Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="bg-white rounded-2xl p-8 mb-12 shadow-lg border-2 border-teal-100"
+        >
+          <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">
+            About Viking River Cruises
+          </h2>
+          <div className="grid md:grid-cols-2 gap-8">
+            <div>
+              <p className="text-gray-700 text-lg leading-relaxed mb-4">
+                Viking River Cruises offers the world's leading river cruise experiences, combining 
+                cultural enrichment, destination-focused itineraries, and elegant accommodations. 
+                Each journey is carefully crafted to immerse guests in the history, culture, and 
+                beauty of the world's most iconic rivers.
+              </p>
+              <p className="text-gray-700 text-lg leading-relaxed">
+                From the romantic Danube to the exotic Mekong, Viking's award-winning river ships 
+                provide an intimate way to explore historic cities, charming villages, and stunning 
+                landscapes while enjoying world-class dining and exceptional service.
+              </p>
+            </div>
+            <div className="bg-gradient-to-br from-blue-600 to-teal-700 rounded-xl p-6 text-white">
+              <h3 className="text-xl font-bold mb-4">What Makes Viking Special</h3>
+              <ul className="space-y-3">
+                <li className="flex items-center">
+                  <span className="text-2xl mr-3">🏛️</span>
+                  <span>Cultural Enrichment</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-2xl mr-3">🌊</span>
+                  <span>River Exploration</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-2xl mr-3">🍽️</span>
+                  <span>World-Class Dining</span>
+                </li>
+                <li className="flex items-center">
+                  <span className="text-2xl mr-3">👑</span>
+                  <span>Elegant Accommodations</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </motion.div>
         
         {/* Region Filter */}
         <div className="flex justify-center mb-12">
@@ -221,204 +283,303 @@ function VikingRiverCruises() {
           </div>
         </div>
 
-        {/* Cruises Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 items-stretch">
-          {filteredCruises.map((cruise, index) => (
-            <motion.div
-              key={cruise.id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group bg-blue-50 border-2 border-blue-600 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300 flex flex-col h-full"
-            >
-              <div className="relative h-40">
-                <div 
-                  className={`w-full h-full ${cruise.image ? 'bg-cover bg-center bg-no-repeat' : `bg-gradient-to-br ${cruise.gradient}`} group-hover:scale-105 transition-transform duration-300`}
-                  style={cruise.image ? { backgroundImage: `url(${cruise.image})` } : {}}
-                >
-                  <div className={`absolute inset-0 ${cruise.image ? 'bg-black bg-opacity-40' : ''} flex items-end justify-center pb-8`}>
-                    <div className="text-center px-4">
-                      <h3 className="text-2xl font-bold text-white text-shadow-lg mb-1">
-                        {cruise.name}
+        {/* Interactive Cruise Bubbles */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="bg-white rounded-2xl p-8 mb-12 shadow-lg border-2 border-teal-100"
+        >
+          <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">
+            Explore Our Viking River Cruises
+          </h2>
+          <p className="text-gray-600 text-center mb-8 max-w-2xl mx-auto">
+            Click on any cruise bubble to discover detailed information about each river adventure
+          </p>
+          
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+            {filteredCruises.map((cruise, index) => (
+              <motion.div
+                key={cruise.id}
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.5, delay: index * 0.1 }}
+                onClick={() => openModal(cruise)}
+                className="group cursor-pointer"
+              >
+                <div className="relative w-full aspect-square rounded-full overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                  <div 
+                    className={`w-full h-full bg-gradient-to-br ${cruise.gradient} group-hover:brightness-110 transition-all duration-300`}
+                    style={cruise.image ? { backgroundImage: `url(${cruise.image})`, backgroundSize: 'cover', backgroundPosition: 'center' } : {}}
+                  >
+                    <div className="absolute inset-0 bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300"></div>
+                    <div className="absolute inset-0 flex flex-col items-center justify-center text-white text-center p-4">
+                      <h3 className="text-sm md:text-base font-bold mb-2 leading-tight">
+                        {cruise.name.split(' ').slice(0, 3).join(' ')}
                       </h3>
-                      <p className="text-white text-sm opacity-90">
+                      <p className="text-xs opacity-90">
                         {cruise.duration} • {cruise.region}
                       </p>
+                      <div className="mt-2">
+                        <span className="text-xs bg-white bg-opacity-20 px-2 py-1 rounded-full">
+                          Click for Details
+                        </span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              
-              <div className="p-6 flex flex-col h-full bg-blue-50">
-                <div className="flex-grow">
-                  <p className="text-gray-600 mb-4">{cruise.description}</p>
-                  <div className="space-y-3">
-                    {cruise.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-gray-700">
-                        <svg className="w-5 h-5 text-teal-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
-                        {feature}
-                      </div>
-                    ))}
-                  </div>
+                <div className="mt-3 text-center">
+                  <h4 className="text-sm font-semibold text-gray-800 truncate">
+                    {cruise.name}
+                  </h4>
+                  <p className="text-xs text-gray-600">
+                    {cruise.duration} • {cruise.region}
+                  </p>
                 </div>
-                <div className="mt-6 space-y-3">
-                  <Link
-                    to="/need-more-info"
-                    className="w-full bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-600 hover:to-indigo-700 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg inline-block text-center"
-                  >
-                    Request Info
-                  </Link>
-                  <button
-                    onClick={() => openModal(cruise)}
-                    className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-blue-700 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg"
-                  >
-                    Learn More
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
 
         {/* Call to Action */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.5 }}
-          className="mt-16 text-center bg-white rounded-2xl p-8 shadow-lg border-2 border-blue-100"
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="text-center bg-gradient-to-r from-blue-900 to-teal-900 rounded-2xl p-8 shadow-lg"
         >
-          <h2 className="text-3xl font-bold text-gray-900 mb-4">
+          <h2 className="text-3xl font-bold text-white mb-4">
             Ready to Set Sail?
           </h2>
-          <p className="text-gray-600 mb-8 max-w-2xl mx-auto">
+          <p className="text-gray-300 mb-8 max-w-2xl mx-auto">
             Let Rob and Trish help you plan the perfect river cruise adventure. 
             Experience culture, history, and luxury along the world's great rivers.
           </p>
-          <Link
-            to="/need-more-info"
-            className="inline-block bg-gradient-to-r from-blue-600 to-teal-600 text-white px-8 py-3 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-teal-700 transition-colors shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
-          >
-            Start Planning Your Journey
-          </Link>
+          <button className="bg-gradient-to-r from-teal-400 to-blue-400 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-teal-500 hover:to-blue-500 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl">
+            Contact Us Today
+          </button>
         </motion.div>
       </div>
 
-      {/* Modal */}
+      {/* Modal for Cruise Details */}
       {showModal && selectedCruise && (
         <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
+            initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
-            className="bg-white rounded-xl max-w-2xl w-full max-h-90vh overflow-y-auto"
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
           >
-            <div className="p-6">
-              <div className="flex justify-between items-start mb-4">
-                <h2 className="text-2xl font-bold text-gray-800">{selectedCruise.name}</h2>
-                <button
-                  onClick={closeModal}
-                  className="text-gray-500 hover:text-gray-700 text-2xl"
+            <div className="relative">
+              <button
+                onClick={closeModal}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl z-10"
+              >
+                ×
+              </button>
+              
+              <div className="relative h-64">
+                <div 
+                  className={`w-full h-full bg-gradient-to-br ${selectedCruise.gradient} bg-cover bg-center`}
+                  style={selectedCruise.image ? { backgroundImage: `url(${selectedCruise.image})` } : {}}
                 >
-                  ×
-                </button>
+                  <div className="absolute inset-0 bg-black bg-opacity-40"></div>
+                  <div className="absolute inset-0 flex items-end p-6">
+                    <div className="text-white">
+                      <h2 className="text-3xl font-bold mb-2">{selectedCruise.name}</h2>
+                      <p className="text-xl opacity-90">🚢 {selectedCruise.duration} • {selectedCruise.region}</p>
+                    </div>
+                  </div>
+                </div>
               </div>
               
-              <div className="mb-6">
-                <img 
-                  src={selectedCruise.image} 
-                  alt={selectedCruise.name}
-                  className="w-full h-48 object-cover rounded-lg mb-4"
-                />
-                <p className="text-gray-600 mb-4">{selectedCruise.description}</p>
+              <div className="p-6">
+                <p className="text-gray-700 text-lg leading-relaxed mb-6">
+                  {selectedCruise.description}
+                </p>
                 
-                <div className="grid grid-cols-2 gap-4 mb-4">
-                  <div>
-                    <h4 className="font-semibold text-gray-800">Duration</h4>
-                    <p className="text-gray-600">{selectedCruise.duration}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">Region</h4>
-                    <p className="text-gray-600">{selectedCruise.region}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">Season</h4>
-                    <p className="text-gray-600">{selectedCruise.season}</p>
-                  </div>
-                  <div>
-                    <h4 className="font-semibold text-gray-800">Key Ports</h4>
-                    <p className="text-gray-600 text-sm">{selectedCruise.ports}</p>
+                <div className="mb-6">
+                  <div className="grid grid-cols-2 gap-4 mb-4">
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Duration</h4>
+                      <p className="text-gray-600">{selectedCruise.duration}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Region</h4>
+                      <p className="text-gray-600">{selectedCruise.region}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Season</h4>
+                      <p className="text-gray-600">{selectedCruise.season}</p>
+                    </div>
+                    <div>
+                      <h4 className="font-semibold text-gray-800">Key Ports</h4>
+                      <p className="text-gray-600 text-sm">{selectedCruise.ports}</p>
+                    </div>
                   </div>
                 </div>
                 
-                <div className="mb-4">
-                  <h4 className="font-semibold text-gray-800 mb-2">Highlights</h4>
-                  <div className="flex flex-wrap gap-2">
-                    {selectedCruise.features.map((feature, idx) => (
-                      <span key={idx} className="bg-blue-100 text-blue-800 px-3 py-1 rounded-full text-sm">
-                        {feature}
-                      </span>
-                    ))}
-                  </div>
+                <div className="flex flex-wrap gap-2 mb-6">
+                  {selectedCruise.features.map((feature, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-gradient-to-r from-teal-100 to-blue-100 text-teal-800 px-3 py-1 rounded-full text-sm font-medium"
+                    >
+                      {feature}
+                    </span>
+                  ))}
+                </div>
+                
+                <div className="mt-8 flex gap-4">
+                  <button
+                    onClick={closeModal}
+                    className="flex-1 bg-gray-500 text-white px-6 py-3 rounded-lg font-semibold hover:bg-gray-600 transition-colors"
+                  >
+                    Close
+                  </button>
+                  <button 
+                    onClick={openQuoteForm}
+                    className="flex-1 bg-gradient-to-r from-teal-600 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-200"
+                  >
+                    Get Quote
+                  </button>
                 </div>
               </div>
+            </div>
+          </motion.div>
+        </div>
+      )}
 
-              <form onSubmit={handleSubmit}>
-                <h3 className="text-lg font-semibold mb-4">Request More Information</h3>
-                <div className="space-y-4">
-                  <input
-                    type="text"
-                    name="fullName"
-                    placeholder="Full Name"
-                    value={formData.fullName}
-                    onChange={handleChange}
-                    required
-                    className="w-full p-3 border border-gray-300 rounded-lg"
-                  />
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Email Address"
-                    value={formData.email}
-                    onChange={handleChange}
-                    required
-                    className="w-full p-3 border border-gray-300 rounded-lg"
-                  />
-                  <input
-                    type="tel"
-                    name="phone"
-                    placeholder="Phone Number"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="w-full p-3 border border-gray-300 rounded-lg"
-                  />
-                  <textarea
-                    name="message"
-                    placeholder="Tell us about your travel preferences and any questions you have..."
-                    value={formData.message}
-                    onChange={handleChange}
-                    rows={4}
-                    className="w-full p-3 border border-gray-300 rounded-lg"
-                  />
-                </div>
-                <div className="flex gap-4 mt-6">
-                  <button
-                    type="button"
-                    onClick={closeModal}
-                    className="flex-1 py-3 px-4 border border-gray-300 rounded-lg text-gray-700 hover:bg-gray-50"
-                  >
-                    Cancel
-                  </button>
+      {/* Quote Form Modal */}
+      {showQuoteForm && selectedCruise && (
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4 z-50">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            exit={{ opacity: 0, scale: 0.8 }}
+            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+          >
+            <div className="relative">
+              <button
+                onClick={closeQuoteForm}
+                className="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-2xl z-10"
+              >
+                ×
+              </button>
+              <div className="p-6">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4 text-center">
+                  Get a Quote for {selectedCruise.name}
+                </h2>
+                <form onSubmit={handleSubmit} className="space-y-4">
+                  <div>
+                    <label htmlFor="fullName" className="block text-sm font-medium text-gray-700">Full Name</label>
+                    <input
+                      type="text"
+                      id="fullName"
+                      name="fullName"
+                      value={formData.fullName}
+                      onChange={handleChange}
+                      required
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">Email Address</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-gray-700">Phone Number</label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="budget" className="block text-sm font-medium text-gray-700">Estimated Budget</label>
+                    <input
+                      type="number"
+                      id="budget"
+                      name="budget"
+                      value={formData.budget}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="numberOfAdults" className="block text-sm font-medium text-gray-700">Number of Adults</label>
+                    <input
+                      type="number"
+                      id="numberOfAdults"
+                      name="numberOfAdults"
+                      value={formData.numberOfAdults}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="numberOfChildren" className="block text-sm font-medium text-gray-700">Number of Children</label>
+                    <input
+                      type="number"
+                      id="numberOfChildren"
+                      name="numberOfChildren"
+                      value={formData.numberOfChildren}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="travelDates" className="block text-sm font-medium text-gray-700">Travel Dates</label>
+                    <input
+                      type="text"
+                      id="travelDates"
+                      name="travelDates"
+                      value={formData.travelDates}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="departureAirport" className="block text-sm font-medium text-gray-700">Departure Airport</label>
+                    <input
+                      type="text"
+                      id="departureAirport"
+                      name="departureAirport"
+                      value={formData.departureAirport}
+                      onChange={handleChange}
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="additionalInfo" className="block text-sm font-medium text-gray-700">Additional Information</label>
+                    <textarea
+                      id="additionalInfo"
+                      name="additionalInfo"
+                      value={formData.additionalInfo}
+                      onChange={handleChange}
+                      rows="4"
+                      className="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    />
+                  </div>
                   <button
                     type="submit"
-                    disabled={isSubmitting}
-                    className="flex-1 py-3 px-4 bg-blue-600 text-white rounded-lg hover:bg-blue-700 disabled:opacity-50"
+                    className="w-full bg-gradient-to-r from-teal-600 to-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:from-teal-700 hover:to-blue-700 transition-all duration-200 shadow-lg hover:shadow-xl"
                   >
-                    {isSubmitting ? 'Sending...' : 'Send Inquiry'}
+                    Submit Quote Request
                   </button>
-                </div>
-              </form>
+                </form>
+              </div>
             </div>
           </motion.div>
         </div>
