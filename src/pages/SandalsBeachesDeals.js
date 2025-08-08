@@ -158,19 +158,29 @@ function SandalsBeachesDeals() {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
             >
-              <div className="relative group">
+              <div className="relative group" onClick={(e) => {
+                if (e.target === e.currentTarget) {
+                  console.log('Container clicked:', deal.name);
+                  openImageModal(deal.image, deal.name);
+                }
+              }}>
                 <img
                   src={deal.image}
                   alt={deal.name}
                   className="w-full h-auto object-contain cursor-zoom-in hover:scale-105 transition-transform duration-300"
-                  onClick={() => openImageModal(deal.image, deal.name)}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    console.log('Image clicked:', deal.name);
+                    openImageModal(deal.image, deal.name);
+                  }}
                 />
-                <div className="absolute top-4 right-4">
+                <div className="absolute top-4 right-4 pointer-events-none">
                   <span className="bg-red-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
                     HOT DEAL
                   </span>
                 </div>
-                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center">
+                <div className="absolute inset-0 bg-black bg-opacity-0 hover:bg-opacity-20 transition-all duration-300 flex items-center justify-center pointer-events-none">
                   <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                     <div className="bg-white bg-opacity-95 rounded-lg px-4 py-3 text-sm font-bold text-gray-800 flex items-center space-x-2 shadow-lg">
                       <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -180,7 +190,7 @@ function SandalsBeachesDeals() {
                     </div>
                   </div>
                 </div>
-                <div className="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div className="absolute bottom-2 right-2 bg-black bg-opacity-50 text-white rounded-full p-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
                   <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
                   </svg>
