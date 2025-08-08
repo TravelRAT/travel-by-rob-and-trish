@@ -2,10 +2,11 @@ import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
-function Navbar() {
+function Navbar({ activePages = {} }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const navItems = [
+  // Define all possible navigation items with their paths
+  const allNavItems = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
     { name: 'Destinations', path: '/destinations' },
@@ -15,6 +16,9 @@ function Navbar() {
     { name: 'Need More Info', path: '/need-more-info' },
     { name: 'Contact', path: '/contact' },
   ];
+
+  // Filter navigation items to only show active pages
+  const navItems = allNavItems.filter(item => activePages[item.path]);
 
   return (
     <nav className="bg-white shadow-lg">

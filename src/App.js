@@ -20,32 +20,50 @@ import ExclusiveDeals from './pages/ExclusiveDeals';
 import Contact from './pages/Contact';
 import NeedMoreInfo from './pages/NeedMoreInfo';
 import Reviews from './pages/Reviews';
+import SandalsBeachesDeals from './pages/SandalsBeachesDeals';
+import PageExpirationAdmin from './components/PageExpirationAdmin';
+import { getActivePages } from './utils/pageExpiration';
 
+// Component mapping for dynamic routing
+const componentMap = {
+  'Home': Home,
+  'Destinations': Destinations,
+  'SandalsBeaches': SandalsBeaches,
+  'HardRock': HardRock,
+  'Secrets': Secrets,
+  'RIU': RIU,
+  'Breathless': Breathless,
+  'DisneyCruise': DisneyCruise,
+  'VikingRiverCruises': VikingRiverCruises,
+  'AdventuresOfDisney': AdventuresOfDisney,
+  'RoyalCaribbean': RoyalCaribbean,
+  'Ebooks': Ebooks,
+  'AboutUs': AboutUs,
+  'Packages': Packages,
+  'ExclusiveDeals': ExclusiveDeals,
+  'Contact': Contact,
+  'NeedMoreInfo': NeedMoreInfo,
+  'Reviews': Reviews,
+  'SandalsBeachesDeals': SandalsBeachesDeals,
+  'PageExpirationAdmin': PageExpirationAdmin,
+};
 
 function App() {
+  const activePages = getActivePages();
+
   return (
     <div className="min-h-screen flex flex-col">
-      <Navbar />
+      <Navbar activePages={activePages} />
       <main className="flex-grow">
         <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/destinations" element={<Destinations />} />
-          <Route path="/sandals-beaches" element={<SandalsBeaches />} />
-          <Route path="/hard-rock" element={<HardRock />} />
-          <Route path="/secrets" element={<Secrets />} />
-          <Route path="/riu" element={<RIU />} />
-          <Route path="/breathless" element={<Breathless />} />
-          <Route path="/disney-cruise" element={<DisneyCruise />} />
-          <Route path="/viking-river-cruises" element={<VikingRiverCruises />} />
-          <Route path="/adventures-of-disney" element={<AdventuresOfDisney />} />
-          <Route path="/royal-caribbean" element={<RoyalCaribbean />} />
-          <Route path="/ebooks" element={<Ebooks />} />
-          <Route path="/packages" element={<Packages />} />
-          <Route path="/exclusive-deals" element={<ExclusiveDeals />} />
-          <Route path="/need-more-info" element={<NeedMoreInfo />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/contact" element={<Contact />} />
-          <Route path="/reviews" element={<Reviews />} />
+          {Object.entries(activePages).map(([path, config]) => {
+            const Component = componentMap[config.component];
+            return Component ? (
+              <Route key={path} path={path} element={<Component />} />
+            ) : null;
+          })}
+          {/* Admin route - always accessible */}
+          <Route path="/admin/page-expiration" element={<PageExpirationAdmin />} />
         </Routes>
       </main>
       <Footer />

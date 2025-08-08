@@ -90,6 +90,31 @@ function Home() {
         </div>
       </div>
 
+      {/* Deals of the Week Banner */}
+      <section className="py-12 bg-gradient-to-r from-red-600 to-red-700">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5 }}
+            className="text-center"
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
+              ⏰ Limited Time Offers
+            </h2>
+            <p className="text-xl text-red-100 mb-8 max-w-2xl mx-auto">
+              Exclusive Sandals & Beaches deals available for a limited time only!
+            </p>
+            <Link
+              to="/sandals-beaches-deals"
+              className="inline-block bg-white text-red-600 px-8 py-4 rounded-lg text-xl font-bold hover:bg-red-50 transition-all duration-200 transform hover:-translate-y-1 shadow-lg hover:shadow-xl animate-pulse"
+            >
+              🎯 DEALS OF THE WEEK
+            </Link>
+          </motion.div>
+        </div>
+      </section>
+
       {/* Featured Destinations */}
       <section className="py-20 bg-gradient-to-b from-white to-blue-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
