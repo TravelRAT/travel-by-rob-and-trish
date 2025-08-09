@@ -17,6 +17,7 @@ function LeaveReview() {
     e.preventDefault();
 
     try {
+      console.log('Submitting review:', formData);
       const response = await fetch('/api/submit-review', {
         method: 'POST',
         headers: {

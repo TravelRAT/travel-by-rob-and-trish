@@ -94,6 +94,7 @@ app.post('/api/send-inquiry', async (req, res) => {
 });
 // API route for client review submissions
 app.post('/api/submit-review', async (req, res) => {
+  console.log('Received review submission:', req.body);
   const { to, subject, formData } = req.body;
   const { familyLastName, reviewText, rating } = formData;
 
