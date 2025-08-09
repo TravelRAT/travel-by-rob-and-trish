@@ -100,8 +100,8 @@ app.post('/api/submit-review', async (req, res) => {
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
-    to: process.env.EMAIL_USER,
-    subject: 'New Client Review Submission',
+    to: to || process.env.EMAIL_USER, // Use provided email or fallback to env
+    subject: subject || 'New Client Review Submission',
     html: `
       <h2>New Review Received</h2>
       <p><strong>Family Last Name:</strong> ${familyLastName}</p>
@@ -114,7 +114,13 @@ app.post('/api/submit-review', async (req, res) => {
   };
 
   try {
+    console.log('Attempting to send email with options:', {
+      ...mailOptions,
+      from: mailOptions.from ? '(set)' : '(not set)',
+      to: mailOptions.to ? '(set)' : '(not set)',
+    });
     await transporter.sendMail(mailOptions);
+    console.log('Email sent successfully');
     res.json({ success: true });
   } catch (error) {
     console.error('Error sending client review email:', error);
