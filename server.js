@@ -24,10 +24,10 @@ const transporter = nodemailer.createTransport({
 
 // API route for sending inquiry emails
 app.post('/api/send-inquiry', async (req, res) => {
-  const { to, subject, formData } = req.body;
+  const { to, subject, formData = {} } = req.body;
 
-  // Check if this is an ebook download request
-  const isEbookRequest = formData.ebook;
+  // Check if this is an ebook download request (safe access)
+  const isEbookRequest = Boolean(formData.ebook);
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
