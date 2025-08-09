@@ -94,7 +94,8 @@ app.post('/api/send-inquiry', async (req, res) => {
 });
 // API route for client review submissions
 app.post('/api/submit-review', async (req, res) => {
-  const { familyLastName, reviewText, rating } = req.body;
+  const { to, subject, formData } = req.body;
+  const { familyLastName, reviewText, rating } = formData;
 
   const mailOptions = {
     from: process.env.EMAIL_USER,
