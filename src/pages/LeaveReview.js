@@ -18,7 +18,7 @@ function LeaveReview() {
 
     try {
       console.log('Submitting review:', formData);
-      const response = await fetch('/api/submit-review', {
+      const response = await fetch('/api/send-inquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
