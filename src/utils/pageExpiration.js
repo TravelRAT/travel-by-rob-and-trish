@@ -94,6 +94,11 @@ export const pageConfig = {
     expirationDate: null,
     displayName: 'Reviews'
   },
+  '/leave-review': {
+    component: 'LeaveReview',
+    expirationDate: null,
+    displayName: 'Leave a Review'
+  },
   '/sandals-beaches-deals': { 
     component: 'SandalsBeachesDeals', 
     expirationDate: '2025-08-12', // Expires August 12, 2025 at 23:00

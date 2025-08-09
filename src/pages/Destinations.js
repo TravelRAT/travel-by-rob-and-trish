@@ -28,6 +28,7 @@ function Destinations() {
       id: 1,
       name: 'Magical Disney World',
       region: 'theme-parks',
+      type: 'Theme Parks',
       description: 'Experience the magic where dreams come true! From enchanting castle shows to thrilling rides and character meetings.',
       gradient: 'from-purple-500 to-pink-500',
       features: ['4 Theme Parks', 'Character Dining', 'Disney Resort Stay', 'Park Hopper Option'],
@@ -41,6 +42,7 @@ function Destinations() {
       id: 15,
       name: 'Disneyland',
       region: 'theme-parks',
+      type: 'Theme Parks',
       description: 'Experience the magic where dreams come true! From enchanting castle shows to thrilling rides and character meetings.',
       gradient: 'from-purple-500 to-pink-500',
       features: ['2 Theme Parks', 'Character Dining', 'Disney Resort Stay', 'Park Hopper Option'],
@@ -54,6 +56,7 @@ function Destinations() {
       id: 2,
       name: 'Universal Orlando',
       region: 'theme-parks',
+      type: 'Theme Parks',
       description: 'Experience Epic Universe and the Wizarding World! Four incredible theme parks with thrilling attractions.',
       gradient: 'from-blue-500 to-indigo-500',
       features: ['4 Theme Parks', 'Epic Universe', 'Wizarding World', 'Express Pass Option'],
@@ -65,6 +68,7 @@ function Destinations() {
       id: 3,
       name: 'Disney Cruises',
       region: 'cruise',
+      type: 'Cruises',
       description: 'Magical voyages with Disney characters, Broadway-style shows, and enchanted family adventures at sea.',
       gradient: 'from-purple-500 to-pink-500',
       features: ['Disney Characters', 'Broadway Shows', 'Kids Clubs', 'Private Island'],
@@ -78,6 +82,7 @@ function Destinations() {
       id: 4,
       name: 'Carnival Cruise',
       region: 'cruise',
+      type: 'Cruises',
       description: 'Fun-filled adventures with world-class entertainment, dining, and exciting ports of call.',
       gradient: 'from-red-500 to-orange-500',
       features: ['Multiple Destinations', 'Onboard Entertainment', 'Dining Options', 'Family Activities'],
@@ -89,6 +94,7 @@ function Destinations() {
       id: 5,
       name: 'Virgin Cruise',
       region: 'cruise',
+      type: 'Cruises',
       description: 'Adults-only luxury with innovative dining, cutting-edge entertainment, and stunning ocean views.',
       gradient: 'from-pink-500 to-red-500',
       features: ['Adults Only', 'Premium Dining', 'Innovative Entertainment', 'Luxury Suites'],
@@ -100,6 +106,7 @@ function Destinations() {
       id: 7,
       name: 'Sandals Resorts',
       region: 'beach',
+      type: 'Beach Resorts',
       description: 'Adults-only luxury all-inclusive resorts in the Caribbean\'s most beautiful destinations.',
       gradient: 'from-teal-500 to-blue-600',
       features: ['Adults Only', 'All-Inclusive', 'Caribbean Locations', 'Butler Service'],
@@ -112,6 +119,7 @@ function Destinations() {
       id: 8,
       name: 'Beaches Resorts',
       region: 'beach',
+      type: 'Beach Resorts',
       description: 'Family-friendly all-inclusive resorts with supervised kids programs and endless activities.',
       gradient: 'from-orange-500 to-pink-500',
       features: ['Family Friendly', 'Kids Programs', 'Water Parks', 'All-Inclusive'],
@@ -124,6 +132,7 @@ function Destinations() {
       id: 9,
       name: 'Secrets Resorts',
       region: 'beach',
+      type: 'Beach Resorts',
       description: 'Adults-only elegance with unlimited luxury and sophisticated amenities in stunning locations.',
       gradient: 'from-purple-500 to-indigo-600',
       features: ['Adults Only', 'Unlimited Luxury', 'Premium Dining', 'Spa Services'],
@@ -136,6 +145,7 @@ function Destinations() {
       id: 10,
       name: 'Breathless Resorts',
       region: 'beach',
+      type: 'Beach Resorts',
       description: 'Vibrant adults-only resorts with energetic atmosphere, entertainment, and modern luxury.',
       gradient: 'from-red-500 to-pink-600',
       features: ['Adults Only', 'Vibrant Atmosphere', 'Entertainment', 'Modern Luxury'],
@@ -148,6 +158,7 @@ function Destinations() {
       id: 11,
       name: 'Iberostar Resorts',
       region: 'beach',
+      type: 'Beach Resorts',
       description: 'Premium all-inclusive resorts combining comfort, gastronomy, and sustainability worldwide.',
       gradient: 'from-green-500 to-teal-600',
       features: ['All-Inclusive', 'Premium Comfort', 'Sustainable Tourism', 'Global Locations'],
@@ -159,6 +170,7 @@ function Destinations() {
       id: 12,
       name: 'Riu Hotels & Resorts',
       region: 'beach',
+      type: 'Beach Resorts',
       description: 'All-inclusive beach resorts offering fun, quality, and value in tropical paradise settings.',
       gradient: 'from-blue-500 to-cyan-600',
       features: ['All-Inclusive', 'Beach Locations', 'Family & Adults', 'Entertainment Programs'],
@@ -171,6 +183,7 @@ function Destinations() {
       id: 13,
       name: 'Hard Rock Hotels',
       region: 'beach',
+      type: 'Beach Resorts',
       description: 'Rock-inspired luxury resorts with music-themed experiences and world-class amenities.',
       gradient: 'from-gray-700 to-red-600',
       features: ['Music Themed', 'Luxury Amenities', 'Rock Star Service', 'Live Entertainment'],
@@ -183,6 +196,7 @@ function Destinations() {
       id: 16,
       name: 'Viking River Cruises',
       region: 'cruise',
+      type: 'Cruises',
       description: 'Explore the world\'s great rivers in comfort and style. From the castles of the Rhine to ancient temples of the Mekong.',
       gradient: 'from-blue-500 to-teal-500',
       features: ['Historic Waterways', 'Cultural Immersion', 'All-Inclusive', 'Small Ship Experience'],
@@ -195,6 +209,7 @@ function Destinations() {
       id: 17,
       name: 'Adventures by Disney',
       region: 'adventure',
+      type: 'Adventures',
       description: 'Experience guided group vacations to amazing destinations around the world with Disney storytelling and service.',
       gradient: 'from-purple-500 to-pink-500',
       features: ['Expert Disney Guides', 'Cultural Immersion', 'Family Adventures', 'VIP Experiences'],
@@ -207,6 +222,7 @@ function Destinations() {
       id: 18,
       name: 'Royal Caribbean',
       region: 'cruise',
+      type: 'Cruises',
       description: 'Experience the world\'s most innovative cruise ships with revolutionary features, world-class entertainment, and unforgettable adventures.',
       gradient: 'from-blue-500 to-indigo-500',
       features: ['Innovative Ships', 'World-Class Entertainment', 'Family Adventures', 'Private Islands'],
@@ -228,6 +244,21 @@ function Destinations() {
   const filteredDestinations = selectedRegion === 'all'
     ? destinations
     : destinations.filter(dest => dest.region === selectedRegion);
+
+  // Group destinations by type and sort by name within each group
+  const groupedDestinations = filteredDestinations.reduce((groups, destination) => {
+    const type = destination.type;
+    if (!groups[type]) {
+      groups[type] = [];
+    }
+    groups[type].push(destination);
+    return groups;
+  }, {});
+
+  // Sort destinations within each group by name
+  Object.keys(groupedDestinations).forEach(type => {
+    groupedDestinations[type].sort((a, b) => a.name.localeCompare(b.name));
+  });
 
   const openModal = (destination) => {
     setSelectedDestination(destination);
@@ -351,32 +382,42 @@ function Destinations() {
         </div>
 
         {/* Interactive Bubbles Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
-          {filteredDestinations.map((destination, index) => (
-            <motion.div
-              key={destination.id}
-              initial={{ opacity: 0, scale: 0.8 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group cursor-pointer"
-              onClick={() => openModal(destination)}
-            >
-              <div className="relative w-48 h-48 mx-auto">
-                <div className="w-full h-full rounded-full overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
-                  <img
-                    src={destination.image}
-                    alt={destination.name}
-                    className="w-full h-full object-cover"
-                  />
-                  <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <h3 className="text-white text-lg font-bold text-center px-4 text-shadow-lg">
-                      {destination.name}
-                    </h3>
-                  </div>
-                </div>
+        <div className="space-y-12">
+          {Object.entries(groupedDestinations).map(([type, destinations], groupIndex) => (
+            <div key={type}>
+              <h3 className="text-2xl font-bold text-gray-900 mb-6 text-center">{type}</h3>
+              <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-8">
+                {destinations.map((destination, index) => (
+                  <motion.div
+                    key={destination.id}
+                    initial={{ opacity: 0, scale: 0.8 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    className="group cursor-pointer"
+                    onClick={() => openModal(destination)}
+                  >
+                    <div className="relative w-48 h-48 mx-auto">
+                      <div className="w-full h-full rounded-full overflow-hidden shadow-lg hover:shadow-2xl transform hover:scale-105 transition-all duration-300">
+                        <img
+                          src={destination.image}
+                          alt={destination.name}
+                          className="w-full h-full object-cover"
+                        />
+                        <div className="absolute inset-0 bg-black bg-opacity-40 group-hover:bg-opacity-30 transition-all duration-300"></div>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <h3 className="text-white text-lg font-bold text-center px-4 text-shadow-lg">
+                            {destination.name}
+                          </h3>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            </motion.div>
+              {groupIndex < Object.keys(groupedDestinations).length - 1 && (
+                <div className="mt-12 mb-8 border-t border-gray-200"></div>
+              )}
+            </div>
           ))}
         </div>
 
@@ -446,12 +487,23 @@ function Destinations() {
 
               <div className="flex space-x-4">
                 {selectedDestination.link && (
-                  <Link
-                    to={selectedDestination.link}
-                    className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg text-center"
-                  >
-                    Learn More
-                  </Link>
+                  selectedDestination.external ? (
+                    <a
+                      href={selectedDestination.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg text-center"
+                    >
+                      Learn More
+                    </a>
+                  ) : (
+                    <Link
+                      to={selectedDestination.link}
+                      className="flex-1 bg-gradient-to-r from-blue-600 to-blue-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-blue-700 hover:to-blue-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg text-center"
+                    >
+                      Learn More
+                    </Link>
+                  )
                 )}
                 <button
                   onClick={openQuoteForm}

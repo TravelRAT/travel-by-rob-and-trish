@@ -20,6 +20,7 @@ import ExclusiveDeals from './pages/ExclusiveDeals';
 import Contact from './pages/Contact';
 import NeedMoreInfo from './pages/NeedMoreInfo';
 import Reviews from './pages/Reviews';
+import LeaveReview from './pages/LeaveReview';
 import SandalsBeachesDeals from './pages/SandalsBeachesDeals';
 import PageExpirationAdmin from './components/PageExpirationAdmin';
 import { getActivePages } from './utils/pageExpiration';
@@ -44,6 +45,7 @@ const componentMap = {
   'Contact': Contact,
   'NeedMoreInfo': NeedMoreInfo,
   'Reviews': Reviews,
+  'LeaveReview': LeaveReview,
   'SandalsBeachesDeals': SandalsBeachesDeals,
   'PageExpirationAdmin': PageExpirationAdmin,
 };

@@ -15,6 +15,7 @@ function Navbar({ activePages = {} }) {
     { name: 'Reviews', path: '/reviews' },
     { name: 'Need More Info', path: '/need-more-info' },
     { name: 'Contact', path: '/contact' },
+    { name: 'Leave a Review', path: '/leave-review', cta: true },
   ];
 
   // Filter navigation items to only show active pages
@@ -37,16 +38,29 @@ function Navbar({ activePages = {} }) {
           </div>
 
           {/* Desktop menu */}
-          <div className="hidden md:flex items-center space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
-              >
-                {item.name}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center space-x-6">
+            {navItems
+              .filter((item) => !item.cta)
+              .map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium transition-colors"
+                >
+                  {item.name}
+                </Link>
+              ))}
+            {navItems
+              .filter((item) => item.cta)
+              .map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="ml-2 bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-md text-sm font-semibold hover:from-blue-700 hover:to-indigo-700 transition-colors shadow"
+                >
+                  {item.name}
+                </Link>
+              ))}
           </div>
 
           {/* Mobile menu button */}
@@ -69,16 +83,30 @@ function Navbar({ activePages = {} }) {
       {isOpen && (
         <div className="md:hidden">
           <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                to={item.path}
-                className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium"
-                onClick={() => setIsOpen(false)}
-              >
-                {item.name}
-              </Link>
-            ))}
+            {navItems
+              .filter((item) => !item.cta)
+              .map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="block text-gray-700 hover:text-blue-600 px-3 py-2 rounded-md text-base font-medium"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            {navItems
+              .filter((item) => item.cta)
+              .map((item) => (
+                <Link
+                  key={item.name}
+                  to={item.path}
+                  className="mt-2 block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-4 py-2 rounded-md text-base font-semibold hover:from-blue-700 hover:to-indigo-700 transition-colors shadow"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.name}
+                </Link>
+              ))}
           </div>
         </div>
       )}
