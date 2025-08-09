@@ -22,7 +22,11 @@ function LeaveReview() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          to: 'r.whitehair@magicalvacationplanner.com',
+          subject: 'New Client Review',
+          formData
+        }),
       });
 
       if (!response.ok) {
