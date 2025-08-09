@@ -13,12 +13,28 @@ function LeaveReview() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Placeholder: send to backend/service if available
-    console.log('New review submitted:', formData);
-    alert('Thank you for your review! We truly appreciate your feedback.');
-    setFormData({ familyLastName: '', reviewText: '', rating: '5' });
+
+    try {
+      const response = await fetch('/api/submit-review', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (!response.ok) {
+        throw new Error('Network response was not ok');
+      }
+
+      setFormData({ familyLastName: '', reviewText: '', rating: '5' });
+      alert('Thank you for your review! We truly appreciate your feedback.');
+    } catch (error) {
+      console.error('Error submitting review:', error);
+      alert('Sorry, there was a problem submitting your review. Please try again later.');
+    }
   };
 
   return (

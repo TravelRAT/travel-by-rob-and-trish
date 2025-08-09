@@ -92,7 +92,33 @@ app.post('/api/send-inquiry', async (req, res) => {
     res.status(500).json({ error: 'Failed to send email' });
   }
 });
+// API route for client review submissions
+app.post('/api/submit-review', async (req, res) => {
+  const { familyLastName, reviewText, rating } = req.body;
 
+  const mailOptions = {
+    from: process.env.EMAIL_USER,
+    to: process.env.EMAIL_USER,
+    subject: 'New Client Review Submission',
+    html: `
+      <h2>New Review Received</h2>
+      <p><strong>Family Last Name:</strong> ${familyLastName}</p>
+      <p><strong>Star Rating:</strong> ${rating}/5</p>
+      <h3>Review:</h3>
+      <p>${reviewText}</p>
+      <hr style="margin: 20px 0;">
+      <p>This review was submitted via the Leave a Review form on the website.</p>
+    `,
+  };
+
+  try {
+    await transporter.sendMail(mailOptions);
+    res.json({ success: true });
+  } catch (error) {
+    console.error('Error sending client review email:', error);
+    res.status(500).json({ error: 'Failed to send review' });
+  }
+});
 // API route for giveaway entry
 app.post('/api/giveaway-entry', async (req, res) => {
   const { firstName, lastName, zip, email } = req.body;
