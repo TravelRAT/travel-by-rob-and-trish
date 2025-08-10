@@ -23,11 +23,27 @@ function LeaveReview() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          to: 'r.whitehair@magicalvacationplanner.com',
-          subject: 'New Client Review',
-          formData
-        }),
+                  body: JSON.stringify({
+            to: 'r.whitehair@magicalvacationplanner.com',
+            subject: 'New Client Review',
+            formData: {
+              fullName: formData.familyLastName,
+              message: `Rating: ${formData.rating}/5 stars\n\nReview:\n${formData.reviewText}`,
+              // Include empty fields to prevent undefined
+              email: '',
+              phone: '',
+              address: '',
+              city: '',
+              state: '',
+              zipCode: '',
+              vacationType: '',
+              budget: '',
+              numberOfAdults: '',
+              numberOfChildren: '',
+              departureAirport: '',
+              additionalInfo: ''
+            }
+          }),
       });
 
       if (!response.ok) {
