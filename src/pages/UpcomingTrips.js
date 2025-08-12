@@ -45,10 +45,74 @@ function UpcomingTrips() {
               <div className="w-12 h-12 bg-gradient-to-r from-blue-500 to-teal-500 rounded-full flex items-center justify-center mr-4">
                 <span className="text-white text-2xl">🚢</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Featured Trip: Viking River Cruise</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800">Featured Trips</h2>
             </div>
             
-            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+            <div className="prose prose-lg max-w-none text-gray-700 leading-relaxed space-y-8">
+              {/* Orlando Sampler Trip */}
+              <div className="bg-gradient-to-r from-purple-50 to-pink-50 rounded-xl p-8 mb-8">
+                <h3 className="text-2xl font-bold text-purple-800 mb-4">Orlando Theme Park Sampler</h3>
+                <div className="grid md:grid-cols-2 gap-8">
+                  <div>
+                    <ul className="space-y-4">
+                      <li className="flex items-start">
+                        <span className="text-purple-500 mr-3">📅</span>
+                        <div>
+                          <strong>Dates:</strong>
+                          <ul className="mt-2 space-y-2">
+                            <li>• Disney World: Oct 11-15, 2025</li>
+                            <li>• Universal Orlando: Oct 15-18, 2025</li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-purple-500 mr-3">⏱️</span>
+                        <div>
+                          <strong>Duration:</strong> 7 Days Total
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-purple-500 mr-3">🎢</span>
+                        <div>
+                          <strong>Parks Included:</strong>
+                          <ul className="mt-2 space-y-2">
+                            <li>• All 4 Disney World Parks</li>
+                            <li>• All 3 Universal Parks (including EPIC Universe)</li>
+                          </ul>
+                        </div>
+                      </li>
+                      <li className="flex items-start">
+                        <span className="text-purple-500 mr-3">✨</span>
+                        <div>
+                          <strong>Highlights:</strong>
+                          <ul className="mt-2 space-y-2">
+                            <li>• Experience the NEW Universal Epic Universe</li>
+                            <li>• Visit all major Orlando theme parks</li>
+                            <li>• Group activities and meetups</li>
+                            <li>• Expert park guidance and tips</li>
+                          </ul>
+                        </div>
+                      </li>
+                    </ul>
+                  </div>
+                  <div>
+                    <p className="text-lg mb-6">
+                      Join us for the ultimate Orlando theme park adventure! Experience the magic of Disney World and the excitement of Universal Orlando, including the brand new Epic Universe park.
+                    </p>
+                    <p className="text-lg mb-6">
+                      This carefully planned trip lets you experience the best of both Disney and Universal, with expert guidance from Rob and Trish to help you make the most of your time at each park.
+                    </p>
+                    <Link
+                      to="/need-more-info"
+                      className="inline-block bg-gradient-to-r from-purple-600 to-pink-600 text-white px-6 py-3 rounded-xl text-base font-semibold hover:from-purple-700 hover:to-pink-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                    >
+                      Join Us in Orlando
+                    </Link>
+                  </div>
+                </div>
+              </div>
+
+              {/* Viking River Cruise Trip */}
               <div className="bg-gradient-to-r from-blue-50 to-teal-50 rounded-xl p-8 mb-8">
                 <h3 className="text-2xl font-bold text-blue-800 mb-4">Rhine & Main River Cruise</h3>
                 <div className="grid md:grid-cols-2 gap-8">
