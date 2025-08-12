@@ -89,6 +89,11 @@ export const pageConfig = {
     expirationDate: null,
     displayName: 'Contact'
   },
+  '/upcoming-trips': {
+    component: 'UpcomingTrips',
+    expirationDate: null,
+    displayName: 'Upcoming Trips'
+  },
   '/reviews': { 
     component: 'Reviews', 
     expirationDate: null,

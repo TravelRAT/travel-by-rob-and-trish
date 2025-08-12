@@ -189,9 +189,19 @@ function Footer() {
           </div>
         </div>
 
-        <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
-          <p>&copy; {new Date().getFullYear()} Travel by Rob and Trish. All rights reserved.</p>
-        </div>
+                  {/* Contact Button Section */}
+          <div className="mt-12 text-center">
+            <Link
+              to="/need-more-info"
+              className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-xl text-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+            >
+              Contact Us About Your Next Adventure
+            </Link>
+          </div>
+
+          <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+            <p>&copy; {new Date().getFullYear()} Travel by Rob and Trish. All rights reserved.</p>
+          </div>
       </div>
     </footer>
   );

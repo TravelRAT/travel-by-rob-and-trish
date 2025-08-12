@@ -9,12 +9,12 @@ function Navbar({ activePages = {} }) {
   const allNavItems = [
     { name: 'Home', path: '/' },
     { name: 'About Us', path: '/about' },
+    { name: 'Upcoming Trips', path: '/upcoming-trips' },
     { name: 'Destinations', path: '/destinations' },
     { name: 'Exclusive Deals', path: '/exclusive-deals' },
     { name: 'Free Guides', path: '/ebooks' },
     { name: 'Reviews', path: '/reviews' },
     { name: 'Need More Info', path: '/need-more-info' },
-    { name: 'Contact', path: '/contact' },
     { name: 'Leave a Review', path: '/leave-review', cta: true },
   ];
 
