@@ -18,19 +18,13 @@ function SandalsBeachesDeals() {
     { id: 1, image: '/images/s1.jpeg', name: 'Sandals Royal Caribbean', location: 'Montego Bay, Jamaica' },
     { id: 2, image: '/images/s2.jpeg', name: 'Sandals Negril', location: 'Negril, Jamaica' },
     { id: 3, image: '/images/s3.jpeg', name: 'Sandals Ochi', location: 'Ocho Rios, Jamaica' },
-    { id: 4, image: '/images/s4.jpeg', name: 'Sandals South Coast', location: 'White House, Jamaica' },
+    { id: 4, image: '/images/s4.jpg', name: 'Sandals South Coast', location: 'White House, Jamaica' },
     { id: 5, image: '/images/s5.jpeg', name: 'Sandals Montego Bay', location: 'Montego Bay, Jamaica' },
     { id: 6, image: '/images/s6.jpeg', name: 'Sandals Grande St. Lucian', location: 'Gros Islet, St. Lucia' },
     { id: 7, image: '/images/s7.jpeg', name: 'Sandals Halcyon Beach', location: 'Castries, St. Lucia' },
     { id: 8, image: '/images/s8.jpeg', name: 'Sandals LaSource Grenada', location: 'St. George\'s, Grenada' },
     { id: 9, image: '/images/s9.jpeg', name: 'Sandals Royal Bahamian', location: 'Nassau, Bahamas' },
     { id: 10, image: '/images/s10.jpeg', name: 'Sandals Emerald Bay', location: 'Great Exuma, Bahamas' },
-    { id: 11, image: '/images/s11.jpeg', name: 'Sandals Barbados', location: 'St. Lawrence Gap, Barbados' },
-    { id: 12, image: '/images/s12.jpeg', name: 'Sandals Royal Barbados', location: 'St. Lawrence Gap, Barbados' },
-    { id: 13, image: '/images/s13.jpeg', name: 'Beaches Turks & Caicos', location: 'Providenciales, Turks & Caicos' },
-    { id: 14, image: '/images/s14.jpeg', name: 'Beaches Negril', location: 'Negril, Jamaica' },
-    { id: 15, image: '/images/s15.jpeg', name: 'Beaches Ocho Rios', location: 'Ocho Rios, Jamaica' },
-    { id: 16, image: '/images/s16.jpeg', name: 'Beaches South Coast', location: 'White House, Jamaica' },
   ];
 
   const openEmailForm = (deal) => {
