@@ -183,7 +183,7 @@ function ExclusiveDeals() {
               
               <div className="p-6">
                 <h4 className="text-xl font-bold text-gray-900 mb-3">
-                  Octantis Penguins Shoreline Antarctica
+                  Viking River Cruise - Octantis Penguins Shoreline Antarctica
                 </h4>
                 <p className="text-gray-600 italic mb-4">Natural splendor awaits</p>
                 
