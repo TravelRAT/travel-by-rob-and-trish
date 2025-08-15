@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 function ExclusiveDeals() {
@@ -9,6 +9,29 @@ function ExclusiveDeals() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [submitError, setSubmitError] = useState('');
+
+  // Change document title and favicon when component mounts
+  useEffect(() => {
+    const originalTitle = document.title;
+    const originalFavicon = document.querySelector('link[rel="icon"]')?.href;
+    
+    // Set Viking-themed title and favicon
+    document.title = 'Viking Octantis Antarctica Deal - Travel by Rob and Trish';
+    
+    // Create a new favicon link element
+    const favicon = document.querySelector('link[rel="icon"]');
+    if (favicon) {
+      favicon.href = '/images/s6.jpeg'; // Using a Sandals image as placeholder for Viking
+    }
+    
+    // Cleanup function to restore original title and favicon when component unmounts
+    return () => {
+      document.title = originalTitle;
+      if (favicon && originalFavicon) {
+        favicon.href = originalFavicon;
+      }
+    };
+  }, []);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -155,7 +178,6 @@ function ExclusiveDeals() {
                 </div>
                 <div className="space-y-2 text-lg">
                   <p className="font-semibold">FREE International Airfare* | Reduced Fares</p>
-                  <p className="text-red-100">Ask for offer EFP25</p>
                 </div>
               </div>
               
@@ -180,7 +202,7 @@ function ExclusiveDeals() {
                 
                 <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
                   <p className="text-sm text-yellow-800">
-                    <strong>Offer Code:</strong> EFP25 | <strong>Expires:</strong> August 31, 2025
+                    <strong>Expires:</strong> August 31, 2025
                   </p>
                 </div>
               </div>
