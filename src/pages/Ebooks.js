@@ -416,10 +416,10 @@ function Ebooks() {
                 >
                   <div className={`absolute inset-0 ${ebook.image ? 'bg-black bg-opacity-40' : ''} flex items-end justify-center pb-6`}>
                     <div className="text-center px-4">
-                      <h3 className="text-xl font-bold text-white text-shadow-lg mb-1">
+                      <h3 className="text-lg font-bold text-white text-shadow-lg mb-1 leading-tight">
                         {ebook.title}
                       </h3>
-                      <p className="text-white text-sm opacity-90 mb-2">
+                      <p className="text-white text-xs opacity-90 mb-2">
                         by {ebook.author}
                       </p>
                       <div className="bg-white bg-opacity-90 px-3 py-1 rounded-full text-sm font-semibold text-gray-800 inline-block">
@@ -433,17 +433,17 @@ function Ebooks() {
               <div className="p-6 flex flex-col h-full bg-blue-50">
                 <div className="flex-grow">
                   <div className="flex justify-between items-center mb-2">
-                    <span className="text-sm text-gray-500">{ebook.pages}</span>
-                    <span className="text-sm text-gray-500">{ebook.format}</span>
+                    <span className="text-xs text-gray-500">{ebook.pages}</span>
+                    <span className="text-xs text-gray-500">{ebook.format}</span>
                   </div>
-                  <p className="text-gray-600 mb-4">{ebook.description}</p>
-                  <div className="space-y-3">
+                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">{ebook.description}</p>
+                  <div className="space-y-2">
                     {ebook.features.map((feature, idx) => (
-                      <div key={idx} className="flex items-center text-gray-700">
-                        <svg className="w-5 h-5 text-teal-500 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <div key={idx} className="flex items-center text-gray-700 text-sm">
+                        <svg className="w-4 h-4 text-teal-500 mr-2 flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                         </svg>
-                        {feature}
+                        <span className="leading-tight">{feature}</span>
                       </div>
                     ))}
                   </div>
