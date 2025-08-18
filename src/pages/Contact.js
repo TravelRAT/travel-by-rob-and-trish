@@ -43,7 +43,7 @@ function Contact() {
         >
           <div className="flex items-center justify-center mb-8">
             <img 
-              src="/images/web-logo.png" 
+              src="/images/NewLogo.png" 
               alt="Travel by Rob and Trish" 
               className="h-24 w-auto object-contain"
               style={{ maxWidth: '280px' }}

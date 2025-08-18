@@ -29,7 +29,7 @@ function Navbar({ activePages = {} }) {
             {/* Logo */}
             <Link to="/" className="flex-shrink-0 flex items-center">
               <img 
-                src="/images/web-logo.png" 
+                src="/images/NewLogo.png" 
                 alt="Travel by Rob and Trish" 
                 className="h-16 w-auto object-contain"
                 style={{ maxWidth: '200px' }}

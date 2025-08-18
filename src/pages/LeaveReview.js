@@ -68,7 +68,7 @@ function LeaveReview() {
           className="text-center mb-10"
         >
           <img
-            src="/images/web-logo.png"
+                          src="/images/NewLogo.png"
             alt="Magical Vacation Planner by Rob & Trish"
             className="h-20 w-auto mx-auto mb-4 object-contain"
             style={{ maxWidth: '260px' }}
