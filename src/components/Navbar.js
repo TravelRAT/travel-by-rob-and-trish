@@ -15,7 +15,6 @@ function Navbar({ activePages = {} }) {
     { name: 'Free Guides', path: '/ebooks' },
     { name: 'Reviews', path: '/reviews' },
     { name: 'Need More Info', path: '/need-more-info' },
-    { name: 'Leave a Review', path: '/leave-review', cta: true },
   ];
 
   // Filter navigation items to only show active pages

@@ -189,12 +189,20 @@ function Reviews() {
           <h2 className="text-3xl font-bold text-gray-900 mb-8">
             Ready to Create Your Own Travel Story?
           </h2>
-          <a
-            href="/need-more-info"
-            className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl"
-          >
-            Start Planning Your Dream Vacation
-          </a>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <a
+              href="/need-more-info"
+              className="inline-block bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-blue-700 hover:to-indigo-700 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              Start Planning Your Dream Vacation
+            </a>
+            <a
+              href="/leave-review"
+              className="inline-block bg-gradient-to-r from-green-600 to-green-700 text-white px-8 py-4 rounded-lg text-lg font-semibold hover:from-green-700 hover:to-green-800 transform hover:-translate-y-1 transition-all duration-200 shadow-lg hover:shadow-xl"
+            >
+              Leave a Review
+            </a>
+          </div>
         </motion.div>
       </div>
     </div>

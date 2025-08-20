@@ -150,80 +150,13 @@ function ExclusiveDeals() {
           </div>
         </motion.div>
 
-        {/* Current Deals Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.3 }}
-          className="mb-16"
-        >
-          <h2 className="text-4xl font-bold text-gray-900 mb-8 text-center">
-            Current Exclusive Deals
-          </h2>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Deal Card 1 - Viking Octantis */}
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 0.6, delay: 0.4 }}
-              className="bg-white rounded-2xl overflow-hidden shadow-xl border-2 border-red-100 hover:shadow-2xl transform hover:-translate-y-2 transition-all duration-300"
-            >
-              <div className="bg-gradient-to-r from-red-600 to-red-700 text-white p-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-2xl font-bold">Limited-Time Savings</h3>
-                  <span className="bg-yellow-400 text-red-800 px-3 py-1 rounded-full text-sm font-bold animate-pulse">
-                    EXPIRES 8/31/2025
-                  </span>
-                </div>
-                <div className="space-y-2 text-lg">
-                  <p className="font-semibold">FREE International Airfare* | Reduced Fares</p>
-                </div>
-              </div>
-              
-              <div className="p-6">
-                <h4 className="text-xl font-bold text-gray-900 mb-3">
-                  Viking River Cruise - Octantis Penguins Shoreline Antarctica
-                </h4>
-                <p className="text-gray-600 italic mb-4">Natural splendor awaits</p>
-                
-                <p className="text-gray-700 mb-6 leading-relaxed">
-                  For a limited time, take advantage of FREE international airfare and reduced fares on an enriching voyage of discovery to Canada, South America or Antarctica. From the cascading waterfalls of Quebec to the breathtaking glaciers of the "White Continent," you can explore some of the world's most stunning landscapes when you join us on one of the all-inclusive expedition voyages featured below. Reserve your stateroom today and prepare to experience nature's wonders up close—all while sailing in Viking comfort.
-                </p>
-                
-                <div className="flex flex-col sm:flex-row gap-3">
-                  <button className="flex-1 bg-gradient-to-r from-red-600 to-red-700 text-white px-6 py-3 rounded-lg font-semibold hover:from-red-700 hover:to-red-800 transform hover:-translate-y-0.5 transition-all duration-200 shadow-md hover:shadow-lg">
-                    Get This Deal
-                  </button>
-                  <button className="flex-1 bg-gray-100 text-gray-700 px-6 py-3 rounded-lg font-semibold hover:bg-gray-200 transition-all duration-200">
-                    Learn More
-                  </button>
-                </div>
-                
-                <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-                  <p className="text-sm text-yellow-800">
-                    <strong>Expires:</strong> August 31, 2025
-                  </p>
-                </div>
-              </div>
-            </motion.div>
-            
-            {/* Placeholder for additional deal cards */}
-            <div className="bg-gray-50 rounded-2xl border-2 border-dashed border-gray-300 flex items-center justify-center min-h-[400px]">
-              <div className="text-center text-gray-500">
-                <div className="text-4xl mb-4">🎯</div>
-                <p className="text-lg font-semibold">More Deals Coming Soon</p>
-                <p className="text-sm">Join our exclusive deals program to be the first to know!</p>
-              </div>
-            </div>
-          </div>
-        </motion.div>
+
 
         {/* Signup Form Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 0.5 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
           className="bg-white rounded-2xl p-8 shadow-xl border-2 border-teal-100"
         >
           <div className="text-center mb-8">
