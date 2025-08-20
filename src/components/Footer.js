@@ -65,8 +65,8 @@ function Footer() {
               <img 
                 src="/images/Logo Trans.png" 
                 alt="Travel by Rob and Trish" 
-                className="h-20 w-auto object-contain"
-                style={{ maxWidth: '240px' }}
+                className="h-12 w-auto object-contain"
+                style={{ maxWidth: '160px' }}
               />
             </div>
             <p className="text-gray-300">
