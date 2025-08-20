@@ -106,7 +106,7 @@ export const pageConfig = {
   },
   '/sandals-beaches-deals': { 
     component: 'SandalsBeachesDeals', 
-    expirationDate: '2025-08-20', // Expires August 20, 2025 at 23:59
+    expirationDate: '2025-08-26', // Expires August 26, 2025 at 23:00
     displayName: 'Deals of the Week'
   },
 };

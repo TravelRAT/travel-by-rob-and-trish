@@ -15,16 +15,16 @@ function SandalsBeachesDeals() {
   });
 
   const deals = [
-    { id: 1, image: '/images/s1.jpeg', name: 'Sandals Royal Caribbean', location: 'Montego Bay, Jamaica' },
-    { id: 2, image: '/images/s2.jpeg', name: 'Sandals Negril', location: 'Negril, Jamaica' },
-    { id: 3, image: '/images/s3.jpeg', name: 'Sandals Ochi', location: 'Ocho Rios, Jamaica' },
-    { id: 4, image: '/images/s4.jpg', name: 'Sandals South Coast', location: 'White House, Jamaica' },
-    { id: 5, image: '/images/s5.jpeg', name: 'Sandals Montego Bay', location: 'Montego Bay, Jamaica' },
-    { id: 6, image: '/images/s6.jpeg', name: 'Sandals Grande St. Lucian', location: 'Gros Islet, St. Lucia' },
-    { id: 7, image: '/images/s7.jpeg', name: 'Sandals Halcyon Beach', location: 'Castries, St. Lucia' },
-    { id: 8, image: '/images/s8.jpeg', name: 'Sandals LaSource Grenada', location: 'St. George\'s, Grenada' },
-    { id: 9, image: '/images/s9.jpeg', name: 'Sandals Royal Bahamian', location: 'Nassau, Bahamas' },
-    { id: 10, image: '/images/s10.jpeg', name: 'Sandals Emerald Bay', location: 'Great Exuma, Bahamas' },
+    { id: 1, image: '/images/s1.jpeg', name: 'Sandals Royal Caribbean - HOT DEAL', location: 'Montego Bay, Jamaica' },
+    { id: 2, image: '/images/s2.jpeg', name: 'Sandals Negril - HOT DEAL', location: 'Negril, Jamaica' },
+    { id: 3, image: '/images/s3.jpeg', name: 'Sandals Ochi - HOT DEAL', location: 'Ocho Rios, Jamaica' },
+    { id: 4, image: '/images/s4.jpg', name: 'Sandals South Coast - HOT DEAL', location: 'White House, Jamaica' },
+    { id: 5, image: '/images/s5.jpeg', name: 'Sandals Montego Bay - HOT DEAL', location: 'Montego Bay, Jamaica' },
+    { id: 6, image: '/images/s6.jpeg', name: 'Sandals Grande St. Lucian - HOT DEAL', location: 'Gros Islet, St. Lucia' },
+    { id: 7, image: '/images/s7.jpeg', name: 'Sandals Halcyon Beach - HOT DEAL', location: 'Castries, St. Lucia' },
+    { id: 8, image: '/images/s8.jpeg', name: 'Sandals LaSource Grenada - HOT DEAL', location: 'St. George\'s, Grenada' },
+    { id: 9, image: '/images/s9.jpeg', name: 'Sandals Royal Bahamian - HOT DEAL', location: 'Nassau, Bahamas' },
+    { id: 10, image: '/images/s10.jpeg', name: 'Sandals Emerald Bay - HOT DEAL', location: 'Great Exuma, Bahamas' },
   ];
 
   const openEmailForm = (deal) => {

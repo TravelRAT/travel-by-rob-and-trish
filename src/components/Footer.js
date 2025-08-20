@@ -63,7 +63,7 @@ function Footer() {
           <div className="space-y-4">
             <div className="flex items-center">
               <img 
-                src="/images/NewLogo.png" 
+                src="/images/Logo Trans.png" 
                 alt="Travel by Rob and Trish" 
                 className="h-20 w-auto object-contain"
                 style={{ maxWidth: '240px' }}
