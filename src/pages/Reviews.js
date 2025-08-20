@@ -5,6 +5,21 @@ function Reviews() {
   const reviews = [
     {
       id: 1,
+      name: "Matt Hoff",
+      date: "January 23, 2024",
+      trip: "Cruise Vacation Planning",
+      image: "/images/disney cruise.jpg",
+      content: "Rob at Magical Vacation Planning did a great job in accommodating us and getting us booked for our cruise. We weren't pressured to purchase anything that we didn't want and we had input when it came to selecting our cabin location. Another bonus was that we were able to purchase discounted gift cards from a third party site and use them for partial payment. It was truly an amazing experience and I will be booking through them in the future.",
+      details: [
+        "No pressure sales approach",
+        "Client input on cabin selection",
+        "Flexible payment options",
+        "Discounted gift card integration",
+        "Excellent customer service"
+      ]
+    },
+    {
+      id: 2,
       name: "Raye Lynn Jordan",
       date: "March 30, 2024",
       trip: "Spring Break Cruise 2025 - Carnival Venezia",
@@ -19,7 +34,7 @@ function Reviews() {
       ]
     },
     {
-      id: 2,
+      id: 3,
       name: "Brandon Eric",
       date: "July 9, 2023",
       trip: "Last-Minute Costa Rica Adventure",
@@ -33,7 +48,7 @@ function Reviews() {
       ]
     },
     {
-      id: 3,
+      id: 4,
       name: "Nathan Tyler",
       date: "July 9, 2023",
       trip: "Boutique Mexico Beach Getaway",
@@ -47,7 +62,7 @@ function Reviews() {
       ]
     },
     {
-      id: 4,
+      id: 5,
       name: "Ryan Jacob",
       date: "July 9, 2023",
       trip: "7-Day Caribbean Cruise",
@@ -61,7 +76,7 @@ function Reviews() {
       ]
     },
     {
-      id: 5,
+      id: 6,
       name: "Jason Jeffrey",
       date: "July 9, 2023",
       trip: "Disney Family Adventure",
@@ -75,7 +90,7 @@ function Reviews() {
       ]
     },
     {
-      id: 6,
+      id: 7,
       name: "Aurora Ivy",
       date: "July 9, 2023",
       trip: "First-Time Cruise Experience",
@@ -88,7 +103,7 @@ function Reviews() {
       ]
     },
     {
-      id: 7,
+      id: 8,
       name: "Trish Butcher",
       date: "June 24, 2023",
       trip: "Accessible Cruise Vacation",
