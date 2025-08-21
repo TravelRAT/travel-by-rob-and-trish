@@ -246,7 +246,7 @@ function AboutUs() {
               <div className="bg-gradient-to-br from-green-50 to-teal-50 rounded-xl p-6">
                 <div className="text-3xl mb-3">📧</div>
                 <h3 className="font-semibold text-gray-800 mb-2">Email</h3>
-                <a href="mailto:r.whitehair@magicalvacationplanner.com" className="text-green-600 hover:text-green-800 font-medium text-sm">
+                <a href="mailto:r.whitehair@magicalvacationplanner.com" className="text-green-600 hover:text-green-800 font-medium text-xs break-words leading-tight">
                   r.whitehair@magicalvacationplanner.com
                 </a>
               </div>
