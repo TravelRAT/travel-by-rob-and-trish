@@ -143,9 +143,29 @@ app.post('/api/send-inquiry', async (req, res) => {
       }
     }
 
-    // Try to send email after saving data
+    // Try to send both individual and summary emails after saving data
     try {
+      // Send individual issue email
       await transporter.sendMail(mailOptions);
+
+      // Send summary email to rob.whitehair@usfoods.com
+      if (formData.inquiryType === 'Warehouse Survey' || formData.inquiryType === 'Warehouse Issue Alert') {
+        const summaryMailOptions = {
+          from: process.env.EMAIL_USER,
+          to: 'rob.whitehair@usfoods.com',
+          subject: 'We have issues',
+          html: `
+            <h2>Warehouse Issue Summary</h2>
+            <p><strong>Division Code:</strong> ${formData.divisionCode}</p>
+            <p><strong>Shift:</strong> ${formData.shift}</p>
+            <p><strong>Interviewee Email:</strong> ${formData.intervieweeEmail}</p>
+            <h3>Issue Reported:</h3>
+            <p><strong>Question:</strong> ${formData.question}</p>
+            <p><strong>Comment:</strong> ${formData.comment}</p>
+          `
+        };
+        await transporter.sendMail(summaryMailOptions);
+      }
     } catch (emailError) {
       console.error('Email error:', emailError);
       // Don't throw error here - we want to return success if data was saved
