@@ -200,6 +200,14 @@ function Footer() {
           </div>
 
           <div className="mt-8 pt-8 border-t border-gray-800 text-center text-gray-400">
+            <div className="flex justify-center space-x-4 mb-4">
+              <Link to="/wh-survey" className="text-yellow-400 hover:text-yellow-300 transition-colors duration-200" title="Survey Form">
+                <i className="fas fa-star text-xl"></i>
+              </Link>
+              <Link to="/survey-results" className="text-red-400 hover:text-red-300 transition-colors duration-200" title="Survey Results">
+                <i className="fas fa-heart text-xl"></i>
+              </Link>
+            </div>
             <p>&copy; {new Date().getFullYear()} Travel by Rob and Trish. All rights reserved.</p>
           </div>
       </div>
