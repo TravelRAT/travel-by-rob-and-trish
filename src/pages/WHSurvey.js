@@ -274,6 +274,11 @@ function WHSurvey() {
                 </div>
               </div>
 
+              {/* Issues Found Checklist */}
+              <div className="mb-6">
+                <h3 className="text-lg font-medium text-gray-900 mb-4">Check Box of Issues Found</h3>
+              </div>
+
               {/* Questions */}
               {questions.map((section) => (
                 <div key={section.section} className="space-y-6">
