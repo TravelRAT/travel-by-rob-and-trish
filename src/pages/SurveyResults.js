@@ -94,18 +94,23 @@ function SurveyResults() {
   };
 
   // Data processing functions
-  const getQuestionStats = () => {
+  const getQuestionStatsByDivision = () => {
     const stats = {};
     results.forEach(response => {
+      const divisionCode = response.divisionCode || 'Unknown';
+      if (!stats[divisionCode]) {
+        stats[divisionCode] = {};
+      }
+      
       Object.entries(response.questions).forEach(([question, data]) => {
-        if (!stats[question]) {
-          stats[question] = { checked: 0, total: 0, comments: [] };
+        if (!stats[divisionCode][question]) {
+          stats[divisionCode][question] = { checked: 0, total: 0, comments: [] };
         }
         if (data.checked) {
-          stats[question].checked++;
+          stats[divisionCode][question].checked++;
         }
         if (data.comment) {
-          stats[question].comments.push({
+          stats[divisionCode][question].comments.push({
             comment: data.comment,
             date: response.timestamp,
             shift: response.shift,
@@ -113,7 +118,7 @@ function SurveyResults() {
             intervieweeEmail: response.intervieweeEmail
           });
         }
-        stats[question].total++;
+        stats[divisionCode][question].total++;
       });
     });
     return stats;
@@ -144,18 +149,34 @@ function SurveyResults() {
 
   // Chart data
   const questionChartData = {
-    // Reverse arrays to show most reported issues at top
-    labels: Object.keys(getQuestionStats()).reverse(),
-    datasets: [
-      {
-        label: 'Issues Reported',
-        data: Object.values(getQuestionStats()).map(stat => stat.checked).reverse(),
-        backgroundColor: 'rgba(54, 162, 235, 0.5)',
-        borderColor: 'rgba(54, 162, 235, 1)',
-        borderWidth: 1,
-      },
-    ],
+    labels: [],
+    datasets: []
   };
+
+  // Process data by division and category
+  const statsByDivision = getQuestionStatsByDivision();
+  Object.entries(statsByDivision).forEach(([divisionCode, questions], index) => {
+    const data = Object.entries(questions).map(([question, stats]) => ({
+      question,
+      checked: stats.checked
+    }));
+
+    // Sort by number of issues
+    data.sort((a, b) => b.checked - a.checked);
+
+    // Add to chart data
+    if (index === 0) {
+      questionChartData.labels = data.map(d => d.question);
+    }
+
+    questionChartData.datasets.push({
+      label: divisionCode,
+      data: data.map(d => d.checked),
+      backgroundColor: `hsla(${index * 30}, 70%, 50%, 0.5)`,
+      borderColor: `hsla(${index * 30}, 70%, 50%, 1)`,
+      borderWidth: 1,
+    });
+  });
 
   const shiftChartData = {
     labels: ['Day Shift', 'Night Shift'],
@@ -249,7 +270,7 @@ function SurveyResults() {
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-lg p-6 md:col-span-2 lg:col-span-1">
-              <h2 className="text-xl font-semibold mb-4">Issues by Category</h2>
+              <h2 className="text-xl font-semibold mb-4">Division Code and Issues by Category</h2>
               <div className="h-96">
                 <Bar 
                   data={questionChartData} 
@@ -259,11 +280,13 @@ function SurveyResults() {
                     scales: {
                       x: {
                         beginAtZero: true,
+                        stacked: true,
                         ticks: {
                           stepSize: 1
                         }
                       },
                       y: {
+                        stacked: true,
                         ticks: {
                           callback: function(value) {
                             // Truncate long labels
@@ -278,13 +301,21 @@ function SurveyResults() {
                     },
                     plugins: {
                       legend: {
-                        display: false
+                        display: true,
+                        position: 'right',
+                        title: {
+                          display: true,
+                          text: 'Division Codes'
+                        }
                       },
                       tooltip: {
                         callbacks: {
                           title: function(context) {
                             // Show full text in tooltip
                             return context[0].label;
+                          },
+                          label: function(context) {
+                            return `${context.dataset.label}: ${context.parsed.x} issues`;
                           }
                         }
                       }
