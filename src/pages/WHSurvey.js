@@ -276,7 +276,7 @@ function WHSurvey() {
 
               {/* Issues Found Checklist */}
               <div className="mb-6">
-                <h3 className="text-lg font-medium text-gray-900 mb-4">Check Box of Issues Found</h3>
+                <h3 className="text-lg font-medium text-red-600 mb-4">Check Box of Issues Found</h3>
               </div>
 
               {/* Questions */}
