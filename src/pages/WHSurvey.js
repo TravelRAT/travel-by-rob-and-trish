@@ -91,7 +91,7 @@ function WHSurvey() {
               inquiryType: 'Warehouse Issue Alert',
               shift: formData.shift,
               divisionCode: formData.divisionCode,
-              interviewerEmail: formData.interviewerEmail,
+              intervieweeEmail: formData.intervieweeEmail,
               question: getQuestionText(id),
               comment: value.comment
             }
@@ -112,7 +112,7 @@ function WHSurvey() {
             inquiryType: 'Warehouse Survey Summary',
             shift: formData.shift,
             divisionCode: formData.divisionCode,
-            interviewerEmail: formData.interviewerEmail,
+            intervieweeEmail: formData.intervieweeEmail,
             issues: checkedQuestions.map(([id, value]) => ({
               question: getQuestionText(id),
               comment: value.comment
@@ -129,7 +129,7 @@ function WHSurvey() {
         setFormData({
           shift: '',
           divisionCode: '',
-          interviewerEmail: '',
+          intervieweeEmail: '',
           questions: Object.keys(formData.questions).reduce((acc, key) => ({
             ...acc,
             [key]: { checked: false, comment: '' }

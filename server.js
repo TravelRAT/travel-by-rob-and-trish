@@ -114,6 +114,8 @@ app.post('/api/send-inquiry', async (req, res) => {
       try {
         const saved = await saveSurveyResponse({
           shift: formData.shift,
+          divisionCode: formData.divisionCode,
+          intervieweeEmail: formData.intervieweeEmail,
           questions: {
             [formData.question]: {
               checked: true,
@@ -130,6 +132,13 @@ app.post('/api/send-inquiry', async (req, res) => {
         }
       } catch (saveError) {
         console.error('Error saving survey:', saveError);
+        console.error('Survey data:', {
+          shift: formData.shift,
+          divisionCode: formData.divisionCode,
+          intervieweeEmail: formData.intervieweeEmail,
+          question: formData.question,
+          comment: formData.comment
+        });
         throw new Error('Failed to save survey data: ' + saveError.message);
       }
     }
