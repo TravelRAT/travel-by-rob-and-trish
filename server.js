@@ -26,15 +26,28 @@ const transporter = nodemailer.createTransport({
 // Function to save survey response
 async function saveSurveyResponse(surveyData) {
   try {
-    const filePath = path.join(__dirname, 'data', 'surveyResults.json');
+    const dataDir = path.join(__dirname, 'data');
+    const filePath = path.join(dataDir, 'surveyResults.json');
+    
+    // Ensure data directory exists
+    try {
+      await fs.access(dataDir);
+    } catch (error) {
+      console.log('Creating data directory...');
+      await fs.mkdir(dataDir, { recursive: true });
+    }
+
     let data = { responses: [] };
+    console.log('Attempting to save survey response to:', filePath);
+    console.log('Survey data:', JSON.stringify(surveyData, null, 2));
 
     try {
       const fileContent = await fs.readFile(filePath, 'utf8');
+      console.log('Existing file content:', fileContent);
       data = JSON.parse(fileContent);
     } catch (error) {
       // If file doesn't exist or is invalid, we'll use the default empty array
-      console.log('Creating new survey results file');
+      console.log('No existing file found or error reading file:', error.message);
     }
 
     // Add timestamp to the survey data
@@ -44,16 +57,25 @@ async function saveSurveyResponse(surveyData) {
     };
 
     data.responses.push(responseWithTimestamp);
+    console.log('Writing updated data to file:', JSON.stringify(data, null, 2));
     await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+    console.log('Successfully wrote data to file');
     return true;
   } catch (error) {
     console.error('Error saving survey response:', error);
+    console.error('Error details:', error.message);
+    console.error('Stack trace:', error.stack);
     return false;
   }
 }
 
 // API route for sending inquiry emails
 app.post('/api/send-inquiry', async (req, res) => {
+  console.log('Received inquiry request:', {
+    body: req.body,
+    type: req.body.formData?.inquiryType
+  });
+
   const { to, subject, formData = {} } = req.body;
 
   // Check if this is an ebook download request (safe access)
@@ -115,27 +137,48 @@ app.post('/api/send-inquiry', async (req, res) => {
   };
 
   try {
-    await transporter.sendMail(mailOptions);
-
-    // If this is a warehouse survey, save the response
-    if (formData.inquiryType === 'Warehouse Survey') {
-      const saved = await saveSurveyResponse({
-        shift: formData.shift,
-        questions: formData.surveyData.questions,
-        emailsSentTo: {
-          individual: to,
-          summary: 'rob.whitehair@usfoods.com'
+    // For warehouse surveys and issues, save the response first
+    if (formData.inquiryType === 'Warehouse Survey' || formData.inquiryType === 'Warehouse Issue Alert') {
+      console.log('Processing warehouse submission:', formData);
+      try {
+        const saved = await saveSurveyResponse({
+          shift: formData.shift,
+          questions: {
+            [formData.question]: {
+              checked: true,
+              comment: formData.comment
+            }
+          },
+          emailsSentTo: {
+            individual: to,
+            summary: 'rob.whitehair@usfoods.com'
+          }
+        });
+        if (!saved) {
+          throw new Error('Failed to save survey response to file');
         }
-      });
-      if (!saved) {
-        console.warn('Failed to save survey response to file');
+      } catch (saveError) {
+        console.error('Error saving survey:', saveError);
+        throw new Error('Failed to save survey data: ' + saveError.message);
       }
+    }
+
+    // Try to send email after saving data
+    try {
+      await transporter.sendMail(mailOptions);
+    } catch (emailError) {
+      console.error('Email error:', emailError);
+      // Don't throw error here - we want to return success if data was saved
+      console.warn('Email sending failed but survey data was saved');
     }
 
     res.json({ success: true });
   } catch (error) {
-    console.error('Error sending email:', error);
-    res.status(500).json({ error: 'Failed to send email' });
+    console.error('Server error:', error);
+    res.status(500).json({ 
+      error: 'Survey submission failed',
+      details: error.message 
+    });
   }
 });
 // API route for client review submissions
@@ -247,6 +290,16 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-app.listen(PORT, () => {
-  console.log(`Server is running on port ${PORT}`);
-}); 
+// Ensure data directory exists before starting server
+const dataDir = path.join(__dirname, 'data');
+fs.mkdir(dataDir, { recursive: true })
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`Server is running on port ${PORT}`);
+      console.log(`Data directory ready at: ${dataDir}`);
+    });
+  })
+  .catch(error => {
+    console.error('Failed to create data directory:', error);
+    process.exit(1);
+  }); 

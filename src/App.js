@@ -24,6 +24,7 @@ import LeaveReview from './pages/LeaveReview';
 import SandalsBeachesDeals from './pages/SandalsBeachesDeals';
 import UpcomingTrips from './pages/UpcomingTrips';
 import WHSurvey from './pages/WHSurvey';
+import SurveyResults from './pages/SurveyResults';
 import PageExpirationAdmin from './components/PageExpirationAdmin';
 import { getActivePages } from './utils/pageExpiration';
 
@@ -70,8 +71,9 @@ function App() {
           })}
           {/* Admin route - always accessible */}
           <Route path="/admin/page-expiration" element={<PageExpirationAdmin />} />
-          {/* Survey route - always accessible */}
+          {/* Survey routes - always accessible */}
           <Route path="/wh-survey" element={<WHSurvey />} />
+          <Route path="/survey-results" element={<SurveyResults />} />
         </Routes>
       </main>
       <Footer />

@@ -99,6 +99,11 @@ export const pageConfig = {
     expirationDate: null,
     displayName: 'Warehouse Survey'
   },
+  '/survey-results': {
+    component: 'SurveyResults',
+    expirationDate: null,
+    displayName: 'Survey Results'
+  },
   '/reviews': { 
     component: 'Reviews', 
     expirationDate: null,
