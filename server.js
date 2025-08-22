@@ -242,6 +242,18 @@ app.post('/api/giveaway-entry', async (req, res) => {
   }
 });
 
+// API route to clear all survey responses (DEVELOPMENT ONLY)
+app.delete('/api/clear-survey-data', async (req, res) => {
+  try {
+    await SurveyResponse.deleteMany({});
+    console.log('All survey responses cleared');
+    res.json({ success: true, message: 'All survey responses have been cleared' });
+  } catch (error) {
+    console.error('Error clearing survey data:', error);
+    res.status(500).json({ error: 'Failed to clear survey data' });
+  }
+});
+
 // API routes can be added here
 app.get('/api/destinations', (req, res) => {
   // Sample data - in a real app, this would come from a database
