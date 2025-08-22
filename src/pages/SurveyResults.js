@@ -93,11 +93,12 @@ function SurveyResults() {
 
   // Chart data
   const questionChartData = {
-    labels: Object.keys(getQuestionStats()),
+    // Reverse arrays to show most reported issues at top
+    labels: Object.keys(getQuestionStats()).reverse(),
     datasets: [
       {
         label: 'Issues Reported',
-        data: Object.values(getQuestionStats()).map(stat => stat.checked),
+        data: Object.values(getQuestionStats()).map(stat => stat.checked).reverse(),
         backgroundColor: 'rgba(54, 162, 235, 0.5)',
         borderColor: 'rgba(54, 162, 235, 1)',
         borderWidth: 1,
@@ -165,16 +166,42 @@ function SurveyResults() {
             </div>
             <div className="bg-white rounded-lg shadow-lg p-6">
               <h2 className="text-xl font-semibold mb-4">Issues by Category</h2>
-              <div className="h-64">
+              <div className="h-96">
                 <Bar 
                   data={questionChartData} 
                   options={{
                     maintainAspectRatio: false,
+                    indexAxis: 'y',
                     scales: {
-                      y: {
+                      x: {
                         beginAtZero: true,
                         ticks: {
                           stepSize: 1
+                        }
+                      },
+                      y: {
+                        ticks: {
+                          callback: function(value) {
+                            // Truncate long labels
+                            const label = this.getLabelForValue(value);
+                            return label.length > 50 ? label.substr(0, 47) + '...' : label;
+                          },
+                          font: {
+                            size: 11
+                          }
+                        }
+                      }
+                    },
+                    plugins: {
+                      legend: {
+                        display: false
+                      },
+                      tooltip: {
+                        callbacks: {
+                          title: function(context) {
+                            // Show full text in tooltip
+                            return context[0].label;
+                          }
                         }
                       }
                     }
