@@ -5,7 +5,7 @@ function WHSurvey() {
   const [formData, setFormData] = useState({
     shift: '',
     divisionCode: '',
-    interviewerEmail: '',
+    intervieweeEmail: '',
     questions: {
       weakWifi: { checked: false, comment: '' },
       deadZones: { checked: false, comment: '' },
@@ -265,7 +265,7 @@ function WHSurvey() {
                   <input
                     type="email"
                     name="intervieweeEmail"
-                    value={formData.interviewerEmail}
+                    value={formData.intervieweeEmail}
                     onChange={handleInputChange}
                     required
                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
