@@ -28,6 +28,7 @@ function SurveyResults() {
   const [error, setError] = useState(null);
   const [selectedDate, setSelectedDate] = useState('all');
   const [selectedShift, setSelectedShift] = useState('all');
+  const [clearingData, setClearingData] = useState(false);
 
   useEffect(() => {
     fetchResults();
@@ -46,6 +47,29 @@ function SurveyResults() {
       console.error('Error fetching survey results:', error);
       setError('Failed to load survey results');
       setLoading(false);
+    }
+  };
+
+  const clearAllData = async () => {
+    if (!window.confirm('Are you sure you want to clear all survey data? This cannot be undone.')) {
+      return;
+    }
+    
+    setClearingData(true);
+    try {
+      const response = await fetch('/api/clear-survey-data', {
+        method: 'DELETE'
+      });
+      if (!response.ok) {
+        throw new Error('Failed to clear survey data');
+      }
+      await fetchResults(); // Refresh the data
+      alert('All survey data has been cleared successfully.');
+    } catch (error) {
+      console.error('Error clearing survey data:', error);
+      alert('Failed to clear survey data. Please try again.');
+    } finally {
+      setClearingData(false);
     }
   };
 
@@ -258,6 +282,20 @@ function SurveyResults() {
                   }} 
                 />
               </div>
+            </div>
+          </div>
+
+          {/* Admin Controls */}
+          <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
+            <div className="flex justify-between items-center">
+              <h2 className="text-xl font-semibold">Admin Controls</h2>
+              <button
+                onClick={clearAllData}
+                disabled={clearingData}
+                className="bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {clearingData ? 'Clearing...' : 'Clear All Survey Data'}
+              </button>
             </div>
           </div>
 
