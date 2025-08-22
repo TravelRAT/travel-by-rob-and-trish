@@ -1,8 +1,9 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
-const fs = require('fs').promises;
 const nodemailer = require('nodemailer');
+const connectDB = require('./src/config/database');
+const SurveyResponse = require('./src/models/SurveyResponse');
 
 const app = express();
 const PORT = process.env.PORT || 4000; // Changed port to 4000
@@ -26,40 +27,10 @@ const transporter = nodemailer.createTransport({
 // Function to save survey response
 async function saveSurveyResponse(surveyData) {
   try {
-    const dataDir = path.join(__dirname, 'data');
-    const filePath = path.join(dataDir, 'surveyResults.json');
-    
-    // Ensure data directory exists
-    try {
-      await fs.access(dataDir);
-    } catch (error) {
-      console.log('Creating data directory...');
-      await fs.mkdir(dataDir, { recursive: true });
-    }
-
-    let data = { responses: [] };
-    console.log('Attempting to save survey response to:', filePath);
-    console.log('Survey data:', JSON.stringify(surveyData, null, 2));
-
-    try {
-      const fileContent = await fs.readFile(filePath, 'utf8');
-      console.log('Existing file content:', fileContent);
-      data = JSON.parse(fileContent);
-    } catch (error) {
-      // If file doesn't exist or is invalid, we'll use the default empty array
-      console.log('No existing file found or error reading file:', error.message);
-    }
-
-    // Add timestamp to the survey data
-    const responseWithTimestamp = {
-      ...surveyData,
-      timestamp: new Date().toISOString()
-    };
-
-    data.responses.push(responseWithTimestamp);
-    console.log('Writing updated data to file:', JSON.stringify(data, null, 2));
-    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
-    console.log('Successfully wrote data to file');
+    console.log('Saving survey response:', surveyData);
+    const response = new SurveyResponse(surveyData);
+    await response.save();
+    console.log('Successfully saved survey response to MongoDB');
     return true;
   } catch (error) {
     console.error('Error saving survey response:', error);
@@ -274,10 +245,8 @@ app.get('/api/destinations', (req, res) => {
 // API route to get survey results
 app.get('/api/survey-results', async (req, res) => {
   try {
-    const filePath = path.join(__dirname, 'data', 'surveyResults.json');
-    const fileContent = await fs.readFile(filePath, 'utf8');
-    const data = JSON.parse(fileContent);
-    res.json(data);
+    const responses = await SurveyResponse.find().sort('-timestamp');
+    res.json({ responses });
   } catch (error) {
     console.error('Error reading survey results:', error);
     res.status(500).json({ error: 'Failed to retrieve survey results' });
@@ -290,16 +259,12 @@ app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-// Ensure data directory exists before starting server
-const dataDir = path.join(__dirname, 'data');
-fs.mkdir(dataDir, { recursive: true })
-  .then(() => {
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-      console.log(`Data directory ready at: ${dataDir}`);
-    });
-  })
-  .catch(error => {
-    console.error('Failed to create data directory:', error);
-    process.exit(1);
-  }); 
+// Connect to MongoDB and start server
+connectDB().then(() => {
+  app.listen(PORT, () => {
+    console.log(`Server is running on port ${PORT}`);
+  });
+}).catch(error => {
+  console.error('Failed to start server:', error);
+  process.exit(1);
+}); 
