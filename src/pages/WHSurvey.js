@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 function WHSurvey() {
   const [formData, setFormData] = useState({
     shift: '',
+    divisionCode: '',
+    interviewerEmail: '',
     questions: {
       weakWifi: { checked: false, comment: '' },
       deadZones: { checked: false, comment: '' },
@@ -24,10 +26,10 @@ function WHSurvey() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState({ success: false, message: '' });
 
-  const handleShiftChange = (e) => {
+  const handleInputChange = (e) => {
     setFormData({
       ...formData,
-      shift: e.target.value
+      [e.target.name]: e.target.value
     });
   };
 
@@ -88,6 +90,8 @@ function WHSurvey() {
             formData: {
               inquiryType: 'Warehouse Issue Alert',
               shift: formData.shift,
+              divisionCode: formData.divisionCode,
+              interviewerEmail: formData.interviewerEmail,
               question: getQuestionText(id),
               comment: value.comment
             }
@@ -107,6 +111,8 @@ function WHSurvey() {
           formData: {
             inquiryType: 'Warehouse Survey Summary',
             shift: formData.shift,
+            divisionCode: formData.divisionCode,
+            interviewerEmail: formData.interviewerEmail,
             issues: checkedQuestions.map(([id, value]) => ({
               question: getQuestionText(id),
               comment: value.comment
@@ -122,6 +128,8 @@ function WHSurvey() {
         });
         setFormData({
           shift: '',
+          divisionCode: '',
+          interviewerEmail: '',
           questions: Object.keys(formData.questions).reduce((acc, key) => ({
             ...acc,
             [key]: { checked: false, comment: '' }
@@ -195,32 +203,63 @@ function WHSurvey() {
             <p className="text-gray-600 mb-8">During Warehouse Visit</p>
 
             <form onSubmit={handleSubmit} className="space-y-8">
-              {/* Shift Selection */}
-              <div className="space-y-4">
-                <label className="block text-lg font-semibold text-gray-700">Select Shift</label>
-                <div className="flex space-x-4">
-                  <label className="inline-flex items-center">
-                    <input
-                      type="radio"
-                      name="shift"
-                      value="day"
-                      checked={formData.shift === 'day'}
-                      onChange={handleShiftChange}
-                      className="form-radio h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">Day Shift</span>
-                  </label>
-                  <label className="inline-flex items-center">
-                    <input
-                      type="radio"
-                      name="shift"
-                      value="night"
-                      checked={formData.shift === 'night'}
-                      onChange={handleShiftChange}
-                      className="form-radio h-4 w-4 text-blue-600"
-                    />
-                    <span className="ml-2">Night Shift</span>
-                  </label>
+              {/* Basic Information */}
+              <div className="space-y-6">
+                {/* Shift Selection */}
+                <div className="space-y-4">
+                  <label className="block text-lg font-semibold text-gray-700">Select Shift</label>
+                  <div className="flex space-x-4">
+                    <label className="inline-flex items-center">
+                      <input
+                        type="radio"
+                        name="shift"
+                        value="day"
+                        checked={formData.shift === 'day'}
+                        onChange={handleInputChange}
+                        className="form-radio h-4 w-4 text-blue-600"
+                      />
+                      <span className="ml-2">Day Shift</span>
+                    </label>
+                    <label className="inline-flex items-center">
+                      <input
+                        type="radio"
+                        name="shift"
+                        value="night"
+                        checked={formData.shift === 'night'}
+                        onChange={handleInputChange}
+                        className="form-radio h-4 w-4 text-blue-600"
+                      />
+                      <span className="ml-2">Night Shift</span>
+                    </label>
+                  </div>
+                </div>
+
+                {/* Division Code */}
+                <div className="space-y-2">
+                  <label className="block text-lg font-semibold text-gray-700">Division Code</label>
+                  <input
+                    type="text"
+                    name="divisionCode"
+                    value={formData.divisionCode}
+                    onChange={handleInputChange}
+                    required
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Enter Division Code"
+                  />
+                </div>
+
+                {/* Interviewer Email */}
+                <div className="space-y-2">
+                  <label className="block text-lg font-semibold text-gray-700">Interviewer Email</label>
+                  <input
+                    type="email"
+                    name="interviewerEmail"
+                    value={formData.interviewerEmail}
+                    onChange={handleInputChange}
+                    required
+                    className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                    placeholder="Enter your email address"
+                  />
                 </div>
               </div>
 

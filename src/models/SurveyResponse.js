@@ -17,6 +17,14 @@ const surveyResponseSchema = new mongoose.Schema({
     required: true,
     enum: ['day', 'night']
   },
+  divisionCode: {
+    type: String,
+    required: true
+  },
+  interviewerEmail: {
+    type: String,
+    required: true
+  },
   questions: {
     type: Object
   },
