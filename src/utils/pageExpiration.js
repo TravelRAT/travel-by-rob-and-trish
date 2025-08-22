@@ -94,6 +94,11 @@ export const pageConfig = {
     expirationDate: null,
     displayName: 'Upcoming Trips'
   },
+  '/wh-survey': {
+    component: 'WHSurvey',
+    expirationDate: null,
+    displayName: 'Warehouse Survey'
+  },
   '/reviews': { 
     component: 'Reviews', 
     expirationDate: null,

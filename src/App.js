@@ -23,6 +23,7 @@ import Reviews from './pages/Reviews';
 import LeaveReview from './pages/LeaveReview';
 import SandalsBeachesDeals from './pages/SandalsBeachesDeals';
 import UpcomingTrips from './pages/UpcomingTrips';
+import WHSurvey from './pages/WHSurvey';
 import PageExpirationAdmin from './components/PageExpirationAdmin';
 import { getActivePages } from './utils/pageExpiration';
 
@@ -50,6 +51,7 @@ const componentMap = {
   'SandalsBeachesDeals': SandalsBeachesDeals,
   'PageExpirationAdmin': PageExpirationAdmin,
   'UpcomingTrips': UpcomingTrips,
+  'WHSurvey': WHSurvey,
 };
 
 function App() {
@@ -68,6 +70,8 @@ function App() {
           })}
           {/* Admin route - always accessible */}
           <Route path="/admin/page-expiration" element={<PageExpirationAdmin />} />
+          {/* Survey route - always accessible */}
+          <Route path="/wh-survey" element={<WHSurvey />} />
         </Routes>
       </main>
       <Footer />
