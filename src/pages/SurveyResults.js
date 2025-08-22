@@ -74,7 +74,9 @@ function SurveyResults() {
           stats[question].comments.push({
             comment: data.comment,
             date: response.timestamp,
-            shift: response.shift
+            shift: response.shift,
+            divisionCode: response.divisionCode,
+            intervieweeEmail: response.intervieweeEmail
           });
         }
         stats[question].total++;
@@ -278,9 +280,15 @@ function SurveyResults() {
                     {data.comments.map((comment, index) => (
                       <div key={index} className="bg-gray-50 rounded-lg p-4">
                         <p className="text-gray-800 mb-2">{comment.comment}</p>
-                        <div className="flex justify-between text-sm text-gray-500">
-                          <span>{formatDate(comment.date)}</span>
-                          <span className="capitalize">{comment.shift} Shift</span>
+                        <div className="flex flex-col space-y-2 text-sm text-gray-500">
+                          <div className="flex justify-between">
+                            <span>{formatDate(comment.date)}</span>
+                            <span className="capitalize">{comment.shift} Shift</span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span><strong>Division Code:</strong> {comment.divisionCode}</span>
+                            <span><strong>Interviewee:</strong> {comment.intervieweeEmail}</span>
+                          </div>
                         </div>
                       </div>
                     ))}
