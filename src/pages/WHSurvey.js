@@ -237,15 +237,26 @@ function WHSurvey() {
                 {/* Division Code */}
                 <div className="space-y-2">
                   <label className="block text-lg font-semibold text-gray-700">Division Code</label>
-                  <input
-                    type="text"
+                  <select
                     name="divisionCode"
                     value={formData.divisionCode}
                     onChange={handleInputChange}
                     required
                     className="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                    placeholder="Enter Division Code"
-                  />
+                  >
+                    <option value="">Select Division Code</option>
+                    {[
+                      '2G', '2I', '2J', '2L', '2N', '2O', '2R', '2Z',
+                      '3D', '3F', '3J', '3K', '3L', '3M', '3V', '3W', '3Y', '3Z',
+                      '4C', '4H', '4I', '4J', '4O', '4P', '4Q', '4R', '4U', '4V',
+                      '5D', '5E', '5G', '5I', '5O', '5T', '5Y', '5Z',
+                      '6A', '6B', '6D', '6F', '6G', '6H', '6I', '6J', '6N', '6U', '6V', '6W', '6Y', '6Z',
+                      '8A', '8B', '8E', '8L', '8N', '8O', '8S', '8T', '8U', '8V',
+                      '9A', '9B', '9D', '9I', '9J', '9L', '9O', '9P', '9Q', '9U'
+                    ].map(code => (
+                      <option key={code} value={code}>{code}</option>
+                    ))}
+                  </select>
                 </div>
 
                 {/* Interviewer Email */}
