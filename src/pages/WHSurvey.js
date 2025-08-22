@@ -63,22 +63,59 @@ function WHSurvey() {
     setSubmitStatus({ success: false, message: '' });
 
     try {
-      const response = await fetch('/api/send-inquiry', {
+      // Get the question text for each ID
+      const getQuestionText = (id) => {
+        for (const section of questions) {
+          const question = section.items.find(item => item.id === id);
+          if (question) return question.text;
+        }
+        return '';
+      };
+
+      // Send individual emails for each checked item
+      const checkedQuestions = Object.entries(formData.questions)
+        .filter(([_, value]) => value.checked);
+
+      for (const [id, value] of checkedQuestions) {
+        await fetch('/api/send-inquiry', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            to: 'r.whitehair@magicalvacationplanner.com',
+            subject: getQuestionText(id),
+            formData: {
+              inquiryType: 'Warehouse Issue Alert',
+              shift: formData.shift,
+              question: getQuestionText(id),
+              comment: value.comment
+            }
+          }),
+        });
+      }
+
+      // Send summary email
+      const summaryResponse = await fetch('/api/send-inquiry', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          to: 'r.whitehair@magicalvacationplanner.com',
-          subject: 'New Warehouse Survey Response',
+          to: 'rob.whitehair@usfoods.com',
+          subject: 'We have issues',
           formData: {
-            inquiryType: 'Warehouse Survey',
-            surveyData: formData
+            inquiryType: 'Warehouse Survey Summary',
+            shift: formData.shift,
+            issues: checkedQuestions.map(([id, value]) => ({
+              question: getQuestionText(id),
+              comment: value.comment
+            }))
           }
         }),
       });
 
-      if (response.ok) {
+      if (summaryResponse.ok) {
         setSubmitStatus({
           success: true,
           message: 'Survey submitted successfully! Thank you for your feedback.'
