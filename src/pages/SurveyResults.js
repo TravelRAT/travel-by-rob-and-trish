@@ -1,10 +1,33 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import {
+  Chart as ChartJS,
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+} from 'chart.js';
+import { Bar, Pie } from 'react-chartjs-2';
+
+ChartJS.register(
+  CategoryScale,
+  LinearScale,
+  BarElement,
+  Title,
+  Tooltip,
+  Legend,
+  ArcElement
+);
 
 function SurveyResults() {
   const [results, setResults] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [selectedDate, setSelectedDate] = useState('all');
+  const [selectedShift, setSelectedShift] = useState('all');
 
   useEffect(() => {
     fetchResults();
@@ -27,7 +50,77 @@ function SurveyResults() {
   };
 
   const formatDate = (dateString) => {
-    return new Date(dateString).toLocaleString();
+    return new Date(dateString).toLocaleDateString('en-US', {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit'
+    });
+  };
+
+  // Data processing functions
+  const getQuestionStats = () => {
+    const stats = {};
+    results.forEach(response => {
+      Object.entries(response.questions).forEach(([question, data]) => {
+        if (!stats[question]) {
+          stats[question] = { checked: 0, total: 0, comments: [] };
+        }
+        if (data.checked) {
+          stats[question].checked++;
+        }
+        if (data.comment) {
+          stats[question].comments.push({
+            comment: data.comment,
+            date: response.timestamp,
+            shift: response.shift
+          });
+        }
+        stats[question].total++;
+      });
+    });
+    return stats;
+  };
+
+  const getShiftDistribution = () => {
+    const distribution = { day: 0, night: 0 };
+    results.forEach(response => {
+      distribution[response.shift]++;
+    });
+    return distribution;
+  };
+
+  // Chart data
+  const questionChartData = {
+    labels: Object.keys(getQuestionStats()),
+    datasets: [
+      {
+        label: 'Issues Reported',
+        data: Object.values(getQuestionStats()).map(stat => stat.checked),
+        backgroundColor: 'rgba(54, 162, 235, 0.5)',
+        borderColor: 'rgba(54, 162, 235, 1)',
+        borderWidth: 1,
+      },
+    ],
+  };
+
+  const shiftChartData = {
+    labels: ['Day Shift', 'Night Shift'],
+    datasets: [
+      {
+        data: Object.values(getShiftDistribution()),
+        backgroundColor: [
+          'rgba(255, 206, 86, 0.5)',
+          'rgba(153, 102, 255, 0.5)',
+        ],
+        borderColor: [
+          'rgba(255, 206, 86, 1)',
+          'rgba(153, 102, 255, 1)',
+        ],
+        borderWidth: 1,
+      },
+    ],
   };
 
   if (loading) {
@@ -50,6 +143,8 @@ function SurveyResults() {
     );
   }
 
+  const stats = getQuestionStats();
+
   return (
     <div className="min-h-screen bg-gray-50 py-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -60,59 +155,65 @@ function SurveyResults() {
         >
           <h1 className="text-3xl font-bold text-gray-900 mb-8">Warehouse Survey Results</h1>
           
-          {results.length === 0 ? (
-            <p className="text-gray-600">No survey responses yet.</p>
-          ) : (
-            <div className="space-y-8">
-              {results.map((response, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-lg shadow-lg p-6"
-                >
-                  <div className="border-b pb-4 mb-4">
-                    <div className="flex justify-between items-start">
-                      <div>
-                        <h2 className="text-xl font-semibold text-gray-900">
-                          Response #{results.length - index}
-                        </h2>
-                        <p className="text-gray-500">
-                          {response.shift ? `${response.shift.charAt(0).toUpperCase() + response.shift.slice(1)} Shift` : 'Shift not specified'}
-                        </p>
-                      </div>
-                      <p className="text-sm text-gray-500">
-                        {formatDate(response.timestamp)}
-                      </p>
-                    </div>
-                  </div>
+          {/* Summary Statistics */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h2 className="text-xl font-semibold mb-4">Response Distribution</h2>
+              <div className="h-64">
+                <Pie data={shiftChartData} options={{ maintainAspectRatio: false }} />
+              </div>
+            </div>
+            <div className="bg-white rounded-lg shadow-lg p-6">
+              <h2 className="text-xl font-semibold mb-4">Issues by Category</h2>
+              <div className="h-64">
+                <Bar 
+                  data={questionChartData} 
+                  options={{
+                    maintainAspectRatio: false,
+                    scales: {
+                      y: {
+                        beginAtZero: true,
+                        ticks: {
+                          stepSize: 1
+                        }
+                      }
+                    }
+                  }} 
+                />
+              </div>
+            </div>
+          </div>
 
-                  <div className="space-y-6">
-                    {Object.entries(response.questions).map(([id, data]) => (
-                      data.checked && (
-                        <div key={id} className="border-l-4 border-blue-500 pl-4">
-                          <h3 className="font-medium text-gray-900">
-                            {id.replace(/([A-Z])/g, ' $1').trim()}
-                          </h3>
-                          {data.comment && (
-                            <p className="mt-2 text-gray-600 whitespace-pre-wrap">
-                              {data.comment}
-                            </p>
-                          )}
+          {/* Detailed Results */}
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <h2 className="text-xl font-semibold mb-6">Detailed Results</h2>
+            
+            {Object.entries(stats).map(([question, data]) => (
+              <div key={question} className="mb-8 border-b pb-6">
+                <div className="flex justify-between items-start mb-4">
+                  <h3 className="text-lg font-medium text-gray-900">{question}</h3>
+                  <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded">
+                    {data.checked} / {data.total} reported
+                  </span>
+                </div>
+                
+                {data.comments.length > 0 && (
+                  <div className="space-y-4">
+                    <h4 className="text-md font-medium text-gray-700">Comments:</h4>
+                    {data.comments.map((comment, index) => (
+                      <div key={index} className="bg-gray-50 rounded-lg p-4">
+                        <p className="text-gray-800 mb-2">{comment.comment}</p>
+                        <div className="flex justify-between text-sm text-gray-500">
+                          <span>{formatDate(comment.date)}</span>
+                          <span className="capitalize">{comment.shift} Shift</span>
                         </div>
-                      )
+                      </div>
                     ))}
                   </div>
-
-                  <div className="mt-6 pt-4 border-t">
-                    <h3 className="text-sm font-medium text-gray-500">Notifications sent to:</h3>
-                    <div className="mt-2 text-sm text-gray-600">
-                      <p>Individual Reports: {response.emailsSentTo?.individual || 'Not specified'}</p>
-                      <p>Summary Report: {response.emailsSentTo?.summary || 'Not specified'}</p>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          )}
+                )}
+              </div>
+            ))}
+          </div>
         </motion.div>
       </div>
     </div>
