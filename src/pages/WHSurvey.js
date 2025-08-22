@@ -250,10 +250,10 @@ function WHSurvey() {
 
                 {/* Interviewer Email */}
                 <div className="space-y-2">
-                  <label className="block text-lg font-semibold text-gray-700">Interviewer Email</label>
+                  <label className="block text-lg font-semibold text-gray-700">Interviewee Email</label>
                   <input
                     type="email"
-                    name="interviewerEmail"
+                    name="intervieweeEmail"
                     value={formData.interviewerEmail}
                     onChange={handleInputChange}
                     required

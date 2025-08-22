@@ -91,6 +91,21 @@ function SurveyResults() {
     return distribution;
   };
 
+  const getDivisionCodeDistribution = () => {
+    const distribution = {};
+    results.forEach(response => {
+      const code = response.divisionCode;
+      distribution[code] = (distribution[code] || 0) + 1;
+    });
+    // Sort by number of responses
+    return Object.entries(distribution)
+      .sort(([,a], [,b]) => b - a)
+      .reduce((obj, [key, value]) => ({
+        ...obj,
+        [key]: value
+      }), {});
+  };
+
   // Chart data
   const questionChartData = {
     // Reverse arrays to show most reported issues at top
@@ -157,14 +172,47 @@ function SurveyResults() {
           <h1 className="text-3xl font-bold text-gray-900 mb-8">Warehouse Survey Results</h1>
           
           {/* Summary Statistics */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
             <div className="bg-white rounded-lg shadow-lg p-6">
-              <h2 className="text-xl font-semibold mb-4">Response Distribution</h2>
+              <h2 className="text-xl font-semibold mb-4">Shift Distribution</h2>
               <div className="h-64">
                 <Pie data={shiftChartData} options={{ maintainAspectRatio: false }} />
               </div>
             </div>
             <div className="bg-white rounded-lg shadow-lg p-6">
+              <h2 className="text-xl font-semibold mb-4">Division Code Distribution</h2>
+              <div className="h-64">
+                <Bar
+                  data={{
+                    labels: Object.keys(getDivisionCodeDistribution()),
+                    datasets: [{
+                      label: 'Responses',
+                      data: Object.values(getDivisionCodeDistribution()),
+                      backgroundColor: 'rgba(153, 102, 255, 0.5)',
+                      borderColor: 'rgba(153, 102, 255, 1)',
+                      borderWidth: 1,
+                    }]
+                  }}
+                  options={{
+                    maintainAspectRatio: false,
+                    scales: {
+                      y: {
+                        beginAtZero: true,
+                        ticks: {
+                          stepSize: 1
+                        }
+                      }
+                    },
+                    plugins: {
+                      legend: {
+                        display: false
+                      }
+                    }
+                  }}
+                />
+              </div>
+            </div>
+            <div className="bg-white rounded-lg shadow-lg p-6 md:col-span-2 lg:col-span-1">
               <h2 className="text-xl font-semibold mb-4">Issues by Category</h2>
               <div className="h-96">
                 <Bar 

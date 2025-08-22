@@ -21,7 +21,7 @@ const surveyResponseSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-  interviewerEmail: {
+  intervieweeEmail: {
     type: String,
     required: true
   },
