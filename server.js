@@ -143,33 +143,55 @@ app.post('/api/send-inquiry', async (req, res) => {
       }
     }
 
-    // Try to send both individual and summary emails after saving data
-    try {
-      // Send individual issue email
-      await transporter.sendMail(mailOptions);
+    // Send both individual and summary emails after saving data
+    let emailErrors = [];
 
-      // Send summary email to rob.whitehair@usfoods.com
-      if (formData.inquiryType === 'Warehouse Survey' || formData.inquiryType === 'Warehouse Issue Alert') {
-        const summaryMailOptions = {
-          from: process.env.EMAIL_USER,
-          to: 'rob.whitehair@usfoods.com',
-          subject: 'We have issues',
-          html: `
-            <h2>Warehouse Issue Summary</h2>
-            <p><strong>Division Code:</strong> ${formData.divisionCode}</p>
-            <p><strong>Shift:</strong> ${formData.shift}</p>
-            <p><strong>Interviewee Email:</strong> ${formData.intervieweeEmail}</p>
-            <h3>Issue Reported:</h3>
-            <p><strong>Question:</strong> ${formData.question}</p>
-            <p><strong>Comment:</strong> ${formData.comment}</p>
-          `
-        };
-        await transporter.sendMail(summaryMailOptions);
-      }
+    // Send individual issue email
+    console.log('Attempting to send individual issue email to:', mailOptions.to);
+    try {
+      await transporter.sendMail(mailOptions);
+      console.log('Successfully sent individual issue email');
     } catch (emailError) {
-      console.error('Email error:', emailError);
-      // Don't throw error here - we want to return success if data was saved
-      console.warn('Email sending failed but survey data was saved');
+      console.error('Failed to send individual issue email:', emailError);
+      emailErrors.push(`Individual email error: ${emailError.message}`);
+    }
+
+    // Send summary email to rob.whitehair@usfoods.com
+    if (formData.inquiryType === 'Warehouse Survey' || formData.inquiryType === 'Warehouse Issue Alert') {
+      console.log('Preparing to send summary email to rob.whitehair@usfoods.com');
+      const summaryMailOptions = {
+        from: process.env.EMAIL_USER,
+        to: 'rob.whitehair@usfoods.com',
+        subject: 'We have issues',
+        html: `
+          <h2>Warehouse Issue Summary</h2>
+          <p><strong>Division Code:</strong> ${formData.divisionCode}</p>
+          <p><strong>Shift:</strong> ${formData.shift}</p>
+          <p><strong>Interviewee Email:</strong> ${formData.intervieweeEmail}</p>
+          <h3>Issue Reported:</h3>
+          <p><strong>Question:</strong> ${formData.question}</p>
+          <p><strong>Comment:</strong> ${formData.comment}</p>
+        `
+      };
+      console.log('Summary email options:', {
+        from: summaryMailOptions.from ? '(set)' : '(not set)',
+        to: summaryMailOptions.to,
+        subject: summaryMailOptions.subject,
+        html: summaryMailOptions.html
+      });
+
+      try {
+        await transporter.sendMail(summaryMailOptions);
+        console.log('Successfully sent summary email to rob.whitehair@usfoods.com');
+      } catch (summaryEmailError) {
+        console.error('Failed to send summary email:', summaryEmailError);
+        emailErrors.push(`Summary email error: ${summaryEmailError.message}`);
+      }
+    }
+
+    // Log any email errors but don't fail the request
+    if (emailErrors.length > 0) {
+      console.warn('Some emails failed to send:', emailErrors);
     }
 
     res.json({ success: true });
