@@ -51,6 +51,16 @@ function SurveyResults() {
   };
 
   const clearAllData = async () => {
+    const password = window.prompt('Please enter the admin password to clear data:');
+    if (!password) {
+      return; // User cancelled the prompt
+    }
+    
+    if (password !== 'usfoods') {
+      alert('Incorrect password. Access denied.');
+      return;
+    }
+
     if (!window.confirm('Are you sure you want to clear all survey data? This cannot be undone.')) {
       return;
     }
