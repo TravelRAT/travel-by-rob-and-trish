@@ -1,6 +1,7 @@
 require('dotenv').config();
 const express = require('express');
 const path = require('path');
+const fs = require('fs').promises;
 const nodemailer = require('nodemailer');
 
 const app = express();
@@ -21,6 +22,35 @@ const transporter = nodemailer.createTransport({
     pass: process.env.EMAIL_PASS
   }
 });
+
+// Function to save survey response
+async function saveSurveyResponse(surveyData) {
+  try {
+    const filePath = path.join(__dirname, 'data', 'surveyResults.json');
+    let data = { responses: [] };
+
+    try {
+      const fileContent = await fs.readFile(filePath, 'utf8');
+      data = JSON.parse(fileContent);
+    } catch (error) {
+      // If file doesn't exist or is invalid, we'll use the default empty array
+      console.log('Creating new survey results file');
+    }
+
+    // Add timestamp to the survey data
+    const responseWithTimestamp = {
+      ...surveyData,
+      timestamp: new Date().toISOString()
+    };
+
+    data.responses.push(responseWithTimestamp);
+    await fs.writeFile(filePath, JSON.stringify(data, null, 2));
+    return true;
+  } catch (error) {
+    console.error('Error saving survey response:', error);
+    return false;
+  }
+}
 
 // API route for sending inquiry emails
 app.post('/api/send-inquiry', async (req, res) => {
@@ -86,6 +116,22 @@ app.post('/api/send-inquiry', async (req, res) => {
 
   try {
     await transporter.sendMail(mailOptions);
+
+    // If this is a warehouse survey, save the response
+    if (formData.inquiryType === 'Warehouse Survey') {
+      const saved = await saveSurveyResponse({
+        shift: formData.shift,
+        questions: formData.surveyData.questions,
+        emailsSentTo: {
+          individual: to,
+          summary: 'rob.whitehair@usfoods.com'
+        }
+      });
+      if (!saved) {
+        console.warn('Failed to save survey response to file');
+      }
+    }
+
     res.json({ success: true });
   } catch (error) {
     console.error('Error sending email:', error);
@@ -180,6 +226,19 @@ app.get('/api/destinations', (req, res) => {
     }
   ];
   res.json(destinations);
+});
+
+// API route to get survey results
+app.get('/api/survey-results', async (req, res) => {
+  try {
+    const filePath = path.join(__dirname, 'data', 'surveyResults.json');
+    const fileContent = await fs.readFile(filePath, 'utf8');
+    const data = JSON.parse(fileContent);
+    res.json(data);
+  } catch (error) {
+    console.error('Error reading survey results:', error);
+    res.status(500).json({ error: 'Failed to retrieve survey results' });
+  }
 });
 
 // The "catchall" handler: for any request that doesn't
