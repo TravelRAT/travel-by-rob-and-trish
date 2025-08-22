@@ -18,8 +18,7 @@ const surveyResponseSchema = new mongoose.Schema({
     enum: ['day', 'night']
   },
   questions: {
-    type: Map,
-    of: questionSchema
+    type: Object
   },
   emailsSentTo: {
     individual: String,
