@@ -216,7 +216,7 @@ function SurveyResults() {
     );
   }
 
-  const stats = getQuestionStats();
+  const stats = getQuestionStatsByDivision();
 
   return (
     <div className="min-h-screen bg-gray-50 py-12">
@@ -344,35 +344,40 @@ function SurveyResults() {
           <div className="bg-white rounded-lg shadow-lg p-6">
             <h2 className="text-xl font-semibold mb-6">Detailed Results</h2>
             
-            {Object.entries(stats).map(([question, data]) => (
-              <div key={question} className="mb-8 border-b pb-6">
-                <div className="flex justify-between items-start mb-4">
-                  <h3 className="text-lg font-medium text-gray-900">{question}</h3>
-                  <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded">
-                    {data.checked} / {data.total} reported
-                  </span>
-                </div>
-                
-                {data.comments.length > 0 && (
-                  <div className="space-y-4">
-                    <h4 className="text-md font-medium text-gray-700">Comments:</h4>
-                    {data.comments.map((comment, index) => (
-                      <div key={index} className="bg-gray-50 rounded-lg p-4">
-                        <p className="text-gray-800 mb-2">{comment.comment}</p>
-                        <div className="flex flex-col space-y-2 text-sm text-gray-500">
-                          <div className="flex justify-between">
-                            <span>{formatDate(comment.date)}</span>
-                            <span className="capitalize">{comment.shift} Shift</span>
+            {Object.entries(stats).map(([divisionCode, questions]) => (
+              <div key={divisionCode} className="mb-12">
+                <h3 className="text-xl font-semibold text-gray-900 mb-6">Division Code: {divisionCode}</h3>
+                {Object.entries(questions).map(([question, data]) => (
+                  <div key={question} className="mb-8 border-b pb-6">
+                    <div className="flex justify-between items-start mb-4">
+                      <h4 className="text-lg font-medium text-gray-900">{question}</h4>
+                      <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded">
+                        {data.checked} / {data.total} reported
+                      </span>
+                    </div>
+                    
+                    {data.comments.length > 0 && (
+                      <div className="space-y-4">
+                        <h5 className="text-md font-medium text-gray-700">Comments:</h5>
+                        {data.comments.map((comment, index) => (
+                          <div key={index} className="bg-gray-50 rounded-lg p-4">
+                            <p className="text-gray-800 mb-2">{comment.comment}</p>
+                            <div className="flex flex-col space-y-2 text-sm text-gray-500">
+                              <div className="flex justify-between">
+                                <span>{formatDate(comment.date)}</span>
+                                <span className="capitalize">{comment.shift} Shift</span>
+                              </div>
+                              <div className="flex justify-between">
+                                <span><strong>Division Code:</strong> {comment.divisionCode}</span>
+                                <span><strong>Interviewee:</strong> {comment.intervieweeEmail}</span>
+                              </div>
+                            </div>
                           </div>
-                          <div className="flex justify-between">
-                            <span><strong>Division Code:</strong> {comment.divisionCode}</span>
-                            <span><strong>Interviewee:</strong> {comment.intervieweeEmail}</span>
-                          </div>
-                        </div>
+                        ))}
                       </div>
-                    ))}
+                    )}
                   </div>
-                )}
+                ))}
               </div>
             ))}
           </div>
